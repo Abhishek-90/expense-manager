@@ -1,52 +1,22 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router';
+import React, { useState, useContext } from 'react'
 import { AddTransaction } from './AddTransaction';
 import ShowTransaction from './ShowTransaction';
+import { transactionContext } from '../context/transactionContext';
 
 const Dashboard = () => {
-    const navigate = useNavigate();
-
+    const context = useContext(transactionContext);
+    const { addTransaction } = context;
     const [transaction, settransaction] = useState({
         ttype:"income",
         tag:"salary",
         amount:"",
         description:""
     });
-
     const onChange = (e)=>{
         settransaction({...transaction, [e.target.name]: e.target.value})
     }
-
     const onSubmit = async (e)=>{
-        e.preventDefault();
-        const token = localStorage.getItem('authToken');
-        console.log(token);
-        const response = await fetch(
-            'http://localhost:5000/transaction/transaction',
-            {
-                method:'POST',
-                headers:{
-                    'Content-type':'application/json',
-                    'authToken': token
-                },
-                body:JSON.stringify({
-                    type: transaction.ttype,
-                    tag: transaction.tag,
-                    description: transaction.description,
-                    amount: transaction.amount 
-                })
-            }
-        );
-        
-        const json = await response.json();
-
-
-        if(json.status === 'success'){
-            navigate('/dashboard');
-        }
-        else{
-            console.log(json.error);
-        }
+        addTransaction(transaction)
     }
 
     return (

@@ -5,17 +5,38 @@ import { useState } from "react";
 const TransactionState = (props) => {
     const host = 'http://localhost:5000/transaction/';
 
-    const [transaction, setTransaction] = useState({
-        ttype:"income",
-        tag:"salary",
-        amount:"",
-        description:""
-    });
-
     const [userStatement, setuserStatement] = useState([]);
 
-    const addTransaction = (e)=>{
-        setTransaction({...transaction, [e.target.name]: e.target.value})
+    const addTransaction = async ( transaction )=>{
+        const token = localStorage.getItem('authToken');
+        console.log(token);
+        const response = await fetch(
+            'http://localhost:5000/transaction/transaction',
+            {
+                method:'POST',
+                headers:{
+                    'Content-type':'application/json',
+                    'authToken': token
+                },
+                body:JSON.stringify({
+                    type: transaction.ttype,
+                    tag: transaction.tag,
+                    description: transaction.description,
+                    amount: transaction.amount 
+                })
+            }
+        );
+        
+        const json = await response.json();
+
+
+        if(json.status === 'success'){
+            // navigate('/dashboard');
+            console.log(json)
+        }
+        else{
+            console.log(json.error);
+        }
     }
 
     const fetchTransactions = async () => {
@@ -35,7 +56,7 @@ const TransactionState = (props) => {
     }
 
     return (
-        <transactionContext.Provider value={{transaction, fetchTransactions, userStatement, addTransaction, setuserStatement}}>
+        <transactionContext.Provider value={{fetchTransactions, userStatement, addTransaction}}>
             {props.children}
         </transactionContext.Provider>
     )

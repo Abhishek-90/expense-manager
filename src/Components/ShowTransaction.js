@@ -12,9 +12,7 @@ const ShowTransaction = () => {
             fetchTransactions();
         else
             navigate('/');
-            
-        
-    },[])
+    })
 
     return (
         <>
@@ -32,10 +30,10 @@ const ShowTransaction = () => {
                     {
                         userStatement.map((t)=>{
                             return (
-                                <tbody>
+                                <tbody key={t._id}>
                                     <tr className= {`table-${t.type === 'income' ? 'success' : 'danger'}`}>
-                                        <td scope="row">{t.date.split('T')[0]}</td>
-                                        <td scope="row">{t.amount}</td>
+                                        <td>{t.date.split('T')[0]}</td>
+                                        <td>{t.amount}</td>
                                         <td>{t.type}</td>
                                         <td>{t.description}</td>
                                         <td>{t.tag}</td>
