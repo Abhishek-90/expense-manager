@@ -2,8 +2,12 @@ import React, { useState, useContext } from 'react'
 import { AddTransaction } from './AddTransaction';
 import ShowTransaction from './ShowTransaction';
 import { transactionContext } from '../context/transactionContext';
+import { modeContext } from "../context/modeContext";
 
 const Dashboard = () => {
+    const contextMode = useContext(modeContext);
+    const { darkMode } = contextMode;
+
     const context = useContext(transactionContext);
     const { addTransaction } = context;
     const [transaction, settransaction] = useState({
@@ -20,7 +24,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="container">
+        <div className='container'>
             <AddTransaction onSubmit={onSubmit} onChange={onChange} transaction={transaction}/>
             <ShowTransaction/>
         </div>
