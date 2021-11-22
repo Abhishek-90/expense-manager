@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
 import { AddTransaction } from './AddTransaction';
+import ShowTransaction from './ShowTransaction';
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -49,8 +50,9 @@ const Dashboard = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <AddTransaction onSubmit={onSubmit} onChange={onChange} transaction={transaction}/>
+            <ShowTransaction/>
         </div>
     )
 }

@@ -8,17 +8,20 @@ import {
 } from "react-router-dom";
 import Signup from "./Components/Signup";
 import Dashboard from "./Components/Dashboard";
+import TransactionState from "./context/transactionState";
 
 function App() {
   return (
     <div>
       <Router>
         <Navbar title="Expense Manager"/>
-          <Routes>
-            <Route path='/' element={<Login/>}/>
-            <Route path='/signup' element={<Signup/>}/>
-            <Route path='/dashboard' element={<Dashboard/>}/>
-          </Routes>
+          <TransactionState>
+            <Routes>
+              <Route path='/' element={<Login/>}/>
+              <Route path='/signup' element={<Signup/>}/>
+              <Route path='/dashboard' element={<Dashboard/>}/>
+            </Routes>
+          </TransactionState>
       </Router>
     </div>
   );
