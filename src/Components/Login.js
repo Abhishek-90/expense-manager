@@ -30,7 +30,6 @@ const Login = () => {
             );
 
             const json = await response.json();
-            console.log(json);
             if(json.success === 'success'){
                 localStorage.setItem('authToken',json.authToken);
                 navigate('/dashboard');
