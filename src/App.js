@@ -9,11 +9,14 @@ import {
 import Signup from "./Components/Signup";
 import Dashboard from "./Components/Dashboard";
 import TransactionState from "./context/transactionState";
+import ModeState from "./context/modeState";
+
 
 function App() {
   return (
     <div>
       <Router>
+          <ModeState>
         <Navbar title="Expense Manager"/>
           <TransactionState>
             <Routes>
@@ -22,6 +25,7 @@ function App() {
               <Route path='/dashboard' element={<Dashboard/>}/>
             </Routes>
           </TransactionState>
+          </ModeState>
       </Router>
     </div>
   );

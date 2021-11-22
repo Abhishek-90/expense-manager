@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router';
+import { modeContext } from "../context/modeContext";
 
 const Navbar = (props) => {
     const navigate = useNavigate();
 
+    const contextMode = useContext(modeContext);
+    const { darkMode, handleDarkMode } = contextMode;
+    
     const handleLogout = ()=>{
         localStorage.removeItem('authToken');
         navigate('/');
     }
 
+    const handleMode = () => {
+      handleDarkMode();
+    }
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className={`navbar navbar-expand-lg navbar-${darkMode} bg-${darkMode}`}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/dashboard">
             {props.title}
@@ -41,6 +49,10 @@ const Navbar = (props) => {
                 </Link>
               </li>
             </ul>
+          </div>
+          <div className="form-check form-switch">
+            <input className={`form-check-input`}  type="checkbox" role="switch" id="dark-mode" name="dark-mode" onClick={handleMode}/>
+            <label className={`form-check-label text-${darkMode === 'light'?'dark':'light'}`} htmlFor="dark-mode">Dark Mode</label>
           </div>
           {localStorage.getItem("authToken") === null ? (
             <Link className="btn btn-primary mx-2" to="/signup" role="button">
