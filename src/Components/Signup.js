@@ -24,13 +24,21 @@ const Signup = () => {
                     headers:{
                         'Content-type':'application/json'   
                     },
-                    body: JSON.stringify(signup)
+                    body: JSON.stringify({
+                        "name":signup.fname,
+                        "email": signup.email,
+                        "password": signup.password
+                    })
                 }
             );
-
-            if(response !== null){
+            
+            const json = await response.json();
+            if(json.status == 'success'){
                 localStorage.setItem('authToken',response.authToken);
                 navigate('/dashboard');
+            }
+            else{
+                //TODO: Add Alert in case of Sign up fails along with error.
             }
         }
         catch(error){
