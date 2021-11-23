@@ -33,6 +33,7 @@ const Login = () => {
 
             if(json.status === 'success'){
                 localStorage.setItem('authToken',json.authToken);
+                console.log(localStorage.getItem('authToken'));
                 navigate('/dashboard');
             }
             else{

@@ -33,8 +33,9 @@ const Signup = () => {
             );
             
             const json = await response.json();
-            if(json.status == 'success'){
-                localStorage.setItem('authToken',response.authToken);
+            console.log(json);
+            if(json.status === 'success'){
+                localStorage.setItem('authToken',json.authToken);
                 navigate('/dashboard');
             }
             else{
