@@ -5,7 +5,7 @@ const router = express.Router();
 const Transaction = require('../models/transactionModel');
 
 //ROUTE 1: API Enpoint to add about the transactions the User Makes. Login Required.
-router.post('/transaction',
+router.post('/addtransaction',
     fetchUser
 ,async (req,res)=>{
     try{
@@ -36,7 +36,7 @@ router.get('/statement',
             email:req.email,
         });
         
-        return res.status(200).send(statement);
+        return res.status(200).send({'statement':statement, status:'success'});
     }
     catch(error){
         return res.status(400).json({error});

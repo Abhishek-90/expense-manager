@@ -33,7 +33,7 @@ const Signup = () => {
             );
             
             const json = await response.json();
-            if(json.status == 'success'){
+            if(json.status === 'success'){
                 localStorage.setItem('authToken',response.authToken);
                 navigate('/dashboard');
             }
