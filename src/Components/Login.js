@@ -30,9 +30,14 @@ const Login = () => {
             );
 
             const json = await response.json();
-            if(json.success === 'success'){
+
+            if(json.status === 'success'){
                 localStorage.setItem('authToken',json.authToken);
                 navigate('/dashboard');
+            }
+            else{
+                //TODO: Add alert box here to display that Credentials are wrong.
+                
             }
         }
         catch(error){

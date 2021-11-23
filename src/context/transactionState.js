@@ -9,7 +9,6 @@ const TransactionState = (props) => {
 
     const addTransaction = async ( transaction )=>{
         const token = localStorage.getItem('authToken');
-        console.log(token);
         const response = await fetch(
             'http://localhost:5000/transaction/transaction',
             {
@@ -28,7 +27,6 @@ const TransactionState = (props) => {
         );
         
         const json = await response.json();
-
 
         if(json.status === 'success'){
             // navigate('/dashboard');
@@ -52,11 +50,60 @@ const TransactionState = (props) => {
         )
         const json = await response.json();
 
-        setuserStatement(json);
+        // setuserStatement(json);
+    }
+
+    const handleDelete = async (id) => {
+
+        const response = await fetch(
+            'http://localhost:5000/transaction/remove',
+            {
+                method:"DELETE",
+                headers:{
+                    'Content-Type':'application/json',
+                    'authToken': localStorage.getItem('authToken')
+                },
+                body:JSON.stringify({
+                    id: id
+                })
+            },
+        )
+
+        const json = await response.json();
+        if(json.Message === 'success'){
+            console.log(`Transaction with id ${id} DELETED SUCCESSFULLY`);
+        }
+    }
+    
+    const handleUpdate = async ( { id, description, amount, tag, type } ) => {
+        console.log(`${id} ${type} ${amount} ${tag} ${description}`)
+        const response = await fetch(
+            'http://localhost:5000/transaction/update',
+            {
+                method:"PUT",
+                headers:{
+                    'Content-Type':'application/json',
+                    'authToken': localStorage.getItem('authToken')
+                },
+                body:JSON.stringify({
+                    id: id,
+                    type: type,
+                    description: description,
+                    amount: amount,
+                    tag:tag
+                })
+            },
+        )
+
+        const json = await response.json();
+        if(json.Message === 'success'){
+            console.log(`Transaction with id ${id} UPDATED SUCCESSFULLY`);
+            return 'success';
+        }
     }
 
     return (
-        <transactionContext.Provider value={{fetchTransactions, userStatement, addTransaction}}>
+        <transactionContext.Provider value={{fetchTransactions, userStatement, addTransaction, handleDelete, handleUpdate }}>
             {props.children}
         </transactionContext.Provider>
     )
