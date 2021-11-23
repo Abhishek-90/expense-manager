@@ -51,14 +51,14 @@ router.delete('/remove',
         
         if(req.email !== null){
             const response = await Transaction.findByIdAndRemove(req.body.id);
-            return res.status(200).send(response);
+            return res.status(200).send({status:'success'});
         }
         else{
-            return res.status(404).send({"Message":"Unauthorised Access"});
+            return res.status(404).send({"Message":"Unauthorised Access", status:'fail'});
         }
     }
     catch(error){
-        return res.status(400).json({error});
+        return res.status(400).send({status: 'fail'});
     }
 })
 
@@ -67,19 +67,24 @@ router.put('/update',
     fetchUser
 ,async (req,res)=>{
     try{
+
+        const exists = await Transaction.findById(req.body.id);
+
+        if(!exists)
+            return res.send(400).send({Message: 'Transaction Does Not Exists', status: 'success'});
         
         if(req.email !== null){
-            const response = await Transaction.findByIdAndUpdate(req.body._id ,
+            const response = await Transaction.findByIdAndUpdate(req.body.id ,
                 {
                     type: req.body.email,
                     description: req.body.description,
                     amount: req.body.amount,
                     tag: req.body.tag
             })
-            return res.status(200).send({Message:'success'});
+            return res.status(200).send({status:'success'});
         }
         else{
-            return res.status(404).send({"Message":"Unauthorised Access"});
+            return res.status(404).send({"Message":"Unauthorised Access", status: 'fail'});
         }
     }
     catch(error){

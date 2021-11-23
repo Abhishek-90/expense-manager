@@ -63,57 +63,60 @@ const TransactionState = (props) => {
         }
     }
 
-    // const handleDelete = async (id) => {
+    const handleDelete = async (id) => {
 
-    //     const response = await fetch(
-    //         'http://localhost:5000/transaction/remove',
-    //         {
-    //             method:"DELETE",
-    //             headers:{
-    //                 'Content-Type':'application/json',
-    //                 'authToken': localStorage.getItem('authToken')
-    //             },
-    //             body:JSON.stringify({
-    //                 id: id
-    //             })
-    //         },
-    //     )
+        const response = await fetch(
+            'http://localhost:5000/transaction/remove',
+            {
+                method:"DELETE",
+                headers:{
+                    'Content-Type':'application/json',
+                    'authToken': localStorage.getItem('authToken')
+                },
+                body:JSON.stringify({
+                    id: id
+                })
+            },
+        )
 
-    //     const json = await response.json();
-    //     if(json.Message === 'success'){
-    //         console.log(`Transaction with id ${id} DELETED SUCCESSFULLY`);
-    //     }
-    // }
+        const json = await response.json();
+        if(json.status === 'success'){
+            return 'success';
+        }
+    }
     
-    // const handleUpdate = async ( { id, description, amount, tag, type } ) => {
-    //     console.log(`${id} ${type} ${amount} ${tag} ${description}`)
-    //     const response = await fetch(
-    //         'http://localhost:5000/transaction/update',
-    //         {
-    //             method:"PUT",
-    //             headers:{
-    //                 'Content-Type':'application/json',
-    //                 'authToken': localStorage.getItem('authToken')
-    //             },
-    //             body:JSON.stringify({
-    //                 id: id,
-    //                 type: type,
-    //                 description: description,
-    //                 amount: amount,
-    //                 tag:tag
-    //             })
-    //         },
-    //     )
+    const handleTransactionUpdate = async ( { id, description, amount, tag, type } ) => {
+        // Function to Update existing transaction of the User.
 
-    //     const json = await response.json();
-    //     if(json.Message === 'success'){
-    //         console.log(`Transaction with id ${id} UPDATED SUCCESSFULLY`);
-    //         return 'success';
-    //     }
-    // }
+        console.log(`${id} ${type} ${amount} ${tag} ${description}`)
+
+        const response = await fetch(
+            'http://localhost:5000/transaction/update',
+            {
+                method:"PUT",
+                headers:{
+                    'Content-Type':'application/json',
+                    'authToken': localStorage.getItem('authToken')
+                },
+                body:JSON.stringify({
+                    id: id,
+                    type: type,
+                    description: description,
+                    amount: amount,
+                    tag:tag
+                })
+            },
+        )
+
+        const json = await response.json();
+        if(json.status === 'success'){
+            console.log(`Transaction with id ${id} UPDATED SUCCESSFULLY`);
+            return 'success';
+        }
+    }
 
     return (
-        <transactionContext.Provider value={{fetchTransactions, userStatement, addTransaction }}>
+        <transactionContext.Provider value={{fetchTransactions, userStatement, addTransaction, handleTransactionUpdate, handleDelete }}>
             {props.children}
         </transactionContext.Provider>
     )
