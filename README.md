@@ -26,7 +26,7 @@ Now Open .env file and paste the connection string Db_Uri = % Paste String here 
 
     npm i express
 
-    npm i mongooose
+    npm i -g mongooose
 
     npm i cors
 
