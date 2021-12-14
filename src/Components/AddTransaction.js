@@ -10,7 +10,7 @@ export const AddTransaction = (props) => {
     const { darkMode } = contextMode;
 
     const contextTransaction = useContext(transactionContext);
-    const { addTransaction } = contextTransaction;
+    const { addTransaction, setuserStatement, userStatement } = contextTransaction;
 
     const [newTransaction, setNewTransaction] = useState({
         ttype:"income",
@@ -24,6 +24,7 @@ export const AddTransaction = (props) => {
     }
 
     const onSubmit = async (e)=>{
+        setuserStatement(userStatement.append(newTransaction));
         addTransaction({
             type: newTransaction.ttype,
             tag: newTransaction.tag,
