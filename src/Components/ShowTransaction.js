@@ -2,11 +2,12 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { transactionContext } from '../context/transactionContext'
 import { modeContext } from "../context/modeContext";
+import Transaction from './Transaction';
 
 const ShowTransaction = () => {
 
     const contextTransaction = useContext(transactionContext);
-    const { fetchTransactions, userStatement, handleTransactionUpdate, handleDelete } = contextTransaction;  
+    const { fetchTransactions, handleTransactionUpdate, change, setChange } = contextTransaction;  
     const navigate = useNavigate(); 
     
     const contextMode = useContext(modeContext);
@@ -15,11 +16,10 @@ const ShowTransaction = () => {
     useEffect(() => {
         if(localStorage.getItem('authToken')){
             fetchTransactions();
-            console.log(userStatement);
         }
         else
             navigate('/');
-    },[]);
+    }, [change]);
 
     const [editTransaction, setEditTransaction] = useState({
         eid: "",
@@ -33,7 +33,7 @@ const ShowTransaction = () => {
     const refClose = useRef(null);
     
     const onUpdateSubmit = async (e)=>{
-        e.preventDefault();
+        // e.preventDefault();
 
         const response = await handleTransactionUpdate({ 
             id:editTransaction.eid,
@@ -50,6 +50,7 @@ const ShowTransaction = () => {
         else{
             console.log("Update Failed.")
         }
+        setChange([0]);
     }
 
     const onTransactionEdit = (e)=>{
@@ -69,17 +70,8 @@ const ShowTransaction = () => {
 
     }
 
-    const deleteTransaction = async (id)=>{
-        const response = await handleDelete(id);
-
-        if(response === 'success')
-            console.log(`Transaction with ID: ${id} deleted.`)
-        else
-            console.log('Delete Failed');
-    }
-
     return (
-        <>
+        <div className='my-4'>
             <button ref={refEditButton} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Launch demo modal
             </button>
@@ -131,7 +123,7 @@ const ShowTransaction = () => {
                             <div className="mb-3 col-sm">
                                 <label htmlFor="eamount" className={`form-label text-${darkMode === 'dark' ? 'light':'dark'}`}>Amount</label>
                                 <div className="mx-1 dropdown">
-                                <input value={editTransaction.eamount} className="form-control" id="eamount" name="eamount" onChange={onTransactionEdit} placeholder="Enter amount for Transaction"/>
+                                <input value={editTransaction.eamount} className="form-control" id="eamount" name="eamount" onChange={onTransactionEdit} placeholder="Enter Amount"/>
                                 </div>
                             </div>
                         </div>
@@ -148,37 +140,8 @@ const ShowTransaction = () => {
                 </div>
             </div>
             </div>
-            <div className="container ml-2">
-                <table className={`table-striped table table-${darkMode}`}>
-                    <thead>
-                        <tr>
-                        <th scope="col">Date</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Tag</th>
-                        <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    {
-                        userStatement.map((t)=>{
-                            return (
-                                <tbody key={t._id}>
-                                    <tr className= {`table-${t.type === 'income' ? 'success' : 'danger'}`}>
-                                        <td>{t.date.split('T')[0]}</td>
-                                        <td>{t.amount}</td>
-                                        <td>{t.type}</td>
-                                        <td>{t.description}</td>
-                                        <td>{t.tag}</td>
-                                        <td><i className="mx-1 far fa-edit" onClick={() => editButtonClick(t)}></i> <i className="mx-1 fas fa-trash-alt" onClick={()=>deleteTransaction(t._id)}></i></td>
-                                    </tr>
-                                </tbody>
-                            )
-                        })
-                    }   
-                </table>
-            </div>
-        </>
+            <Transaction editButtonClick={editButtonClick}/>
+        </div>
     )
 }
 

@@ -6,24 +6,45 @@ import { transactionContext } from '../context/transactionContext'
 
 const Visual = () => {
     const contextTransaction = useContext(transactionContext);
-    // const { expense } = contextTransaction;    
+    const { userStatement } = contextTransaction;   
+    
+    const expenseData = userStatement.filter(e => e.type === 'expense');
+    const labels = [... new Set(expenseData.map(e => e.tag))]
+
+    let data = [];
+
+    for (let i = 0; i < labels.length; i++) {
+      const temp = expenseData.map(e =>{ 
+        if(e.tag === labels[i])
+         return e.amount;
+        else
+          return 0;
+      });
+      // console.log(temp);
+      let s = 0;
+      
+      temp.forEach(element => {
+        s = s + parseInt(element);
+      });
+
+      // console.log(s);
+      data.push(s);
+    }
+    // console.log(data);
 
     return (
       <div>
         
           <Pie 
               data = {{
-                  labels: [
-                    'LightGreen',
-                    'Blue',
-                    'Yellow'
-                  ],
+                  labels: labels,
                   datasets: [{
-                    data: [300, 50, 100],
+                    data: data,
                     backgroundColor: [
                       'LightGreen',
-                      'rgb(54, 162, 235)',
-                      'rgb(255, 205, 86)'
+                      'Pink',
+                      'LightBlue',
+                      'Yellow'
                     ],
                   }],
               }}

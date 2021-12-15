@@ -7,8 +7,14 @@ import { Visual } from './Visual';
 const Dashboard = () => {
     return (
         <div className='container'>
-            <Visual/>
-            <AddTransaction />
+            <div className='row my-4'>
+                <div className='col-sm'>
+                    <Visual/>
+                </div>
+                <div className='col-sm'>
+                    <AddTransaction />
+                </div>
+            </div>
             <ShowTransaction/>
         </div>
     )
