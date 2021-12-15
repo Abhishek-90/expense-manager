@@ -6,10 +6,10 @@ const TransactionState = (props) => {
     const host = 'http://localhost:5000/transaction/';
 
     const [userStatement, setuserStatement] = useState([]);
-    
+    const [change, setChange] = useState([0]);
+
     const addTransaction = async ( { type, tag, description, amount} )=>{
         //  Function to add new Transaction inside database. 
-
         const token = localStorage.getItem('authToken');
 
         const response = await fetch(
@@ -30,14 +30,8 @@ const TransactionState = (props) => {
         );
         
         const json = await response.json();
-
-        if(json.status === 'success'){
-            // navigate('/dashboard');
-            console.log(json)
-        }
-        else{
-            console.log(json.error);
-        }
+        setuserStatement(userStatement.concat(json.statement));
+        console.log(json.statement);
     }
 
     const fetchTransactions = async () => {
@@ -54,13 +48,7 @@ const TransactionState = (props) => {
             },
         )
         const json = await response.json();
-        
-        if(json.status === 'success'){
-            if(json.statement !== [])
-                setuserStatement(json.statement);
-            else
-                setuserStatement([]);
-        }
+        setuserStatement(json.statement);
     }
 
     const handleDelete = async (id) => {
@@ -80,6 +68,7 @@ const TransactionState = (props) => {
         )
 
         const json = await response.json();
+        
         if(json.status === 'success'){
             return 'success';
         }
@@ -116,7 +105,7 @@ const TransactionState = (props) => {
     }
 
     return (
-        <transactionContext.Provider value={{fetchTransactions, userStatement, addTransaction, handleTransactionUpdate, handleDelete }}>
+        <transactionContext.Provider value={{fetchTransactions, userStatement, addTransaction, handleTransactionUpdate, handleDelete, setuserStatement, setChange, change}}>
             {props.children}
         </transactionContext.Provider>
     )
