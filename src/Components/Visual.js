@@ -41,10 +41,13 @@ const Visual = () => {
                   datasets: [{
                     data: data,
                     backgroundColor: [
+                      '#f1c893',
+                      'Grey',
                       'LightGreen',
-                      'Pink',
                       'LightBlue',
-                      'Yellow'
+                      'Pink',
+                      '#f1d085',
+                      '#027c7c'
                     ],
                   }],
               }}
