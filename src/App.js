@@ -17,12 +17,13 @@ function App() {
     <div>
       <Router>
           <ModeState>
-        <Navbar title="Expense Manager"/>
           <TransactionState>
+            <Navbar title="Expense Manager"/>
             <Routes>
               <Route path='/' element={<Login/>}/>
               <Route path='/signup' element={<Signup/>}/>
               <Route path='/dashboard' element={<Dashboard/>}/>
+              {/* <Route path='/transactions' element={<Dashboard/>}/> */}
             </Routes>
           </TransactionState>
           </ModeState>

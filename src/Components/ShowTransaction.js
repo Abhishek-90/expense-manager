@@ -33,8 +33,8 @@ const ShowTransaction = () => {
     const refClose = useRef(null);
     
     const onUpdateSubmit = async (e)=>{
-        // e.preventDefault();
-
+        e.preventDefault();
+        console.log(editTransaction);
         const response = await handleTransactionUpdate({ 
             id:editTransaction.eid,
             description: editTransaction.edescription,
@@ -46,11 +46,12 @@ const ShowTransaction = () => {
         if(response === 'success'){
             console.log(`Transaction with ID: ${editTransaction.eid} updated successfully.`);
             refClose.current.click();
+        setChange([0]);
+
         }
         else{
             console.log("Update Failed.")
         }
-        setChange([0]);
     }
 
     const onTransactionEdit = (e)=>{
@@ -58,11 +59,12 @@ const ShowTransaction = () => {
     }
 
     const editButtonClick = (currentTransaction)=>{
+        // console.log(currentTransaction);
         setEditTransaction({
             eid: currentTransaction._id,
             etag: currentTransaction.tag,
             eamount: currentTransaction.amount,
-            ettype: currentTransaction.ttype,
+            ettype: currentTransaction.type,
             edescription: currentTransaction.description
         })
 
