@@ -76,7 +76,7 @@ router.put('/update',
         if(req.email !== null){
             const response = await Transaction.findByIdAndUpdate(req.body.id ,
                 {
-                    type: req.body.email,
+                    type: req.body.type,
                     description: req.body.description,
                     amount: req.body.amount,
                     tag: req.body.tag

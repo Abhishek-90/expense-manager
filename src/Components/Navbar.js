@@ -2,15 +2,20 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router';
 import { modeContext } from "../context/modeContext";
+import { transactionContext } from '../context/transactionContext'
 
 const Navbar = (props) => {
     const navigate = useNavigate();
 
     const contextMode = useContext(modeContext);
     const { darkMode, handleDarkMode } = contextMode;
+
+    const contextTransaction = useContext(transactionContext);
+    const { setuserStatement } = contextTransaction;   
     
     const handleLogout = ()=>{
         localStorage.removeItem('authToken');
+        setuserStatement([]);
         navigate('/');
     }
 
@@ -44,16 +49,16 @@ const Navbar = (props) => {
                 </Link>
               </li>
               {/* <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Link
+                <Link className="nav-link" to="/transactions">
+                  Transactions
                 </Link>
               </li> */}
             </ul>
           </div>
-          <div className="form-check form-switch">
+          {/* <div className="form-check form-switch">
             <input className={`form-check-input`}  type="checkbox" role="switch" id="dark-mode" name="dark-mode" onClick={handleMode}/>
             <label className={`form-check-label text-${darkMode === 'light'?'dark':'light'}`} htmlFor="dark-mode">Dark Mode</label>
-          </div>
+          </div> */}
           {localStorage.getItem("authToken") === null ? (
             <Link className="btn btn-primary mx-2" to="/signup" role="button">
               Sign Up

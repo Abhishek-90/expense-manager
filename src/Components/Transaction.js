@@ -18,6 +18,8 @@ const Transaction = (props) => {
         setuserStatement(newStatement);
     }
 
+    
+
     return (
         <div className="container ml-2">
             <table className={`table-striped table table-${darkMode}`}>
@@ -34,6 +36,7 @@ const Transaction = (props) => {
                 {/* {console.log(userStatement)} */}
                 {
                     userStatement.map((t)=>{
+                        console.log(t);
                         return (
                             <tbody key={t._id}>
                                 <tr className= {`table-${t.type === 'income' ? 'success' : 'danger'}`}>

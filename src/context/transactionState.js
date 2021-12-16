@@ -74,10 +74,10 @@ const TransactionState = (props) => {
         }
     }
     
-    const handleTransactionUpdate = async ( { id, description, amount, tag, type } ) => {
+    const handleTransactionUpdate = async ( update ) => {
         // Function to Update existing transaction of the User.
 
-        console.log(`${id} ${type} ${amount} ${tag} ${description}`)
+        console.log(update);
 
         const response = await fetch(
             'http://localhost:5000/transaction/update',
@@ -88,18 +88,19 @@ const TransactionState = (props) => {
                     'authToken': localStorage.getItem('authToken')
                 },
                 body:JSON.stringify({
-                    id: id,
-                    type: type,
-                    description: description,
-                    amount: amount,
-                    tag:tag
+                    id: update.id,
+                    type: update.type,
+                    description: update.description,
+                    amount: update.amount,
+                    tag:update.tag
                 })
             },
         )
 
         const json = await response.json();
         if(json.status === 'success'){
-            console.log(`Transaction with id ${id} UPDATED SUCCESSFULLY`);
+            // console.log(`Transaction with id ${id} UPDATED SUCCESSFULLY`);
+            setChange([0]);
             return 'success';
         }
     }
