@@ -26,13 +26,13 @@ Now Open .env file and paste the connection string Db_Uri = % Paste String here 
 
     npm i express
 
-    npm i -g mongooose
+    npm i mongooose
 
     npm i cors
 
     npm i dotenv
 
-    npm i nodemon
+    npm i -g nodemon
 
     npm i jsonwebtoken
 
