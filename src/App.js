@@ -13,7 +13,7 @@ import ModeState from "./context/modeState";
 function App() {
   return (
     <div>
-      <Router basename="https://react--expense-manager.herokuapp.com">
+      <Router>
           <ModeState>
           <TransactionState>
             <Navbar title="Expense Manager"/>

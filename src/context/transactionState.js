@@ -48,6 +48,7 @@ const TransactionState = (props) => {
             },
         )
         const json = await response.json();
+        console.log(json);
         setuserStatement(json.statement);
     }
 
