@@ -10,11 +10,10 @@ import Dashboard from "./Components/Dashboard";
 import TransactionState from "./context/transactionState";
 import ModeState from "./context/modeState";
 
-
 function App() {
   return (
     <div>
-      <Router>
+      <Router basename="https://react--expense-manager.herokuapp.com">
           <ModeState>
           <TransactionState>
             <Navbar title="Expense Manager"/>
