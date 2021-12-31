@@ -10,7 +10,6 @@ import Dashboard from "./Components/Dashboard";
 import TransactionState from "./context/transactionState";
 import ModeState from "./context/modeState";
 
-
 function App() {
   return (
     <div>
