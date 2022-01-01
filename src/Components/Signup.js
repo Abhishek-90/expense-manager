@@ -18,7 +18,7 @@ const Signup = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch('http://localhost:5000/auth/signup',
+            const response = await fetch('https://react--expense-manager.herokuapp.com/signup',
                 {
                     method:"POST",
                     headers:{
