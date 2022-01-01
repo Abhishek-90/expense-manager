@@ -13,7 +13,7 @@ import ModeState from "./context/modeState";
 function App() {
   return (
     <div>
-      <Router>
+      <Router basename="https://expense-manager-b7b0d.web.app">
           <ModeState>
           <TransactionState>
             <Navbar title="Expense Manager"/>
