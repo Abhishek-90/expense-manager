@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from "react";
 
 const TransactionState = (props) => {
-    const host = 'https://react--expense-manager.herokuapp.com/';
+    const host = 'https://react--expense-manager.herokuapp.com/transaction/';
 
     const [userStatement, setuserStatement] = useState([]);
     const [change, setChange] = useState([0]);
@@ -13,7 +13,7 @@ const TransactionState = (props) => {
         const token = localStorage.getItem('authToken');
 
         const response = await fetch(
-            'https://react--expense-manager.herokuapp.com/addtransaction',
+            'https://react--expense-manager.herokuapp.com/transaction/addtransaction',
             {
                 method:'POST',
                 headers:{
