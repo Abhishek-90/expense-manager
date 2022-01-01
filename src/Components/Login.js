@@ -16,7 +16,7 @@ const Login = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch('https://react--expense-manager.herokuapp.com/login',
+            const response = await fetch('https://react--expense-manager.herokuapp.com/auth/login',
                 {
                     method:"POST",
                     headers:{
