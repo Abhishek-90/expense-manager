@@ -16,11 +16,11 @@ const Login = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch('https://react--expense-manager.herokuapp.com/auth/login',
+            const response = await fetch('https://expense-manager-b.herokuapp.com/auth/login',
                 {
                     method:"POST",
                     headers:{
-                        'Content-type':'application/json'   
+                        'Content-type':'application/json',
                     },
                     body: JSON.stringify({
                         email: login.email,

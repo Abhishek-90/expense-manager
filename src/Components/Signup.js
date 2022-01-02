@@ -18,13 +18,12 @@ const Signup = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch('https://react--expense-manager.herokuapp.com/auth/signup',
+            const response = await fetch('https://expense-manager-b.herokuapp.com/auth/signup',
                 {
                     method:"POST",
                     headers:{
                         'Content-type':'application/json'   
                     },
-                    mode: "no-cors",
                     body: JSON.stringify({
                         "name":signup.fname,
                         "email": signup.email,
