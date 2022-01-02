@@ -22,7 +22,7 @@ const Login = () => {
                     method:"POST",
                     headers:{
                         'Content-type':'application/json',
-                        'Access-Control-Allow-Origin': '*'
+                        'Access-Control-Allow-Origin': '*',
                     },
                     body: JSON.stringify({
                         email: login.email,
@@ -36,7 +36,7 @@ const Login = () => {
             if(json.status === 'success'){
                 localStorage.setItem('authToken',json.authToken);
                 console.log(localStorage.getItem('authToken'));
-                navigate('/dashboard');
+                navigate('https://expense-manager-f.herokuapp.com/dashboard');
             }
             else{
                 //TODO: Add alert box here to display that Credentials are wrong.
