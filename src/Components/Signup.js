@@ -24,6 +24,7 @@ const Signup = () => {
                     headers:{
                         'Content-type':'application/json'   
                     },
+                    mode: "no-cors",
                     body: JSON.stringify({
                         "name":signup.fname,
                         "email": signup.email,
