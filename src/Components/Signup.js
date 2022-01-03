@@ -24,7 +24,6 @@ const Signup = () => {
                     headers:{
                         'Content-type':'application/json'   
                     },
-                    mode: "no-cors",
                     body: JSON.stringify({
                         "name":signup.fname,
                         "email": signup.email,
@@ -33,8 +32,10 @@ const Signup = () => {
                 }
             );
             
-            const json = await response.json();
+            const json = response.json();
+
             console.log(json);
+            
             if(json.status === 'success'){
                 localStorage.setItem('authToken',json.authToken);
                 navigate('/dashboard');
