@@ -22,7 +22,9 @@ const Signup = () => {
                 {
                     method:"POST",
                     headers:{
-                        'Content-type':'application/json'   
+                        'Content-type':'application/json',
+                        'Access-Control-Allow-Origin':"*",
+                           
                     },
                     body: JSON.stringify({
                         "name":signup.fname,
