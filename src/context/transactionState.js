@@ -1,9 +1,9 @@
 import { transactionContext } from "./transactionContext";
 import React from 'react'
 import { useState } from "react";
-
+import { transaction } from '../Variables/routes.js';
 const TransactionState = (props) => {
-    const host = 'https://react--expense-manager.herokuapp.com/transaction/';
+    const host = transaction;
 
     const [userStatement, setuserStatement] = useState([]);
     const [change, setChange] = useState([0]);
@@ -13,7 +13,7 @@ const TransactionState = (props) => {
         const token = localStorage.getItem('authToken');
 
         const response = await fetch(
-            'https://react--expense-manager.herokuapp.com/transaction/addtransaction',
+            `${host}addtransaction`,
             {
                 method:'POST',
                 headers:{
@@ -55,7 +55,7 @@ const TransactionState = (props) => {
     const handleDelete = async (id) => {
 
         const response = await fetch(
-            'http://localhost:5000/transaction/remove',
+            `${host}remove`,
             {
                 method:"DELETE",
                 headers:{
@@ -81,7 +81,7 @@ const TransactionState = (props) => {
         console.log(update);
 
         const response = await fetch(
-            'http://localhost:5000/transaction/update',
+            `${host}update`,
             {
                 method:"PUT",
                 headers:{
@@ -100,7 +100,6 @@ const TransactionState = (props) => {
 
         const json = await response.json();
         if(json.status === 'success'){
-            // console.log(`Transaction with id ${id} UPDATED SUCCESSFULLY`);
             setChange([0]);
             return 'success';
         }

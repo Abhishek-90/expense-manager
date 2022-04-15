@@ -7,7 +7,7 @@ import Transaction from './Transaction';
 const ShowTransaction = () => {
 
     const contextTransaction = useContext(transactionContext);
-    const { fetchTransactions, handleTransactionUpdate, change, setChange } = contextTransaction;  
+    const { fetchTransactions, handleTransactionUpdate, setChange } = contextTransaction;  
     const navigate = useNavigate(); 
     
     const contextMode = useContext(modeContext);
@@ -19,7 +19,7 @@ const ShowTransaction = () => {
         }
         else
             navigate('/');
-    }, [change]);
+    }, []);
 
     const [editTransaction, setEditTransaction] = useState({
         eid: "",

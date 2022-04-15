@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
 import { useContext } from 'react'
 import { useState } from 'react'
+import { modeContext } from '../context/modeContext'
 import { transactionContext } from '../context/transactionContext'
-
 
 const UpdateTransaction = () => {
 
@@ -18,7 +18,13 @@ const UpdateTransaction = () => {
         edescription: ""
     })
 
+    const onChange = (e) => {
+        setEditTransaction({...editTransaction, [e.target.name]:e.target.value})
+    }
     const refEditButton = useRef(null);
+
+    const contextMode = useContext(modeContext);
+    const { darkMode } = contextMode;
 
     const onUpdateSubmit = async (e)=>{
         e.preventDefault();

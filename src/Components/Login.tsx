@@ -1,22 +1,28 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
+import { authentication } from '../Variables/routes';
+
+interface ILoginState {
+    email:string,
+    password:string
+}
 
 const Login = () => {
     const navigate = useNavigate();
-    const [login, setLogin] = useState({
+    const [login, setLogin] = useState<ILoginState>({
         email:"",
         password:"",
     })
 
-    const onChange = (e)=>{
+    const onChange = (e:any)=>{
         setLogin({...login, [e.target.name]:e.target.value});
     }
 
-    const onSubmit = async (e)=>{
+    const onSubmit = async (e:any)=>{
         e.preventDefault();
 
         try{
-            const response = await fetch('https://expense-manager-b.herokuapp.com/auth/login',
+            const response = await fetch(`${authentication}login`,
 
                 {
                     method:"POST",
@@ -36,7 +42,7 @@ const Login = () => {
             if(json.status === 'success'){
                 localStorage.setItem('authToken',json.authToken);
                 console.log(localStorage.getItem('authToken'));
-                navigate('https://expense-manager-f.herokuapp.com/dashboard');
+                navigate('/dashboard');
             }
             else{
                 //TODO: Add alert box here to display that Credentials are wrong.

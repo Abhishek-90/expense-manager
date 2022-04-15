@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
+import { authentication } from '../Variables/routes.js';
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Signup = () => {
         e.preventDefault();
 
         try{
-            const response = await fetch('https://expense-manager-b.herokuapp.com/auth/signup',
+            const response = await fetch(`${authentication}signup`,
                 {
                     method:"POST",
                     headers:{
