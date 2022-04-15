@@ -2,14 +2,14 @@ import React, { useContext } from 'react'
 
 import 'chart.js/auto'
 import { Pie } from 'react-chartjs-2';
-import { transactionContext } from '../context/transactionContext'
+import { transactionContext } from '../../context/transactionContext'
 
 const Visual = () => {
     const contextTransaction = useContext(transactionContext);
     const { userStatement } = contextTransaction;   
     
     const expenseData = userStatement.filter(e => e.type === 'expense');
-    const labels = [... new Set(expenseData.map(e => e.tag))]
+    const labels = [...new Set(expenseData.map(e => e.tag))]
 
     let data = [];
 

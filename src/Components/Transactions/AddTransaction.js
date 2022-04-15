@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from "react";
-import { modeContext } from "../context/modeContext";
+import { modeContext } from "../../context/modeContext";
 import { useContext } from 'react'
-import { transactionContext } from '../context/transactionContext';
+import { transactionContext } from '../../context/transactionContext';
 
 export const AddTransaction = (props) => {
 

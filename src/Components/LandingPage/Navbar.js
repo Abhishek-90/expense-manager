@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router';
-import { modeContext } from "../context/modeContext";
-import { transactionContext } from '../context/transactionContext'
+import { modeContext } from "../../context/modeContext";
+import { transactionContext } from '../../context/transactionContext'
 
 const Navbar = (props) => {
     const navigate = useNavigate();
