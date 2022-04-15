@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { authentication } from "../../Variables/routes";
+import { authentication } from "../../constants/routes";
 
-interface ILoginState {
+export interface ILogin {
   email: string;
   password: string;
 }
 
 const Login = () => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState<ILoginState>({
+  const [login, setLogin] = useState<ILogin>({
     email: "",
     password: "",
   });

@@ -1,21 +1,28 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
-import { authentication } from '../../Variables/routes.js';
+import { authentication } from '../../constants/routes.js';
+
+export interface ISignUp {
+    fname:string,
+    email:string,
+    password:string,
+    confirmPassword:string
+}
 
 const Signup = () => {
     const navigate = useNavigate();
-    const [signup, setSignup] = useState({
+    const [signup, setSignup] = useState<ISignUp>({
         fname:"",
         email:"",
         password:"",
-        cpassword:""
+        confirmPassword:""
     })
 
-    const onChange = (e)=>{
-        setSignup({...signup, [e.target.name]:e.target.value});
+    const onChange = (e:any)=>{
+        setSignup({...signup, [e?.target?.name]:e.target.value});
     }
 
-    const onSubmit = async (e)=>{
+    const onSubmit = async (e:any)=>{
         e.preventDefault();
 
         try{
@@ -70,7 +77,7 @@ const Signup = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Confirm Password</label>
-                    <input type="password" className="form-control" value={signup.cpassword} id="cpassword" name="cpassword" onChange={onChange}/>
+                    <input type="password" className="form-control" value={signup.confirmPassword} id="cpassword" name="cpassword" onChange={onChange}/>
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>
