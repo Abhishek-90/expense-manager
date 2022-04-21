@@ -1,4 +1,4 @@
-
+<!-- 
 <h2> Steps to use it Locally</h2>
 
 <h3>Pre Requisites:</h3> Make sure you have MongoDb+Compass, Nodejs installed.
@@ -17,28 +17,7 @@ Links -> [MongoDb](https://www.mongodb.com/try/download/community) | [NodeJs](ht
 
 Now Open .env file and paste the connection string Db_Uri = % Paste String here %
 
-3: Goto where you have cloned the repository and Copy-paste Below commands one-by-one:
-
-
-    cd expense-manager
-
-    cd Backend
-
-    npm i express
-
-    npm i mongooose
-
-    npm i cors
-
-    npm i dotenv
-
-    npm i -g nodemon
-
-    npm i jsonwebtoken
-
-    npm i express-validator
-
-    npm i bcrypt
+3: Goto the root of your project and run `npm install` or `yarn`     
 
     nodemon
 
@@ -48,4 +27,4 @@ Now Open .env file and paste the connection string Db_Uri = % Paste String here 
     
 
 
-<h2> Happy Money Management! </h3>
+<h2> Happy Money Management! </h3> -->

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { authentication } from "../../constants/routes";
+import { authentication } from "../../Variables/routes";
 
 export interface ILogin {
   email: string;

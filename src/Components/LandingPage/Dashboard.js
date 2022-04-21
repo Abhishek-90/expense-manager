@@ -2,7 +2,7 @@ import React from 'react'
 
 import { AddTransaction } from './AddTransaction';
 import ShowTransaction from './ShowTransaction';
-import { Visual } from '../Charts/Visual';
+import { Visual } from '../Visual';
 
 const Dashboard = () => {
     return (
