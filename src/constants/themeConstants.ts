@@ -1,0 +1,1 @@
+export const lightBlue:string = 'rgb(117, 175, 250)';

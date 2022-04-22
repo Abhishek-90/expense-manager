@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 import styled from "styled-components";
-
+import * as colors from '../../../constants/themeConstants'
 interface ICustomButton {
   text:string,
   type?:"button" | "submit" | "reset",
@@ -10,7 +10,7 @@ interface ICustomButton {
 const Button = styled.button`
   width: 8rem;
   height: 3rem;
-  background: rgb(117, 175, 250);
+  background: ${colors.lightBlue};
   color: white;
   border:none;
   outline:none;

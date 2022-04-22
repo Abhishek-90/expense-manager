@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { authentication } from "../../Variables/routes";
 import { CustomButton } from "../Elements/Buttons/CustomButton";
+import { Wrapper, LoginDiv, ButtonContainer } from "./LoginStyles";
 
 export interface ILogin {
   email: string;
@@ -55,34 +56,38 @@ const Login = () => {
 
   return (
     <div className="container my-4">
-      <h2>Login Page</h2>
       <form onSubmit={onSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            onChange={onChange}
-          />
-        </div>
-        <CustomButton type="submit" onClick={onSubmit} text="Login"/>
+        <Wrapper>
+          <LoginDiv>
+            <label htmlFor="email" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              aria-describedby="emailHelp"
+              onChange={onChange}
+            />
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label mt-3">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                name="password"
+                onChange={onChange}
+              />
+            </div>
+            <ButtonContainer>
+            <CustomButton type="submit" onClick={onSubmit} text="Login" />
+            <CustomButton type="submit" onClick={onSubmit} text="Signup" />
+            </ButtonContainer>
+          </LoginDiv>
+        </Wrapper>
       </form>
     </div>
   );

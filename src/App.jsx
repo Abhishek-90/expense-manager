@@ -3,8 +3,8 @@ import TransactionState from "./context/transactionState";
 import ModeState from "./context/modeState";
 import Navbar from "./Components/LandingPage/Navbar";
 import Dashboard from "./Components/LandingPage/Dashboard";
-import Login from "./Components/Authentication/Login";
-import Signup from "./Components/Authentication/Signup";
+import Login from "./Components/Login/Login";
+import Signup from "./Components/Signup/Signup";
 
 function App() {
   return (
