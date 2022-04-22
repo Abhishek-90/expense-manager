@@ -7,10 +7,10 @@ import { transactionContext } from '../../context/transactionContext'
 const Navbar = (props) => {
     const navigate = useNavigate();
 
-    const contextMode = useContext(modeContext);
+    const contextMode:any = useContext(modeContext);
     const { darkMode, handleDarkMode } = contextMode;
 
-    const contextTransaction = useContext(transactionContext);
+    const contextTransaction:any = useContext(transactionContext);
     const { setuserStatement } = contextTransaction;   
     
     const handleLogout = ()=>{

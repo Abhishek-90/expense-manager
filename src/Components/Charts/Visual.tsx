@@ -5,16 +5,16 @@ import { Pie } from 'react-chartjs-2';
 import { transactionContext } from '../../context/transactionContext'
 
 const Visual = () => {
-    const contextTransaction = useContext(transactionContext);
+    const contextTransaction:any = useContext(transactionContext);
     const { userStatement } = contextTransaction;   
     
-    const expenseData = userStatement.filter(e => e.type === 'expense');
-    const labels = [...new Set(expenseData.map(e => e.tag))]
+    const expenseData = userStatement.filter((e:any) => e.type === 'expense');
+    const labels = [...new Set(expenseData.map((e:any) => e.tag))]
 
-    let data = [];
+    let data:number[] = [];
 
     for (let i = 0; i < labels.length; i++) {
-      const temp = expenseData.map(e =>{ 
+      const temp = expenseData.map((e:any) =>{ 
         if(e.tag === labels[i])
          return e.amount;
         else
@@ -23,7 +23,7 @@ const Visual = () => {
       // console.log(temp);
       let s = 0;
       
-      temp.forEach(element => {
+      temp.forEach((element:any) => {
         s = s + parseInt(element);
       });
 
