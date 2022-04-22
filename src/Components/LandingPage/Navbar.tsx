@@ -59,7 +59,7 @@ const Navbar = (props) => {
             <input className={`form-check-input`}  type="checkbox" role="switch" id="dark-mode" name="dark-mode" onClick={handleMode}/>
             <label className={`form-check-label text-${darkMode === 'light'?'dark':'light'}`} htmlFor="dark-mode">Dark Mode</label>
           </div> */}
-          {localStorage.getItem("authToken") === null ? (
+          {/* {localStorage.getItem("authToken") === null ? (
             <Link className="btn btn-primary mx-2" to="/signup" role="button">
               Sign Up
             </Link>
@@ -67,7 +67,7 @@ const Navbar = (props) => {
             <button className="btn btn-primary mx-2" onClick={handleLogout}>
               Logout
             </button>
-          )}
+          )} */}
         </div>
       </nav>
     </div>

@@ -4,7 +4,7 @@ import * as colors from '../../../constants/themeConstants'
 interface ICustomButton {
   text:string,
   type?:"button" | "submit" | "reset",
-  onClick:MouseEventHandler
+  onClick?:MouseEventHandler
 }
 
 const Button = styled.button`

@@ -22,5 +22,5 @@ export const ButtonContainer = styled.div`
   width: 25rem;
   display: flex;
   justify-content: space-around;
-  margin-top:2rem;
+  margin-top:1.5rem;
 `

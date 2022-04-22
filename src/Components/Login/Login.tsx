@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { authentication } from "../../Variables/routes";
 import { CustomButton } from "../Elements/Buttons/CustomButton";
 import { Wrapper, LoginDiv, ButtonContainer } from "./LoginStyles";
@@ -83,8 +84,10 @@ const Login = () => {
               />
             </div>
             <ButtonContainer>
-            <CustomButton type="submit" onClick={onSubmit} text="Login" />
-            <CustomButton type="submit" onClick={onSubmit} text="Signup" />
+              <CustomButton type="submit" onClick={onSubmit} text="Login" />
+              <Link to="/signup">
+                <CustomButton text="Signup"/>
+              </Link>
             </ButtonContainer>
           </LoginDiv>
         </Wrapper>
