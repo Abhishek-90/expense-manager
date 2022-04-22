@@ -1,15 +1,15 @@
 import React from 'react'
 
-import { transactionContext } from '../context/transactionContext'
-import { modeContext } from "../context/modeContext";
+import { transactionContext } from '../../context/transactionContext'
+import { modeContext } from "../../context/modeContext";
 import { useContext } from 'react';
 
 const Transaction = (props) => {
 
-    const contextTransaction = useContext(transactionContext);
+    const contextTransaction:any = useContext(transactionContext);
     const { userStatement, handleDelete, setuserStatement } = contextTransaction;  
 
-    const contextMode = useContext(modeContext);
+    const contextMode:any = useContext(modeContext);
     const { darkMode } = contextMode;
 
     const deleteTransaction = (id)=>{

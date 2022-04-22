@@ -6,7 +6,7 @@ import { transactionContext } from '../../context/transactionContext'
 
 const UpdateTransaction = () => {
 
-    const contextTransaction = useContext(transactionContext);
+    const contextTransaction:any = useContext(transactionContext);
 
     const { handleTransactionUpdate } = contextTransaction;
 
@@ -23,7 +23,7 @@ const UpdateTransaction = () => {
     }
     const refEditButton = useRef(null);
 
-    const contextMode = useContext(modeContext);
+    const contextMode:any = useContext(modeContext);
     const { darkMode } = contextMode;
 
     const onUpdateSubmit = async (e)=>{
@@ -50,7 +50,7 @@ const UpdateTransaction = () => {
             Launch demo modal
             </button>
 
-            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                 <div className="modal-header">

@@ -5,11 +5,11 @@ import { modeContext } from "../../context/modeContext";
 
 const ShowTransaction = () => {
 
-    const contextTransaction = useContext(transactionContext);
+    const contextTransaction:any = useContext(transactionContext);
     const { fetchTransactions, handleTransactionUpdate, setChange } = contextTransaction;  
     const navigate = useNavigate(); 
     
-    const contextMode = useContext(modeContext);
+    const contextMode:any = useContext(modeContext);
     const { darkMode } = contextMode;
 
     useEffect(() => {
@@ -28,8 +28,8 @@ const ShowTransaction = () => {
         edescription: ""
     })
 
-    const refEditButton = useRef(null);
-    const refClose = useRef(null);
+    const refEditButton:any = useRef(null);
+    const refClose:any = useRef(null);
     
     const onUpdateSubmit = async (e)=>{
         e.preventDefault();
@@ -77,7 +77,7 @@ const ShowTransaction = () => {
             Launch demo modal
             </button>
 
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                 <div className="modal-header">

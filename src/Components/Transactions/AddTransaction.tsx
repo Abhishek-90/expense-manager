@@ -6,10 +6,10 @@ import { transactionContext } from '../../context/transactionContext';
 
 export const AddTransaction = (props) => {
 
-    const contextMode = useContext(modeContext);
+    const contextMode:any = useContext(modeContext);
     const { darkMode } = contextMode;
 
-    const contextTransaction = useContext(transactionContext);
+    const contextTransaction:any = useContext(transactionContext);
     const { addTransaction, setChange } = contextTransaction;
 
     const [newTransaction, setNewTransaction] = useState({
