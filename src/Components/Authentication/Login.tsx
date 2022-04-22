@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { authentication } from "../../Variables/routes";
+import { CustomButton } from "../Elements/Buttons/CustomButton";
 
 export interface ILogin {
   email: string;
@@ -81,9 +82,7 @@ const Login = () => {
             onChange={onChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
+        <CustomButton type="submit" onClick={onSubmit} text="Login"/>
       </form>
     </div>
   );
