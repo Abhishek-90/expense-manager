@@ -1,7 +1,7 @@
 import { transactionContext } from "./transactionContext";
 import React from 'react'
 import { useState } from "react";
-import { transaction } from '../Variables/routes.js';
+import { transaction } from '../Variables/routes';
 const TransactionState = (props) => {
     const host = transaction;
 

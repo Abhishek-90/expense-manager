@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router';
 import { transactionContext } from '../../context/transactionContext'
 import { modeContext } from "../../context/modeContext";
-import Transaction from '../Transaction';
 
 const ShowTransaction = () => {
 
@@ -19,7 +18,7 @@ const ShowTransaction = () => {
         }
         else
             navigate('/');
-    }, []);
+    });
 
     const [editTransaction, setEditTransaction] = useState({
         eid: "",
@@ -142,7 +141,6 @@ const ShowTransaction = () => {
                 </div>
             </div>
             </div>
-            <Transaction editButtonClick={editButtonClick}/>
         </div>
     )
 }

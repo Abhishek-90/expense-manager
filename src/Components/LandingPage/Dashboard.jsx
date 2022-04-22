@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { AddTransaction } from './AddTransaction';
-import ShowTransaction from './ShowTransaction';
-import { Visual } from '../Visual';
+import { AddTransaction } from '../Transactions/AddTransaction';
+import ShowTransaction from '../Transactions/ShowTransaction';
+import { Visual } from '../Charts/Visual';
 
 const Dashboard = () => {
     return (
