@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { authentication } from "../../Variables/routes";
-import { CustomButton } from "../Elements/Buttons/CustomButton";
+import { CustomButton } from "../Elements/Button";
+import { CustomInput } from "../Elements/Input";
 import { Wrapper, LoginDiv, ButtonContainer } from "./LoginStyles";
 
 export interface ILogin {
@@ -63,30 +64,15 @@ const Login = () => {
             <label htmlFor="email" className="form-label">
               Email address
             </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              aria-describedby="emailHelp"
-              onChange={onChange}
-            />
-            <div className="mb-3">
+            <CustomInput type="text"/>
               <label htmlFor="password" className="form-label mt-3">
                 Password
               </label>
-              <input
-                type="password"
-                className="form-control"
-                id="password"
-                name="password"
-                onChange={onChange}
-              />
-            </div>
+            <CustomInput type="password" width={15}/>
             <ButtonContainer>
               <CustomButton type="submit" onClick={onSubmit} text="Login" />
               <Link to="/signup">
-                <CustomButton text="Signup"/>
+                <CustomButton text="Signup" />
               </Link>
             </ButtonContainer>
           </LoginDiv>

@@ -25,7 +25,7 @@ const Navbar = (props) => {
 
   return (
     <div>
-      <nav className={`navbar navbar-expand-lg navbar-${darkMode} bg-${darkMode}`}>
+      <nav className={`navbar navbar-expand-lg navbar-${darkMode} bg-inherit`}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/dashboard">
             {props.title}

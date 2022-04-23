@@ -1,6 +1,6 @@
 import { MouseEventHandler } from "react";
 import styled from "styled-components";
-import * as colors from '../../../constants/themeConstants'
+import * as colors from '../../constants/themeConstants'
 interface ICustomButton {
   text:string,
   type?:"button" | "submit" | "reset",
