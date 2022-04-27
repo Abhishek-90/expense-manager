@@ -8,6 +8,7 @@ import LandingPage from "./Components/LandingPage/LandingPage";
 import './index.css';
 
 function App() {
+  console.log("Done")
   return (
     <Router>
       <ModeState>
