@@ -1,8 +1,8 @@
 name: "CodeQL"
 
-on: 
+on:
   push:
-    branches:[ master ]
+    branches: [ master ]
   
 jobs:
   code-checkout:
