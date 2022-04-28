@@ -7,16 +7,19 @@ on:
 jobs:
   code-checkout:
     name: Checkout Repository
-    runs-on: [ubuntu-latest, windows-latest, macos-latest]
-    permissions: 
-      actions: read
-      contents: read
-      security-events: write
 
     strategy: 
       fail-fast: false
       matrix: 
         language: [ 'javascript' ]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    
+    runs-on: ${{matrix.os}}
+    
+    permissions: 
+      actions: read
+      contents: read
+      security-events: write
 
     steps:
     - name: Checkout
