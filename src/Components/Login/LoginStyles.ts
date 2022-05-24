@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 50%;
   heigth: 100%;
+  float:right;
   display: flex;
-  // justify-content:center;
+  justify-content:center;
   align-content: center;
 `
 
@@ -22,5 +23,5 @@ export const ButtonContainer = styled.div`
   width: 20rem;
   display: flex;
   justify-content: space-around;
-  margin-top:1.5rem;
+  margin-top:2rem;
 `

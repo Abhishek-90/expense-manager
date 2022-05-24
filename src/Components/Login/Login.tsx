@@ -18,9 +18,9 @@ const Login = () => {
     password: "",
   });
 
-  const onChange = (e: any) => {
-    setLogin({ ...login, [e.target.name]: e.target.value });
-  };
+  // const onChange = (e: any) => {
+  //   setLogin({ ...login, [e.target.name]: e.target.value });
+  // };
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -57,18 +57,12 @@ const Login = () => {
   };
 
   return (
-    <div className="container my-4">
+    <div className="container">
       <form onSubmit={onSubmit}>
         <Wrapper>
           <LoginDiv>
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <CustomInput type="text"/>
-              <label htmlFor="password" className="form-label mt-3">
-                Password
-              </label>
-            <CustomInput type="password" width={15}/>
+            <CustomInput type="text" placeholder="Email Address" />
+            <CustomInput type="password" placeholder="Password" />
             <ButtonContainer>
               <CustomButton type="submit" onClick={onSubmit} text="Login" />
               <Link to="/signup">

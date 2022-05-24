@@ -9,7 +9,7 @@ interface ICustomButton {
 
 const Button = styled.button`
   width: 8rem;
-  height: 3rem;
+  height: 2.7rem;
   background: ${colors.lightBlue};
   color: white;
   border:none;

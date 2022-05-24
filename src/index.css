@@ -12,10 +12,3 @@ i{
 .fas{
   color:rgb(253, 34, 34);
 }
-
-.landpage {
-  display:flex;
-  flex-direction: column;
-  background:url('https://wallpaperaccess.com/full/333792.jpg') no-repeat;
-  background-size: 100vw 100vh;
-}
