@@ -10,12 +10,12 @@ interface ICustomButton {
 const Button = styled.button`
   width: 8rem;
   height: 2.7rem;
-  background: ${colors.lightBlue};
+  background: ${colors.blue};
   color: white;
   border:none;
   outline:none;
   border-radius:4rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing:0.09rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `

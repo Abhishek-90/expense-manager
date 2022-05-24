@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { authentication } from "../../Variables/routes";
 import { CustomButton } from "../Elements/Button";
 import { CustomInput } from "../Elements/Input";
-import { Wrapper, LoginDiv, ButtonContainer } from "./LoginStyles";
+import { Container, Description, Wrapper, LoginDiv, ButtonContainer } from "./LoginStyles";
 
 export interface ILogin {
   email: string;
@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
-    console.log(login)
+    console.log(login);
   };
 
   const onSubmit = async (e: any) => {
@@ -58,22 +58,36 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <form onSubmit={onSubmit}>
-        <Wrapper>
-          <LoginDiv>
-            <CustomInput name="email" type="text" placeholder="Email Address" value={login.email} handleChange={handleChange}/>
-            <CustomInput name="password" type="password" placeholder="Password" value={login.password} handleChange={handleChange}/>
+    <Container>
+      <Description>
+      </Description>
+      <Wrapper>
+        <LoginDiv>
+          <form onSubmit={onSubmit}>
+            <CustomInput
+              name="email"
+              type="text"
+              placeholder="Email Address"
+              value={login.email}
+              handleChange={handleChange}
+            />
+            <CustomInput
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={login.password}
+              handleChange={handleChange}
+            />
             <ButtonContainer>
               <CustomButton type="submit" onClick={onSubmit} text="Login" />
               <Link to="/signup">
                 <CustomButton text="Signup" />
               </Link>
             </ButtonContainer>
-          </LoginDiv>
-        </Wrapper>
-      </form>
-    </div>
+          </form>
+        </LoginDiv>
+      </Wrapper>
+    </Container>
   );
 };
 
