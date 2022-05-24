@@ -18,9 +18,10 @@ const Login = () => {
     password: "",
   });
 
-  // const onChange = (e: any) => {
-  //   setLogin({ ...login, [e.target.name]: e.target.value });
-  // };
+  const handleChange = (e: any) => {
+    setLogin({ ...login, [e.target.name]: e.target.value });
+    console.log(login)
+  };
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -61,8 +62,8 @@ const Login = () => {
       <form onSubmit={onSubmit}>
         <Wrapper>
           <LoginDiv>
-            <CustomInput type="text" placeholder="Email Address" />
-            <CustomInput type="password" placeholder="Password" />
+            <CustomInput name="email" type="text" placeholder="Email Address" value={login.email} handleChange={handleChange}/>
+            <CustomInput name="password" type="password" placeholder="Password" value={login.password} handleChange={handleChange}/>
             <ButtonContainer>
               <CustomButton type="submit" onClick={onSubmit} text="Login" />
               <Link to="/signup">

@@ -5,7 +5,6 @@ import Login from "./Components/Login/Login";
 import './index.css';
 
 function App() {
-  console.log("Done")
   return (
     <Router>
       <ModeState>
