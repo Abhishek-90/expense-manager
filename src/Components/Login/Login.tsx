@@ -4,7 +4,15 @@ import { Link } from "react-router-dom";
 import { authentication } from "../../Variables/routes";
 import { CustomButton } from "../Elements/Button";
 import { CustomInput } from "../Elements/Input";
-import { Wrapper, LoginDiv, ButtonContainer } from "./LoginStyles";
+import {
+  Container,
+  Description,
+  Wrapper,
+  TitleDiv,
+  LoginDiv,
+  ButtonContainer,
+  H1, UL, ListItem, H3
+} from "./LoginStyles";
 
 export interface ILogin {
   email: string;
@@ -18,8 +26,9 @@ const Login = () => {
     password: "",
   });
 
-  const onChange = (e: any) => {
+  const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
+    console.log(login);
   };
 
   const onSubmit = async (e: any) => {
@@ -57,18 +66,34 @@ const Login = () => {
   };
 
   return (
-    <div className="container my-4">
-      <form onSubmit={onSubmit}>
-        <Wrapper>
+    <Container>
+      <Description>
+        <H1>Expense Manager</H1>
+        <UL>
+          <ListItem>Expenses</ListItem>
+          <ListItem>Investments</ListItem>
+          <ListItem>Loans</ListItem>
+        </UL>
+        <H3>Manage all in One Place!</H3>
+      </Description>
+      <Wrapper>
+        <TitleDiv>Expense Manager</TitleDiv>
+        <form onSubmit={onSubmit}>
           <LoginDiv>
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <CustomInput type="text"/>
-              <label htmlFor="password" className="form-label mt-3">
-                Password
-              </label>
-            <CustomInput type="password" width={15}/>
+            <CustomInput
+              name="email"
+              type="text"
+              placeholder="Email Address"
+              value={login.email}
+              handleChange={handleChange}
+            />
+            <CustomInput
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={login.password}
+              handleChange={handleChange}
+            />
             <ButtonContainer>
               <CustomButton type="submit" onClick={onSubmit} text="Login" />
               <Link to="/signup">
@@ -76,9 +101,9 @@ const Login = () => {
               </Link>
             </ButtonContainer>
           </LoginDiv>
-        </Wrapper>
-      </form>
-    </div>
+        </form>
+      </Wrapper>
+    </Container>
   );
 };
 
