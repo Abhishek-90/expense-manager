@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import * as colors from "../../constants/themeConstants"
 interface IInputProps {
   type?:string,
   placeholder:string,
@@ -15,8 +15,12 @@ const Input = styled.input`
   border:none;
   outline:none;
   font-size: 0.9rem; 
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: ${colors.shadowBlue} 0px 3px 8px;
   margin-top: 2.4rem;
+
+  @media screen and (max-width: 700px) {
+    width: 80%;
+  }
 `
 
 export const CustomInput = ({type = "text",placeholder,value,handleChange,name}:IInputProps) => {

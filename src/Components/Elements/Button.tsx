@@ -18,6 +18,11 @@ const Button = styled.button`
   font-size: 1rem;
   letter-spacing:0.09rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  @media screen and (max-width: 700px) {
+    width: 5.5rem;
+    height: 2.3rem;
+  }
 `
 
 export const CustomButton = ({text, type,onClick}:ICustomButton) => {

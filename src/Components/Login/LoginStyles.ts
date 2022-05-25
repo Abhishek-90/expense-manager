@@ -38,7 +38,11 @@ export const Wrapper = styled.div`
 export const LoginDiv = styled.div`
   display:grid;
   grid-template-column: 1fr;
-  justify-content:center;
+  justify-items:center;
+
+  @media screen and (max-width: 700px) {
+    justify-content:center;
+  }
 `
 
 export const ButtonContainer = styled.div`
@@ -47,6 +51,13 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top:2rem;
+
+  @media screen and (max-width: 700px) {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+  }
+
 `
 
 export const TitleDiv = styled.div`
@@ -57,6 +68,8 @@ export const TitleDiv = styled.div`
     width: 100%;
     background: transparent;
     color: ${colors.blue};
+    font-size: 1.7rem;
+    font-weight: 900;
+    padding-left: 1.4rem;
   }
-
 `
