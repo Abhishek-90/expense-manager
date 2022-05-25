@@ -4,7 +4,14 @@ import { Link } from "react-router-dom";
 import { authentication } from "../../Variables/routes";
 import { CustomButton } from "../Elements/Button";
 import { CustomInput } from "../Elements/Input";
-import { Container, Description, Wrapper, LoginDiv, ButtonContainer } from "./LoginStyles";
+import {
+  Container,
+  Description,
+  Wrapper,
+  TitleDiv,
+  LoginDiv,
+  ButtonContainer,
+} from "./LoginStyles";
 
 export interface ILogin {
   email: string;
@@ -59,11 +66,11 @@ const Login = () => {
 
   return (
     <Container>
-      <Description>
-      </Description>
+      <Description></Description>
       <Wrapper>
-        <LoginDiv>
-          <form onSubmit={onSubmit}>
+        <TitleDiv>Expense Manager</TitleDiv>
+        <form onSubmit={onSubmit}>
+          <LoginDiv>
             <CustomInput
               name="email"
               type="text"
@@ -84,8 +91,8 @@ const Login = () => {
                 <CustomButton text="Signup" />
               </Link>
             </ButtonContainer>
-          </form>
-        </LoginDiv>
+          </LoginDiv>
+        </form>
       </Wrapper>
     </Container>
   );
