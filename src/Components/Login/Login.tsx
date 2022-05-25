@@ -11,6 +11,7 @@ import {
   TitleDiv,
   LoginDiv,
   ButtonContainer,
+  H1, UL, ListItem, H3
 } from "./LoginStyles";
 
 export interface ILogin {
@@ -66,7 +67,15 @@ const Login = () => {
 
   return (
     <Container>
-      <Description></Description>
+      <Description>
+        <H1>Expense Manager</H1>
+        <UL>
+          <ListItem>Expenses</ListItem>
+          <ListItem>Investments</ListItem>
+          <ListItem>Loans</ListItem>
+        </UL>
+        <H3>Manage all in One Place!</H3>
+      </Description>
       <Wrapper>
         <TitleDiv>Expense Manager</TitleDiv>
         <form onSubmit={onSubmit}>

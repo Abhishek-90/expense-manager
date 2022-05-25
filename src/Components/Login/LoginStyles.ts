@@ -10,9 +10,13 @@ export const Container = styled.div`
 `
 
 export const Description = styled.div`
-  width: 50%;
+  width: 40%;
   height: 100vh;
   max-width: 60rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background: ${colors.blue};
 
   @media screen and (max-width: 700px) {
@@ -20,8 +24,31 @@ export const Description = styled.div`
   }
 `
 
+export const H1 = styled.h1`
+  font-size: 2rem;
+  font-weight: bold;
+  color: ${colors.white}
+`
+
+export const H3 = styled.h3`
+  font-size: 1.5rem;
+  margin-top: 1.3rem;
+  color: ${colors.white}
+`
+
+export const UL = styled.ul`
+  color: ${colors.white};
+  margin-top: 1.5rem;
+`
+
+export const ListItem = styled.li`
+  color: ${colors.white};
+  margin-right: 3.5rem;
+  font-size: 1.4rem;
+`
+
 export const Wrapper = styled.div`
-  width: 50%;
+  width: 60%;
   height: 100vh;
   max-width: 60rem;
   display: flex;
@@ -69,7 +96,7 @@ export const TitleDiv = styled.div`
     background: transparent;
     color: ${colors.blue};
     font-size: 1.7rem;
-    font-weight: 900;
+    font-weight: bolder;
     padding-left: 1.4rem;
   }
 `
