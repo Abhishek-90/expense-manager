@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import * as colors from "../../constants/themeConstants"
 
 export const Container = styled.div`
   background: transparent;
@@ -23,14 +22,12 @@ export const Wrapper = styled.div`
   @media screen and (max-width: 700px) {
     width: 100%;
     height: 100vh;
-    // box-shadow:none;
   }
 `
 
 export const SignUpDiv = styled.div`
   width: 35rem;
   heigth: 100vh;
-  // background: yellow;
   display: grid;
   grid-template-column: 1fr;
   justify-content:center;

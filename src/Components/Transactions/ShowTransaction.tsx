@@ -18,7 +18,7 @@ const ShowTransaction = () => {
         }
         else
             navigate('/');
-    });
+    },[]);
 
     const [editTransaction, setEditTransaction] = useState({
         eid: "",
