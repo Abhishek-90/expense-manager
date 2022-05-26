@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
-import { authentication } from "../../Variables/routes";
-import { CustomButton } from "../Elements/Button";
-import { CustomInput } from "../Elements/Input";
+import React, { useState } from "react"
+import { useNavigate } from "react-router"
+import { Link } from "react-router-dom"
+import { authentication } from "../../Variables/routes"
+import { CustomButton } from "../Elements/Button"
+import { CustomInput } from "../Elements/Input"
 import {
   Container,
   Description,
@@ -12,34 +12,33 @@ import {
   LoginDiv,
   ButtonContainer,
   H1, UL, ListItem, H3
-} from "./LoginStyles";
-
+} from "./LoginStyles"
+import * as method from "../../constants/Constant"
 export interface ILogin {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const Login = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [login, setLogin] = useState<ILogin>({
     email: "",
     password: "",
-  });
+  })
 
   const handleChange = (e: any) => {
-    setLogin({ ...login, [e.target.name]: e.target.value });
-    console.log(login);
-  };
+    setLogin({ ...login, [e.target.name]: e.target.value })
+  }
 
   const onSubmit = async (e: any) => {
-    e.preventDefault();
+    e.preventDefault()
 
     try {
       const response = await fetch(
         `${authentication}login`,
 
         {
-          method: "POST",
+          method: method.POST,
           headers: {
             "Content-type": "application/json",
             "Access-Control-Allow-Origin": "*",
@@ -49,21 +48,21 @@ const Login = () => {
             password: login.password,
           }),
         }
-      );
+      )
 
-      const json = await response.json();
+      const json = await response.json()
 
-      if (json.status === "success") {
-        localStorage.setItem("authToken", json.authToken);
-        console.log(localStorage.getItem("authToken"));
-        navigate("/dashboard");
+      if (response.status === 200) {
+        localStorage.setItem("authToken", json.authToken)
+        console.log(localStorage.getItem("authToken"))
+        navigate("/dashboard")
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return (
     <Container>
@@ -104,7 +103,7 @@ const Login = () => {
         </form>
       </Wrapper>
     </Container>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

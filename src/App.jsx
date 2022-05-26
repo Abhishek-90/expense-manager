@@ -3,6 +3,7 @@ import TransactionState from "./context/transactionState";
 import ModeState from "./context/modeState";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup"
+import Dashboard from "./Components/Dashboard/Dashboard"
 import './index.css';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
               <Route exact path="/" element={<Login />}/>
               {/* <Route path="/login" element={<Login />} /> */}
                <Route path="/signup" element={<Signup />} />
-              {/*<Route path="/dashboard" element={<Dashboard />} /> */}
+              <Route path="/dashboard" element={<Dashboard />} />
               {/* <Route path='/transactions' element={<Dashboard/>}/> */}
             </Routes>
         </TransactionState>
