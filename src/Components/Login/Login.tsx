@@ -11,9 +11,10 @@ import {
   TitleDiv,
   LoginDiv,
   ButtonContainer,
-  H1, UL, ListItem, H3
 } from "./LoginStyles"
+import { H1, UL, ListItem, H3 } from "../Elements/CustomTags"
 import * as method from "../../constants/Constant"
+
 export interface ILogin {
   email: string
   password: string

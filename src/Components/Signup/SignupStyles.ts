@@ -2,50 +2,43 @@ import styled from "styled-components";
 import * as colors from "../../constants/themeConstants"
 
 export const Container = styled.div`
-  width:100vw;
-  height:100vh;
-  display:flex;
-  flex-direction: row;
-  justify-content:center;
-`
-
-export const Description = styled.div`
-  width: 40%;
+  background: transparent;
+  width: 100%;
   height: 100vh;
-  max-width: 60rem;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: ${colors.blue};
-
-  @media screen and (max-width: 700px) {
-    display:none;
-  }
 `
 
 export const Wrapper = styled.div`
-  width: 60%;
-  height: 100vh;
+  width: 45%;
+  height: 90vh;
   max-width: 60rem;
   display: flex;
   flex-direction:column;
   justify-content:center;
-  align-content: center;
+  align-items: center;
   box-shadow: 4px 3px 80px rgba(97, 78, 152,0.24);
 
   @media screen and (max-width: 700px) {
     width: 100%;
+    height: 100vh;
+    // box-shadow:none;
   }
 `
 
-export const LoginDiv = styled.div`
-  display:grid;
+export const SignUpDiv = styled.div`
+  width: 35rem;
+  heigth: 100vh;
+  // background: yellow;
+  display: grid;
   grid-template-column: 1fr;
-  justify-items:center;
+  justify-content:center;
 
   @media screen and (max-width: 700px) {
-    justify-content:center;
+    justify-items: center;
+    heigth: 100vh;
+    width: 100vw;
   }
 `
 
@@ -60,21 +53,5 @@ export const ButtonContainer = styled.div`
     width: 75%;
     display: flex;
     justify-content: space-around;
-  }
-
-`
-
-export const TitleDiv = styled.div`
-  @media screen and (min-width: 700px) {
-    display:none;
-  }
-  @media screen and (max-width: 700px) {
-    width: 100%;
-    background: transparent;
-    color: ${colors.blue};
-    font-size: 1.7rem;
-    font-weight: bolder;
-    padding-left: 1.4rem;
-    margin-left: 2.2rem;
   }
 `
