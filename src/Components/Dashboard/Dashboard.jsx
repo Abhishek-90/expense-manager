@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { AddTransaction } from '../Transactions/AddTransaction';
-import ShowTransaction from '../Transactions/ShowTransaction';
+import Transaction from '../Transactions/Transaction';
 import { Visual } from '../Charts/Visual';
 
 const Dashboard = () => {
@@ -15,7 +15,7 @@ const Dashboard = () => {
                     <AddTransaction />
                 </div>
             </div>
-            <ShowTransaction/>
+            <Transaction/>
         </div>
     )
 }
