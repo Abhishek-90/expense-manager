@@ -9,7 +9,7 @@ interface IInputProps {
   border?:boolean,
 }
 
-const Input = styled("input")<{border:boolean}>`
+const Input = styled.input<{border:boolean}>`
   height: 2.5rem;
   width: 20rem;
   padding: 0.6rem;
