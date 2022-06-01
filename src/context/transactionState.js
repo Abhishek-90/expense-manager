@@ -36,7 +36,6 @@ const TransactionState = (props) => {
 
     const fetchTransactions = async () => {
         // Function to fetch Users' Transactions.
-
         const response = await fetch(
             `${host}statement`,
             {

@@ -3,9 +3,12 @@ import React from 'react'
 import { AddTransaction } from '../Transactions/AddTransaction';
 import Transaction from '../Transactions/Transaction';
 import { Visual } from '../Charts/Visual';
+import Navbar from "../Navbar/Navbar"
 
 const Dashboard = () => {
     return (
+        <>
+        <Navbar />
         <div className='container'>
             <div className='row my-4'>
                 <div className='col-sm'>
@@ -17,6 +20,7 @@ const Dashboard = () => {
             </div>
             <Transaction/>
         </div>
+        </>
     )
 }
 

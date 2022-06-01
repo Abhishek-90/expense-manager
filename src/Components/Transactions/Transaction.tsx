@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { transactionContext } from '../../context/transactionContext'
 import { modeContext } from "../../context/modeContext";
 import { useContext } from 'react';
@@ -35,7 +33,7 @@ const Transaction = (props) => {
                 </thead>
                 {/* {console.log(userStatement)} */}
                 {
-                    userStatement.map((t)=>{
+                    userStatement.map((t:any) =>{
                         console.log(t);
                         return (
                             <tbody key={t._id}>
