@@ -31,7 +31,7 @@ export const CustomLink = styled(Link)`
   margin-left: 0.6rem;
   font-weight: 600
 
-  &:hover {
-    color:${colors.black};
+  &:hover{
+    color: ${colors.black};
   }
 `
