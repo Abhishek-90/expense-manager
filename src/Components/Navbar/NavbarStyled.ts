@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as colors from "../../constants/themeConstants"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 export const Container = styled.div`
   width: 100vw;
@@ -12,7 +12,6 @@ export const Container = styled.div`
 export const CustomNavbar = styled.div`
   width: 100%;
   height: 3rem;
-  // background-color: yellow;
   max-width: 85rem;
   display:flex;
   flex-direction: row;
@@ -23,15 +22,19 @@ export const CustomNavbar = styled.div`
     display:none;
   }
 `
-export const CustomLink = styled(Link)`
+export const CustomLink = styled(NavLink)`
   text-decoration: none;
   font-size: 1.1rem;
-  color: ${colors.black};
+  color: ${colors.gray};
   margin-right: 1.4rem;
   margin-left: 0.6rem;
   font-weight: 600
 
   &:hover{
+    color: ${colors.black};
+  }
+
+  &.active {
     color: ${colors.black};
   }
 `
