@@ -60,7 +60,7 @@ const Login = () => {
         if (response.status === 200) {
           localStorage.setItem("authToken", json.authToken);
           // console.log(localStorage.getItem("authToken"));
-          navigate("/dashboard");
+          navigate("/dashboard/*");
         } else {
           //TODO: Add alert box here to display that Credentials are wrong.
         }

@@ -1,7 +1,7 @@
 import { Container, CustomNavbar, CustomLink } from "./NavbarStyled";
-
 const Navbar = () => {    
   return (
+    <>
     <Container>
       <CustomNavbar>
         <CustomLink to="/dashboard/*">Dashboard</CustomLink>
@@ -10,6 +10,7 @@ const Navbar = () => {
         <CustomLink to="/dashboard/visuals">Visuals</CustomLink>
       </CustomNavbar>
     </Container>
+    </>
   );
 };
 
