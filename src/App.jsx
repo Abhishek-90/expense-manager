@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {Routes, Route } from "react-router-dom";
 import TransactionState from "./context/transactionState";
 import ModeState from "./context/modeState";
 import Login from "./Components/Login/Login";
@@ -8,7 +8,6 @@ import "./index.css";
 
 function App() {
   return (
-    <Router>
       <ModeState>
         <TransactionState>
           <Routes>
@@ -18,7 +17,6 @@ function App() {
           </Routes>
         </TransactionState>
       </ModeState>
-    </Router>
   );
 }
 
