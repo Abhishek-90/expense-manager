@@ -17,6 +17,7 @@ export const CustomNavbar = styled.div`
   flex-direction: row;
   align-items:center;
   color: ${colors.black};
+  background: ${colors.shadowBlue};
 
   @media screen and (max-width: 700px) {
     display:none;
