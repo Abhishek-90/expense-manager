@@ -1,14 +1,12 @@
-import { Container, CustomNavbar } from "./NavbarStyled";
+import { CustomNavbar } from "./NavbarStyled";
 import Burger from "../Burger/Burger";
 
 const Navbar = () => {
   return (
     <>
-      <Container>
-        <CustomNavbar>
-          <Burger/>          
-        </CustomNavbar>
-      </Container>
+      <CustomNavbar>
+        <Burger />
+      </CustomNavbar>
     </>
   );
 };

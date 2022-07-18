@@ -1,12 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import Transaction from "../Transactions/Transaction";
 import Navbar from "../Navbar/Navbar";
-import {AddTransaction} from "../Transactions/AddTransaction";
+import Menu from "../Menu/Menu";
+// import {AddTransaction} from "../Transactions/AddTransaction";
+import { Container } from "./Dashboard.styled";
 
 const Dashboard = () => {
   return (
-    <>
+    <Container>
       <Navbar />
+      <Menu />
       <Routes>
         <Route exact path="/*" element={<Transaction />} />
         <Route exact path="/loans" element={<Transaction />} />
@@ -16,7 +19,7 @@ const Dashboard = () => {
           element={<Transaction />}
         />
       </Routes>
-    </>
+    </Container>
   );
 };
 
