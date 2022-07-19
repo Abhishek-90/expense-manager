@@ -2,13 +2,6 @@ import styled from "styled-components";
 import * as colors from "../../constants/themeConstants"
 import { NavLink } from "react-router-dom"
 
-export const Container = styled.div`
-  width: 100vw;
-  heigth: 100vh;
-  display: flex;
-  justify-content: center;
-`
-
 export const CustomNavbar = styled.div`
   width: 100%;
   height: 3rem;
@@ -17,6 +10,7 @@ export const CustomNavbar = styled.div`
   flex-direction: row;
   align-items:center;
   color: ${colors.black};
+  background: ${colors.shadowBlue};
 
   @media screen and (max-width: 700px) {
     display:none;
