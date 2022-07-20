@@ -1,8 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Transaction from "../Transactions/Transaction";
 import Navbar from "../Navbar/Navbar";
 import Menu from "../Menu/Menu";
-// import {AddTransaction} from "../Transactions/AddTransaction";
 import { MainContainer, Container } from "./Dashboard.styled";
 
 const Dashboard = () => {
@@ -12,9 +10,7 @@ const Dashboard = () => {
         <Navbar />
         <Menu />
         <Routes>
-          <Route exact path="/*" element={<Transaction />} />
-          <Route exact path="/loans" element={<Transaction />} />
-          <Route exact path="/investment" element={<Transaction />} />
+          <Route exact path="/*" element={<Navbar />}/>
         </Routes>
       </Container>
     </MainContainer>

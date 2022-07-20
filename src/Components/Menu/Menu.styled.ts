@@ -7,4 +7,5 @@ export const MenuDiv = styled.div`
   max-height: 90rem;
   background-color: ${colors.blue}; 
   position: absolute;
+  margin-top: 1.5rem;
 `;
