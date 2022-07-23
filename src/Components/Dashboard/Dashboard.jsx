@@ -1,19 +1,17 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Menu from "../Menu/Menu";
-import { MainContainer, Container } from "./Dashboard.styled";
+import { Container } from "./Dashboard.styled";
 
 const Dashboard = () => {
   return (
-    <MainContainer>
-      <Container>
-        <Navbar />
-        <Menu />
-        <Routes>
-          <Route exact path="/*" element={<Navbar />}/>
-        </Routes>
-      </Container>
-    </MainContainer>
+    <Container>
+      <Navbar />
+      <Menu />
+      <Routes>
+        <Route exact path="/*" element={<Navbar />} />
+      </Routes>
+    </Container>
   );
 };
 

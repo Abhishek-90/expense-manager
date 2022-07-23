@@ -5,7 +5,6 @@ import { authentication } from "../../Variables/routes";
 import { CustomButton } from "../Elements/Button";
 import { CustomInput } from "../Elements/Input";
 import {
-  Container,
   Description,
   Wrapper,
   TitleDiv,
@@ -74,7 +73,7 @@ const Login = () => {
   };
 
   return (
-    <Container>
+    <>
       <Description>
         <H1>Expense Manager</H1>
         <UL>
@@ -114,7 +113,7 @@ const Login = () => {
           </LoginDiv>
         </form>
       </Wrapper>
-    </Container>
+    </>
   );
 };
 
