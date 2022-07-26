@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { authentication } from "../../Variables/routes";
 import * as method from "../../constants/Constant";
-import { Container, Wrapper, SignUpDiv, ButtonContainer } from "./SignupStyles";
+import { Wrapper, SignUpDiv, ButtonContainer } from "./SignupStyles";
 import { CustomInput } from "../Elements/Input";
 import { CustomButton } from "../Elements/Button";
-import { H1 } from "../Elements/CustomTags"
+import { H1 } from "../Elements/CustomTags";
 export interface ISignUp {
   fname: string;
   email: string;

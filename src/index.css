@@ -4,12 +4,3 @@ html, body {
   font-family: 'Poppins', sans-serif;
   background-color: rgb(253, 244, 244);
 }
-
-i{
-  cursor: pointer;
-  /* color: rgba(73, 43, 103, 0.436); */
-}
-
-.fas{
-  color:rgb(253, 34, 34);
-}

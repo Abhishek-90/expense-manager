@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom"
 export const CustomNavbar = styled.div`
   width: 100%;
   height: 1.3rem;
-  max-width: 85rem;
   display:flex;
   flex-direction: row;
   align-items:center;
