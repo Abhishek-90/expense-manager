@@ -4,4 +4,5 @@ export const Container = styled.div`
   width: 100%;
   heigth: 100%;
   max-width: 100rem;
+  display: flex;
 `;

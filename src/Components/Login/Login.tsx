@@ -10,6 +10,7 @@ import {
   TitleDiv,
   LoginDiv,
   ButtonContainer,
+  Container,
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
 import * as method from "../../constants/Constant";
@@ -73,7 +74,7 @@ const Login = () => {
   };
 
   return (
-    <>
+    <Container>
       <Description>
         <H1>Expense Manager</H1>
         <UL>
@@ -113,7 +114,7 @@ const Login = () => {
           </LoginDiv>
         </form>
       </Wrapper>
-    </>
+    </Container>
   );
 };
 
