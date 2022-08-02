@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   heigth: 100%;
-  max-width: 100rem;
+  max-width: 85rem;
+  background-color: green;
   display: flex;
 `;

@@ -6,11 +6,13 @@ import "./index.css";
 
 function App() {
   return (
-    <Routes>
-      <Route exact path="/" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/dashboard/*" element={<Dashboard />} />
-    </Routes>
+    <div className="mainContainer">
+      <Routes>
+        <Route exact path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
+      </Routes>
+    </div>
   );
 }
 
