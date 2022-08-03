@@ -1,16 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  background: transparent;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
 export const Wrapper = styled.div`
-  width: 45%;
+  width: 75%;
   height: 90vh;
   max-width: 60rem;
   display: flex;

@@ -1,13 +1,7 @@
-import { MouseEventHandler } from "react";
 import styled from "styled-components";
 import * as colors from '../../constants/themeConstants'
-interface ICustomButton {
-  text:string,
-  type?:"button" | "submit" | "reset",
-  onClick?:MouseEventHandler
-}
 
-const Button = styled.button`
+export const Button = styled.button`
   width: 8rem;
   height: 2.7rem;
   background: ${colors.blue};
@@ -24,12 +18,3 @@ const Button = styled.button`
     height: 2.3rem;
   }
 `
-
-export const CustomButton = ({text, type,onClick}:ICustomButton) => {
-  return (
-    <Button
-      type={type}
-      onClick={onClick}
-    >{text}</Button>
-  )
-}

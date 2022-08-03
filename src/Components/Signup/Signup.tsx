@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { authentication } from "../../Variables/routes";
 import * as method from "../../constants/Constant";
-import { Container, Wrapper, SignUpDiv, ButtonContainer } from "./SignupStyles";
+import { Wrapper, SignUpDiv, ButtonContainer } from "./SignupStyles";
 import { CustomInput } from "../Elements/Input";
-import { CustomButton } from "../Elements/Button";
-import { H1 } from "../Elements/CustomTags"
+import { Button } from "../Elements/Button";
+import { H1 } from "../Elements/CustomTags";
 export interface ISignUp {
   fname: string;
   email: string;
@@ -57,7 +57,7 @@ const Signup = () => {
   };
 
   return (
-    <Container>
+    <>
       <Wrapper>
         <h1>Sign Up</h1>
         <form className="my-3" onSubmit={onSubmit}>
@@ -91,12 +91,12 @@ const Signup = () => {
               handleChange={onChange}
             />
             <ButtonContainer>
-              <CustomButton type="submit" text="Submit" />
+              <Button type="submit">SignUp</Button>
             </ButtonContainer>
           </SignUpDiv>
         </form>
       </Wrapper>
-    </Container>
+    </>
   );
 };
 

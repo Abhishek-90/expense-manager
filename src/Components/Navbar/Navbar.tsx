@@ -1,14 +1,11 @@
-import { CustomNavbar } from "./NavbarStyled";
-import Burger from "../Burger/Burger";
+import { CustomNavbar,LogoutButton } from "./Navbar.styled";
 
 const Navbar = () => {
   return (
-    <>
-      <CustomNavbar>
-        <Burger />
-      </CustomNavbar>
-    </>
-  );
-};
+    <CustomNavbar>
+      <LogoutButton>Logout</LogoutButton>
+    </CustomNavbar>
+  )
+}
 
-export default Navbar;
+export default Navbar
