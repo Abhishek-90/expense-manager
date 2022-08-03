@@ -4,7 +4,7 @@ import { authentication } from "../../Variables/routes";
 import * as method from "../../constants/Constant";
 import { Wrapper, SignUpDiv, ButtonContainer } from "./SignupStyles";
 import { CustomInput } from "../Elements/Input";
-import { CustomButton } from "../Elements/Button";
+import { Button } from "../Elements/Button";
 import { H1 } from "../Elements/CustomTags";
 export interface ISignUp {
   fname: string;
@@ -91,7 +91,7 @@ const Signup = () => {
               handleChange={onChange}
             />
             <ButtonContainer>
-              <CustomButton type="submit" text="Submit" />
+              <Button type="submit">SignUp</Button>
             </ButtonContainer>
           </SignUpDiv>
         </form>

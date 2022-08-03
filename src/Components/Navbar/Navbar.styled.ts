@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import * as colors from "../../constants/themeConstants";
+import { Button } from "../Elements/Button";
 
 export const CustomNavbar = styled.div`
   width: 100%;
@@ -10,7 +11,10 @@ export const CustomNavbar = styled.div`
   align-items:center;
   color: ${colors.black};
   background: ${colors.shadowBlue};
-  @media screen and (max-width: 700px) {
-    display:none;
-  }
+`
+
+export const LogoutButton = styled(Button)`
+  height: 2.2rem;
+  width: 6rem;
+  float: right;
 `

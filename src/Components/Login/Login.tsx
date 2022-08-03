@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { authentication } from "../../Variables/routes";
-import { CustomButton } from "../Elements/Button";
+import { Button } from "../Elements/Button";
 import { CustomInput } from "../Elements/Input";
 import {
   Description,
@@ -106,9 +106,9 @@ const Login = () => {
               border={passwordEmpty}
             />
             <ButtonContainer>
-              <CustomButton type="submit" onClick={onSubmit} text="Login" />
+              <Button type="submit" onClick={onSubmit}>Login</Button>
               <Link to="/signup">
-                <CustomButton text="Signup" />
+                <Button>SignUp</Button>
               </Link>
             </ButtonContainer>
           </LoginDiv>
