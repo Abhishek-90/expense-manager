@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { authentication } from "../../Variables/routes";
 import { Button } from "../Elements/Button";
 import { CustomInput } from "../Elements/Input";
 import {
@@ -14,7 +13,10 @@ import {
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
 import * as method from "../../constants/Constant";
-
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { addAuthToken } from "../../store/slices/authSlice";
+import { authentication } from "../../Variables/routes";
 export interface ILogin {
   email: string;
   password: string;
@@ -29,12 +31,15 @@ const Login = () => {
   const [emailEmpty, setEmailEmpty] = useState<boolean>(false);
   const [passwordEmpty, setPasswordEmpty] = useState<boolean>(false);
 
+  const dispatch = useDispatch();
+
   const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
+    console.log(login);
     if (login.email.trim().length > 0 && login.password.trim().length > 0) {
       setEmailEmpty(false);
       setPasswordEmpty(false);
@@ -54,12 +59,10 @@ const Login = () => {
             }),
           }
         );
-
-        const json = await response.json();
-
+        
         if (response.status === 200) {
-          localStorage.setItem("authToken", json.authToken);
-          // console.log(localStorage.getItem("authToken"));
+          const json = await response.json();
+          dispatch(addAuthToken(json.authToken));
           navigate("/dashboard/*");
         } else {
           //TODO: Add alert box here to display that Credentials are wrong.
@@ -106,7 +109,9 @@ const Login = () => {
               border={passwordEmpty}
             />
             <ButtonContainer>
-              <Button type="submit" onClick={onSubmit}>Login</Button>
+              <Button type="submit" onClick={onSubmit}>
+                Login
+              </Button>
               <Link to="/signup">
                 <Button>SignUp</Button>
               </Link>
