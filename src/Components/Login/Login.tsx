@@ -13,10 +13,10 @@ import {
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
 import * as method from "../../constants/Constant";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
+import { useDispatch } from "react-redux";
 import { addAuthToken } from "../../store/slices/authSlice";
 import { authentication } from "../../Variables/routes";
+
 export interface ILogin {
   email: string;
   password: string;
