@@ -17,4 +17,5 @@ export const LogoutButton = styled(Button)`
   height: 2.2rem;
   width: 6rem;
   float: right;
+  margin-left: 0.6rem;
 `
