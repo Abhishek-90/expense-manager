@@ -14,7 +14,9 @@ const Navbar = () => {
 
   return (
     <CustomNavbar>
-      <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+      <div className="item"></div>
+      <div className="item"></div>
+      <LogoutButton onClick={handleLogout}>Logout</LogoutButton >
     </CustomNavbar>
   )
 }

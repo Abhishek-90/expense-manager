@@ -13,8 +13,6 @@ import {
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
 import * as method from "../../constants/Constant";
-import { useDispatch } from "react-redux";
-import { addAuthToken } from "../../store/slices/authSlice";
 import { authentication } from "../../Variables/routes";
 
 export interface ILogin {
@@ -30,8 +28,6 @@ const Login = () => {
   });
   const [emailEmpty, setEmailEmpty] = useState<boolean>(false);
   const [passwordEmpty, setPasswordEmpty] = useState<boolean>(false);
-
-  const dispatch = useDispatch();
 
   const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -62,7 +58,7 @@ const Login = () => {
         
         if (response.status === 200) {
           const json = await response.json();
-          dispatch(addAuthToken(json.authToken));
+          localStorage.setItem("authToken", json.authToken);
           navigate("/dashboard/*");
         } else {
           //TODO: Add alert box here to display that Credentials are wrong.
