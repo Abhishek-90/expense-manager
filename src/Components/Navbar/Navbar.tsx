@@ -1,24 +1,23 @@
-import { CustomNavbar,LogoutButton } from "./Navbar.styled";
-import { removeAuthToken } from "../../store/slices/authSlice";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { CustomMenu, CustomNavbar, LogoutBtnWrap, LogoutButton, MenuTitleWrap } from "./Navbar.styled";
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(removeAuthToken());
-    navigate("/");  
-  }
+    navigate("/");
+  };
 
   return (
     <CustomNavbar>
-      <div className="item"></div>
-      <div className="item"></div>
-      <LogoutButton onClick={handleLogout}>Logout</LogoutButton >
+      <MenuTitleWrap>
+        <CustomMenu/>
+      </MenuTitleWrap>
+      <LogoutBtnWrap>
+        <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
+      </LogoutBtnWrap>
     </CustomNavbar>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
