@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {
   CustomMenu,
+  CustomMenuBtn,
   CustomNavbar,
   LogoutBtnWrap,
   LogoutButton,
@@ -19,11 +20,19 @@ const Navbar = () => {
   return (
     <CustomNavbar>
       <MenuTitleWrap>
-        <CustomMenu />
+        <CustomMenuBtn />
         <TitleWrap>
-            <Title href="/">Expense Manager</Title>
+            <Title href="/dashboard/*">Expense Manager</Title>
         </TitleWrap>
       </MenuTitleWrap>
+      <CustomMenu>
+        <ul>
+          <li>DashBoard</li>
+          <li>Visuals</li>
+          <li>Loans</li>
+          <li>Investments</li>
+        </ul>
+      </CustomMenu>
       <LogoutBtnWrap>
         <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
       </LogoutBtnWrap>

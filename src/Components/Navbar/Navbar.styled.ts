@@ -6,7 +6,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 export const CustomNavbar = styled.div`
   width: 100%;
   height: 3rem;
-  max-width: 85rem;
   display:flex;
   align-items:center;
   justify-content: space-between;
@@ -37,7 +36,7 @@ export const MenuTitleWrap = styled(LogoutBtnWrap)`
   align-items: center;
 `
 
-export const CustomMenu = styled(MenuIcon)`
+export const CustomMenuBtn = styled(MenuIcon)`
   cursor: pointer;
   margin: 15px;
 `
@@ -57,5 +56,28 @@ export const Title = styled.a`
 
   &:hover {
     color: black;
+  }
+`
+
+export const CustomMenu = styled.div`
+  position: fixed;
+  background: ${colors.blue};
+  width: 20%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  
+  li {
+    list-style: none;
+    padding: 15px 25px;
+    color: ${colors.white};
+    cursor: pointer;
+
+    &:hover {
+      font-weight: 600;
+    }
   }
 `
