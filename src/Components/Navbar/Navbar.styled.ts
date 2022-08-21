@@ -34,9 +34,28 @@ export const MenuTitleWrap = styled(LogoutBtnWrap)`
   width: 50%;
   display: flex;
   flex-direction: row;
+  align-items: center;
 `
 
 export const CustomMenu = styled(MenuIcon)`
   cursor: pointer;
   margin: 15px;
+`
+
+export const TitleWrap = styled.div`
+  height: 100%;
+  width: 30%;
+  display: flex;
+  align-items: center;
+`
+
+export const Title = styled.a`
+  font-weight: 600;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: black;
+  }
 `

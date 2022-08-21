@@ -1,5 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { CustomMenu, CustomNavbar, LogoutBtnWrap, LogoutButton, MenuTitleWrap } from "./Navbar.styled";
+import {
+  CustomMenu,
+  CustomNavbar,
+  LogoutBtnWrap,
+  LogoutButton,
+  MenuTitleWrap,
+  Title,
+  TitleWrap,
+} from "./Navbar.styled";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -11,7 +19,10 @@ const Navbar = () => {
   return (
     <CustomNavbar>
       <MenuTitleWrap>
-        <CustomMenu/>
+        <CustomMenu />
+        <TitleWrap>
+            <Title href="/">Expense Manager</Title>
+        </TitleWrap>
       </MenuTitleWrap>
       <LogoutBtnWrap>
         <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
