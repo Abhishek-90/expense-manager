@@ -5,7 +5,6 @@ import * as method from "../../constants/Constant";
 import { Wrapper, SignUpDiv, ButtonContainer } from "./SignupStyles";
 import { CustomInput } from "../Elements/Input";
 import { Button } from "../Elements/Button";
-import { H1 } from "../Elements/CustomTags";
 export interface ISignUp {
   fname: string;
   email: string;
