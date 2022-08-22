@@ -71,7 +71,8 @@ export const CustomMenu = styled.div<{isMenuOpen}>`
   flex-direction: column;
   text-align: end;
   transform: ${props => props.isMenuOpen ? `translate(0)`:`translate(-100%)`};
-  
+  transition: transform 0.5s;
+
   li {
     list-style: none;
     padding: 15px 25px;
@@ -81,6 +82,18 @@ export const CustomMenu = styled.div<{isMenuOpen}>`
 
     &:hover {
       font-weight: 600;
+    }
+  }
+
+  @keyframes openMenu {
+    0% {
+      transform: translate(-100%);
+    }
+    50% {
+      transform: translate(-50%);
+    }
+    100% {
+      transform: translate(0);
     }
   }
 `;
