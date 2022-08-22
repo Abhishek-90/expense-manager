@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   CustomMenu,
@@ -8,11 +9,13 @@ import {
   MenuTitleWrap,
   Title,
   TitleWrap,
+  CustomClose,
+  CloseWrap
 } from "./Navbar.styled";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
+  const [showMenu, setShowMenu] = useState<boolean>(true);
   const handleLogout = () => {
     navigate("/");
   };
@@ -20,12 +23,15 @@ const Navbar = () => {
   return (
     <CustomNavbar>
       <MenuTitleWrap>
-        <CustomMenuBtn />
+        <CustomMenuBtn onClick={() => setShowMenu(true)}/>
         <TitleWrap>
             <Title href="/dashboard/*">Expense Manager</Title>
         </TitleWrap>
       </MenuTitleWrap>
-      <CustomMenu>
+      <CustomMenu isMenuOpen={showMenu}>
+        <CloseWrap>
+        <CustomClose onClick={() => setShowMenu(false)}/>
+        </CloseWrap>
         <ul>
           <li>DashBoard</li>
           <li>Visuals</li>
