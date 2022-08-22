@@ -2,6 +2,7 @@ import styled from "styled-components";
 import * as colors from "../../constants/themeConstants";
 import { Button } from "../Elements/Button";
 import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const CustomNavbar = styled.div`
   width: 100%;
@@ -59,7 +60,7 @@ export const Title = styled.a`
   }
 `
 
-export const CustomMenu = styled.div`
+export const CustomMenu = styled.div<{isMenuOpen}>`
   position: fixed;
   background: ${colors.blue};
   width: 20%;
@@ -69,15 +70,42 @@ export const CustomMenu = styled.div`
   display: flex;
   flex-direction: column;
   text-align: end;
-  
+  transform: ${props => props.isMenuOpen ? `translate(0)`:`translate(-100%)`};
+  transition: transform 0.5s;
+
   li {
     list-style: none;
     padding: 15px 25px;
     color: ${colors.white};
     cursor: pointer;
+    letter-spacing: 3px;
 
     &:hover {
       font-weight: 600;
     }
   }
-`
+
+  @keyframes openMenu {
+    0% {
+      transform: translate(-100%);
+    }
+    50% {
+      transform: translate(-50%);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+`;
+
+export const CustomClose = styled(CloseIcon)`
+  cursor: pointer;
+  color: white;
+  height: 50px;
+  margin-right: 20px;
+  margin-top: 10px;
+`;
+
+export const CloseWrap = styled.div`
+  text-align: end;
+`;
