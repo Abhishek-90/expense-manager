@@ -15,7 +15,7 @@ import {
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [showMenu, setShowMenu] = useState<boolean>(true);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
   const handleLogout = () => {
     navigate("/");
   };

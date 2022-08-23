@@ -12,6 +12,11 @@ export const CustomNavbar = styled.div`
   justify-content: space-between;
   color: ${colors.black};
   background: ${colors.shadowBlue};
+
+  @media (min-width: 1440px) {
+    height: 9rem; 
+    font-size: 10rem;
+  }
 `
 
 export const LogoutButton = styled(Button)`
@@ -20,6 +25,13 @@ export const LogoutButton = styled(Button)`
   float: right;
   margin-right: 0.6rem;
   justify-self: end;
+
+  @media (min-width: 1440px) {
+    height: 6.6rem;
+    width: 18rem;
+    font-size: 3.8rem;
+    margin-right: 1.8rem;
+  }
 `
 
 export const LogoutBtnWrap = styled.div`
@@ -58,6 +70,10 @@ export const Title = styled.a`
   &:hover {
     color: black;
   }
+
+  @media (min-width: 1440px) {
+    font-size: 3rem;
+  }
 `
 
 export const CustomMenu = styled.div<{isMenuOpen}>`
@@ -78,7 +94,8 @@ export const CustomMenu = styled.div<{isMenuOpen}>`
     padding: 15px 25px;
     color: ${colors.white};
     cursor: pointer;
-    letter-spacing: 3px;
+    letter-spacing: 0.15rem;
+    font-size: 1rem;
 
     &:hover {
       font-weight: 600;
