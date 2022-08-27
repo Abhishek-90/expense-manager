@@ -10,7 +10,6 @@ import {
   Title,
   TitleWrap,
   CustomClose,
-  CloseWrap
 } from "./Navbar.styled";
 
 const Navbar = () => {
@@ -23,15 +22,13 @@ const Navbar = () => {
   return (
     <CustomNavbar>
       <MenuTitleWrap>
-        <CustomMenuBtn onClick={() => setShowMenu(true)}/>
+        <CustomMenuBtn onClick={() => setShowMenu(true)} />
         <TitleWrap>
-            <Title href="/dashboard/*">Expense Manager</Title>
+          <Title href="/dashboard/*">Expense Manager</Title>
         </TitleWrap>
       </MenuTitleWrap>
       <CustomMenu isMenuOpen={showMenu}>
-        <CloseWrap>
-        <CustomClose onClick={() => setShowMenu(false)}/>
-        </CloseWrap>
+          <CustomClose onClick={() => setShowMenu(false)} />
         <ul>
           <li>DashBoard</li>
           <li>Visuals</li>
