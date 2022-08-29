@@ -13,7 +13,7 @@ export const Container = styled.div`
 export const AddTransactionContainer = styled.div`
   width: 60%;
   min-width: 550px;
-  height: 150px;
+  height: 250px;
   border: 1px black solid;
   border-radius: 20px;
   margin-top: 20px;
@@ -38,12 +38,16 @@ export const TransactionDescription = styled.input`
 `
 
 export const SubmitBtnWrapper = styled.div`
-  grid-column: 3/span 1;
-  grid-row: 3/span 1;
-  background: orange;
+  grid-column: 3 /span 1;
+  grid-row: 3 /span 1;
+  height: 100%;
+  // background: orange;
+  display:  flex;
+  justify-content: end;
+  align-items: center;
 `
 
 export const SubmitBtn = styled(Button)`
   width: 50%;
-  height: 100%;
+  height: 75%;
 `
