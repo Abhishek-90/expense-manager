@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AddTransactionContainer,
   Container,
@@ -14,10 +13,10 @@ function AddTransaction() {
       <AddTransactionContainer>
         <TransactionDescriptionWrapper>
           <TransactionDescription placeholder="Transaction Description" />
-          <SubmitBtnWrapper>
-            <SubmitBtn>Add Transaction</SubmitBtn>
-          </SubmitBtnWrapper>
         </TransactionDescriptionWrapper>
+        <SubmitBtnWrapper>
+          <SubmitBtn>Add Transaction</SubmitBtn>
+        </SubmitBtnWrapper>
       </AddTransactionContainer>
     </Container>
   );
