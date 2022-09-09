@@ -5,12 +5,16 @@ import {
   SubmitBtnWrapper,
   TransactionDescription,
   TransactionDescriptionWrapper,
+  DateWrapper, CustomDate
 } from "./AddTransactions.styled";
 
 function AddTransaction() {
   return (
     <Container>
       <AddTransactionContainer>
+        <DateWrapper>
+          <CustomDate type="date"></CustomDate>
+        </DateWrapper>
         <TransactionDescriptionWrapper>
           <TransactionDescription placeholder="Transaction Description" />
         </TransactionDescriptionWrapper>

@@ -23,33 +23,47 @@ export const AddTransactionContainer = styled.div`
 `;
 
 export const TransactionDescriptionWrapper = styled.div`
-  grid-column: 2/ span 2;
-  grid-row: 2/ span 1;
+  grid-column: 2 / span 2;
+  grid-row: 2 / span 1;
   padding: 6px;
   display: flex;
   align-items: center;
-`
+`;
 export const TransactionDescription = styled.input`
   height: 70%;
   width: 100%;
   padding: 0.6rem;
-  outline:none;
-  font-size: 0.9rem; 
+  outline: none;
+  font-size: 0.9rem;
   border: none;
+  border-radius: 5px;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
-`
+`;
 
 export const SubmitBtnWrapper = styled.div`
-  grid-column: 2 /span 2;
-  grid-row: 3 /span 1;
+  grid-column: 2 / span 2;
+  grid-row: 3 / span 1;
   height: 100%;
-  display:  flex;
+  display: flex;
   justify-content: end;
   align-items: center;
   margin-right: 2rem;
-`
+`;
 
 export const SubmitBtn = styled(Button)`
   width: 50%;
   height: 60%;
-`
+`;
+
+export const DateWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const CustomDate = styled(TransactionDescription)`
+  height: 50%;
+  width: 60%;
+  border-radius: 5px;
+  padding: 12px;
+`; 
