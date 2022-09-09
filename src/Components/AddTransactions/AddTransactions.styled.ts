@@ -32,7 +32,7 @@ export const TransactionDescriptionWrapper = styled.div`
 export const TransactionDescription = styled.input`
   height: 70%;
   width: 100%;
-  padding: 0.6rem;
+  padding: 0.8rem;
   outline: none;
   font-size: 0.9rem;
   border: none;
