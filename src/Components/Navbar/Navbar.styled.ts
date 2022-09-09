@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 export const CustomNavbar = styled.div`
   width: 100%;
-  height: 3rem;
+  height: 3.3rem;
   display:flex;
   align-items:center;
   justify-content: space-between;
@@ -44,7 +44,7 @@ export const CustomMenuBtn = styled(MenuIcon)`
 
 export const TitleWrap = styled.div`
   height: 100%;
-  width: 30%;
+  width: 40%;
   display: flex;
   align-items: center;
 `
@@ -63,7 +63,7 @@ export const Title = styled.a`
 export const CustomMenu = styled.div<{isMenuOpen}>`
   position: fixed;
   background: ${colors.blue};
-  width: 20%;
+  width: 18%;
   top: 0;
   bottom: 0;
   left: 0;
@@ -72,13 +72,15 @@ export const CustomMenu = styled.div<{isMenuOpen}>`
   text-align: end;
   transform: ${props => props.isMenuOpen ? `translate(0)`:`translate(-100%)`};
   transition: transform 0.5s;
+  max-width: 300px;
 
   li {
     list-style: none;
     padding: 15px 25px;
     color: ${colors.white};
     cursor: pointer;
-    letter-spacing: 3px;
+    letter-spacing: 0.15rem;
+    font-size: 1rem;
 
     &:hover {
       font-weight: 600;
@@ -102,10 +104,6 @@ export const CustomClose = styled(CloseIcon)`
   cursor: pointer;
   color: white;
   height: 50px;
-  margin-right: 20px;
+  margin-left: 20px;
   margin-top: 10px;
-`;
-
-export const CloseWrap = styled.div`
-  text-align: end;
 `;
