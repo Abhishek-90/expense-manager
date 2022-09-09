@@ -1,73 +1,71 @@
 import styled from "styled-components";
-import * as colors from "../../constants/themeConstants"
+import * as colors from "../../constants/themeConstants";
 
 export const Container = styled.div`
-  width:100%;
-  height:100%;
-  display:flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
   flex-direction: row;
-  justify-content: center;
-`
+`;
 
 export const Description = styled.div`
   width: 40%;
-  height: 100vh;
-  max-width: 60rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: ${colors.blue};
+  color: ${colors.white};
 
   @media screen and (max-width: 700px) {
-    display:none;
+    display: none;
   }
-`
+`;
 
 export const Wrapper = styled.div`
   width: 60%;
   height: 100vh;
-  max-width: 60rem;
   display: flex;
-  flex-direction:column;
-  justify-content:center;
+  flex-direction: column;
+  justify-content: center;
   align-content: center;
-  box-shadow: 4px 3px 80px rgba(97, 78, 152,0.24);
+  box-shadow: 4px 3px 80px rgba(97, 78, 152, 0.24);
 
   @media screen and (max-width: 700px) {
     width: 100%;
   }
-`
+`;
 
 export const LoginDiv = styled.div`
-  display:grid;
+  display: grid;
   grid-template-column: 1fr;
-  justify-items:center;
+  justify-items: center;
 
   @media screen and (max-width: 700px) {
-    justify-content:center;
+    justify-content: center;
   }
-`
+`;
 
 export const ButtonContainer = styled.div`
   height: fit-content;
-  width: 20rem;
+  width: 45%;
   display: flex;
   justify-content: space-around;
-  margin-top:2rem;
+  margin-top: 2rem;
 
   @media screen and (max-width: 700px) {
     width: 75%;
     display: flex;
     justify-content: space-around;
   }
-
-`
+`;
 
 export const TitleDiv = styled.div`
   @media screen and (min-width: 700px) {
-    display:none;
+    display: none;
   }
+
   @media screen and (max-width: 700px) {
     width: 100%;
     background: transparent;
@@ -77,4 +75,4 @@ export const TitleDiv = styled.div`
     padding-left: 1.4rem;
     margin-left: 2.2rem;
   }
-`
+`;

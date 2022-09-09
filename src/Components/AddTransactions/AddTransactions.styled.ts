@@ -13,19 +13,19 @@ export const AddTransactionContainer = styled.div`
   width: 60%;
   min-width: 550px;
   height: 65%;
-  border: 1px black solid;
+  border: none;
   border-radius: 20px;
+  box-shadow: ${colors.shadowBlue} 0px 3px 8px;
   margin-top: 20px;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
-  background: yellow;
+  padding: 24px;
 `;
 
 export const TransactionDescriptionWrapper = styled.div`
-  grid-column: 2 / span 2;
+  grid-column: 1 / span 3;
   grid-row: 2 / span 1;
-  padding: 6px;
   display: flex;
   align-items: center;
 `;
@@ -47,7 +47,6 @@ export const SubmitBtnWrapper = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  margin-right: 2rem;
 `;
 
 export const SubmitBtn = styled(Button)`
@@ -57,7 +56,6 @@ export const SubmitBtn = styled(Button)`
 
 export const DateWrapper = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 `;
 

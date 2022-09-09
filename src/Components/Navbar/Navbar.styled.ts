@@ -2,7 +2,7 @@ import styled from "styled-components";
 import * as colors from "../../constants/themeConstants";
 import { Button } from "../Elements/Button";
 import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from '@material-ui/icons/Close';
 
 export const CustomNavbar = styled.div`
   width: 100%;

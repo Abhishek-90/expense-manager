@@ -55,7 +55,7 @@ const Login = () => {
             }),
           }
         );
-        
+
         if (response.status === 200) {
           const json = await response.json();
           localStorage.setItem("authToken", json.authToken);
@@ -75,13 +75,13 @@ const Login = () => {
   return (
     <Container>
       <Description>
-        <H1>Expense Manager</H1>
-        <UL>
-          <ListItem>Expenses</ListItem>
-          <ListItem>Investments</ListItem>
-          <ListItem>Loans</ListItem>
-        </UL>
-        <H3>Manage all in One Place!</H3>
+          <H1>Expense Manager</H1>
+          <UL>
+            <ListItem>Expenses</ListItem>
+            <ListItem>Investments</ListItem>
+            <ListItem>Loans</ListItem>
+          </UL>
+          <H3>Manage all in One Place!</H3>
       </Description>
       <Wrapper>
         <TitleDiv>Expense Manager</TitleDiv>
