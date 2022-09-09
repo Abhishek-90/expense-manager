@@ -24,7 +24,10 @@ function AddTransaction() {
   }
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    setTransactionDetails({ ...transactionDetails, [e.target.name]: e.target.value });
+    setTransactionDetails({
+      ...transactionDetails,
+      [e.target.name]: e.target.value,
+    });
   }
 
   return (
@@ -44,6 +47,7 @@ function AddTransaction() {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               onChangeHandler(e)
             }
+            value={transactionDetails.description}
             name="description"
             placeholder="Transaction Description"
           />
