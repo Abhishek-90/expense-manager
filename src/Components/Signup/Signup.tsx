@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { authentication } from "../../Variables/routes";
 import * as method from "../../constants/Constant";
-import { Wrapper, SignUpDiv, ButtonContainer } from "./SignupStyles";
-import { CustomInput } from "../Elements/Input";
+import { Wrapper, SignUpDiv, ButtonContainer, Input } from "./SignupStyles";
 import { Button } from "../Elements/Button";
+
 export interface ISignUp {
   fname: string;
   email: string;
@@ -61,33 +61,33 @@ const Signup = () => {
         <h1>Sign Up</h1>
         <form className="my-3" onSubmit={onSubmit}>
           <SignUpDiv>
-            <CustomInput
+            <Input
               type="text"
               value={signup.fname}
               name="fname"
-              placeholder="Your Full Name"
-              handleChange={onChange}
+              placeholder="Enter you Full Name"
+              onChange={onChange}
             />
-            <CustomInput
+            <Input
               type="text"
               value={signup.email}
               name="email"
               placeholder="Email Address"
-              handleChange={onChange}
+              onChange={onChange}
             />
-            <CustomInput
+            <Input
               type="text"
               value={signup.password}
               name="password"
               placeholder="Password"
-              handleChange={onChange}
+              onChange={onChange}
             />
-            <CustomInput
+            <Input
               type="text"
               value={signup.confirmPassword}
               name="confirmPassword"
               placeholder="Confirm Password"
-              handleChange={onChange}
+              onChange={onChange}
             />
             <ButtonContainer>
               <Button type="submit">SignUp</Button>
