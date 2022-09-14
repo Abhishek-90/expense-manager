@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { Button } from "../Elements/Button";
-import { CustomInput } from "../Elements/Input";
 import {
   Description,
   Wrapper,
