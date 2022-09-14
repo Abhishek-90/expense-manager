@@ -76,3 +76,18 @@ export const TitleDiv = styled.div`
     margin-left: 2.2rem;
   }
 `;
+
+export const Input = styled.input<{border?:boolean}>`
+  height: 2.5rem;
+  width: 40%;
+  padding: 0.6rem;
+  border: ${props => props.border ? '0.07rem solid red':'none'};
+  outline:none;
+  font-size: 0.9rem; 
+  box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+  margin-top: 2.4rem;
+
+  @media screen and (max-width: 700px) {
+    width: 80%;
+  }
+`
