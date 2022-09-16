@@ -10,6 +10,7 @@ import {
   LoginDiv,
   ButtonContainer,
   Container,
+  Input
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
 import * as method from "../../constants/Constant";
@@ -87,21 +88,21 @@ const Login = () => {
         <TitleDiv>Expense Manager</TitleDiv>
         <form onSubmit={onSubmit}>
           <LoginDiv>
-            <CustomInput
+            <Input
               name="email"
               type="text"
               placeholder="Email Address"
               value={login.email}
-              handleChange={handleChange}
+              onChange={handleChange}
               border={emailEmpty}
             />
 
-            <CustomInput
+            <Input
               name="password"
               type="password"
               placeholder="Password"
               value={login.password}
-              handleChange={handleChange}
+              onChange={handleChange}
               border={passwordEmpty}
             />
             <ButtonContainer>

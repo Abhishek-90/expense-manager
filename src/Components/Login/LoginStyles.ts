@@ -25,12 +25,11 @@ export const Description = styled.div`
 
 export const Wrapper = styled.div`
   width: 60%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  box-shadow: 4px 3px 80px rgba(97, 78, 152, 0.24);
 
   @media screen and (max-width: 700px) {
     width: 100%;
@@ -38,9 +37,10 @@ export const Wrapper = styled.div`
 `;
 
 export const LoginDiv = styled.div`
-  display: grid;
-  grid-template-column: 1fr;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 700px) {
     justify-content: center;
@@ -49,7 +49,7 @@ export const LoginDiv = styled.div`
 
 export const ButtonContainer = styled.div`
   height: fit-content;
-  width: 45%;
+  width: 40%;
   display: flex;
   justify-content: space-around;
   margin-top: 2rem;
@@ -76,3 +76,18 @@ export const TitleDiv = styled.div`
     margin-left: 2.2rem;
   }
 `;
+
+export const Input = styled.input<{border?:boolean}>`
+  height: 2.5rem;
+  width: 40%;
+  padding: 0.6rem;
+  border: ${props => props.border ? '0.07rem solid red':'none'};
+  outline:none;
+  font-size: 0.9rem; 
+  box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+  margin-top: 2.4rem;
+
+  @media screen and (max-width: 700px) {
+    width: 80%;
+  }
+`
