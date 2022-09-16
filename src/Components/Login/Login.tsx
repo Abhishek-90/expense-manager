@@ -12,7 +12,7 @@ import {
   Input
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
-import * as method from "../../constants/Constant";
+import * as method from "../../constants/Status";
 import { authentication } from "../../Variables/routes";
 
 export interface ILogin {
@@ -35,7 +35,7 @@ const Login = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(login);
+
     if (login.email.trim().length > 0 && login.password.trim().length > 0) {
       setEmailEmpty(false);
       setPasswordEmpty(false);

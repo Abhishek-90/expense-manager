@@ -11,6 +11,9 @@ import {
   CustomSelect,
   SelectWrapper,
 } from "./AddTransactions.styled";
+import { transaction } from "../../Variables/routes"
+import * as status from "../../constants/Status";
+import { useNavigate } from "react-router";
 
 interface ITransactionDetails {
   date: Date | null;
@@ -42,7 +45,9 @@ function AddTransaction() {
     tag: false,
   });
 
-  function onSubmitClick(): void {
+  const navigate = useNavigate();
+
+  async function onSubmitClick() {
     if(transactionDetails.date === null) {
       setFormErrors({...formErrors,date:true})
       return ;
@@ -52,6 +57,32 @@ function AddTransaction() {
       return ;
     }
     console.log(transactionDetails);
+    try {
+      const response = await fetch(
+        `${transaction}addtransaction`,
+
+        {
+          method: status.POST,
+          headers: {
+            "Content-type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            
+          }),
+        }
+      );
+
+      if (response.status === 200) {
+        const json = await response.json();
+        localStorage.setItem("authToken", json.authToken);
+        navigate("/dashboard/*");
+      } else {
+        //TODO: Add alert box here to display that Credentials are wrong.
+      }
+    } catch (error) {
+      
+    }
   }
 
   function onChangeHandler(
