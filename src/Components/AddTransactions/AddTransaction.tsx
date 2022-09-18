@@ -4,14 +4,16 @@ import {
   Container,
   SubmitBtn,
   SubmitBtnWrapper,
-  TransactionDescription,
+  Input,
   TransactionDescriptionWrapper,
   DateWrapper,
   CustomDate,
   CustomSelect,
   SelectWrapper,
+  AmountWrapper,
+  AmountInput
 } from "./AddTransactions.styled";
-import { transaction } from "../../Variables/routes"
+import { transaction } from "../../Variables/routes";
 import * as status from "../../constants/Status";
 import { useNavigate } from "react-router";
 
@@ -20,6 +22,7 @@ interface ITransactionDetails {
   description: string;
   type: string;
   tag: string;
+  amount: string;
 }
 
 interface IFormErrors {
@@ -27,6 +30,7 @@ interface IFormErrors {
   description: boolean;
   type: boolean;
   tag: boolean;
+  amount: boolean;
 }
 
 function AddTransaction() {
@@ -36,6 +40,7 @@ function AddTransaction() {
       description: "",
       type: "income",
       tag: "salary",
+      amount: "",
     });
 
   const [formErrors, setFormErrors] = useState<IFormErrors>({
@@ -43,18 +48,19 @@ function AddTransaction() {
     description: false,
     type: false,
     tag: false,
+    amount: false,
   });
 
   const navigate = useNavigate();
 
   async function onSubmitClick() {
-    if(transactionDetails.date === null) {
-      setFormErrors({...formErrors,date:true})
-      return ;
+    if (transactionDetails.date === null) {
+      setFormErrors({ ...formErrors, date: true });
+      return;
     }
-    if(transactionDetails.description.trim().length === 0) {
-      setFormErrors({...formErrors, description:true})
-      return ;
+    if (transactionDetails.description.trim().length === 0) {
+      setFormErrors({ ...formErrors, description: true });
+      return;
     }
     console.log(transactionDetails);
     try {
@@ -67,9 +73,7 @@ function AddTransaction() {
             "Content-type": "application/json",
             "Access-Control-Allow-Origin": "*",
           },
-          body: JSON.stringify({
-            
-          }),
+          body: JSON.stringify({}),
         }
       );
 
@@ -80,9 +84,7 @@ function AddTransaction() {
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
       }
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 
   function onChangeHandler(
@@ -92,7 +94,7 @@ function AddTransaction() {
       ...transactionDetails,
       [e.target.name]: e.target.value,
     });
-    setFormErrors({...formErrors, [e.target.name]:false})
+    setFormErrors({ ...formErrors, [e.target.name]: false });
   }
 
   return (
@@ -153,8 +155,20 @@ function AddTransaction() {
             </CustomSelect>
           )}
         </SelectWrapper>
+        <AmountWrapper>
+          <AmountInput
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChangeHandler(e)
+            }
+            type="text"
+            value={transactionDetails.amount}
+            name="amount"
+            placeholder="Amount(in INR)"
+            border={formErrors.amount}
+          />
+        </AmountWrapper>
         <TransactionDescriptionWrapper>
-          <TransactionDescription
+          <Input
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               onChangeHandler(e)
             }
