@@ -24,12 +24,13 @@ export const AddTransactionContainer = styled.div`
 `;
 
 export const TransactionDescriptionWrapper = styled.div`
-  grid-column: 1 / span 3;
+  grid-column: 2 / span 2;
   grid-row: 2 / span 1;
   display: flex;
   align-items: center;
 `;
-export const TransactionDescription = styled.input<{border:boolean}>`
+
+export const Input = styled.input<{border:boolean}>`
   height: 70%;
   width: 100%;
   padding: 0.8rem;
@@ -38,6 +39,17 @@ export const TransactionDescription = styled.input<{border:boolean}>`
   border: ${(props) => !props.border ? `none`:`1.3px solid ${colors.error}`};
   border-radius: 5px;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+`;
+
+export const AmountInput = styled(Input)`
+  width: 85%;
+`
+
+export const AmountWrapper = styled.div`
+  grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+  display: flex;
+  align-items: center;
 `;
 
 export const SubmitBtnWrapper = styled.div`
@@ -59,12 +71,12 @@ export const DateWrapper = styled.div`
   align-items: center;
 `;
 
-export const CustomDate = styled(TransactionDescription)<{border:boolean}>`
+export const CustomDate = styled(Input)<{border:boolean}>`
   height: 60%;
   width: 70%;
   border-radius: 5px;
   padding: 12px;
-  border: ${(props) => !props.border ? `none`:`1.3px solid ${colors.error}`};
+  border: ${({border}) => !border ? `none`:`1.3px solid ${colors.error}`};
 `; 
 
 export const SelectWrapper = styled.div`
