@@ -29,13 +29,13 @@ export const TransactionDescriptionWrapper = styled.div`
   display: flex;
   align-items: center;
 `;
-export const TransactionDescription = styled.input`
+export const TransactionDescription = styled.input<{border:boolean}>`
   height: 70%;
   width: 100%;
   padding: 0.8rem;
   outline: none;
   font-size: 0.9rem;
-  border: none;
+  border: ${(props) => !props.border ? `none`:`1.3px solid ${colors.error}`};
   border-radius: 5px;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
 `;
@@ -59,11 +59,12 @@ export const DateWrapper = styled.div`
   align-items: center;
 `;
 
-export const CustomDate = styled(TransactionDescription)`
+export const CustomDate = styled(TransactionDescription)<{border:boolean}>`
   height: 60%;
   width: 70%;
   border-radius: 5px;
   padding: 12px;
+  border: ${(props) => !props.border ? `none`:`1.3px solid ${colors.error}`};
 `; 
 
 export const SelectWrapper = styled.div`
@@ -75,12 +76,12 @@ export const SelectWrapper = styled.div`
   align-items: center;
 `;
 
-export const CustomSelect = styled.select`
-  border: none;
+export const CustomSelect = styled.select<{border:boolean}>`
   border-radius: 5px;
   height: 60%;
   width: 45%;
   padding: 10px;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
   outline: none;
+  border: ${(props) => !props.border ? `none`:`1.3px solid ${colors.error}`};
 `;
