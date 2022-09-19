@@ -11,11 +11,11 @@ import {
   CustomSelect,
   SelectWrapper,
   AmountWrapper,
-  AmountInput
+  AmountInput,
 } from "./AddTransactions.styled";
-import { transaction } from "../../Variables/routes";
+import * as endpoint from "../../Variables/routes";
 import * as status from "../../constants/Status";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 
 interface ITransactionDetails {
   date: Date | null;
@@ -51,36 +51,46 @@ function AddTransaction() {
     amount: false,
   });
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   async function onSubmitClick() {
     if (transactionDetails.date === null) {
       setFormErrors({ ...formErrors, date: true });
       return;
     }
+
+    if (transactionDetails.amount.trim().length === 0) {
+      setFormErrors({ ...formErrors, amount: true });
+      return;
+    }
+
     if (transactionDetails.description.trim().length === 0) {
       setFormErrors({ ...formErrors, description: true });
       return;
     }
+
     console.log(transactionDetails);
     try {
-      const response = await fetch(
-        `${transaction}addtransaction`,
+      const response = await fetch(endpoint.ADDTRANSACTION, {
+        method: status.POST,
+        headers: {
+          "Content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          date: transactionDetails.date,
+          type: transactionDetails.type,
+          amount: transactionDetails.amount,
+          description: transactionDetails.description,
+          tag: transactionDetails.tag,
+        }),
+      });
 
-        {
-          method: status.POST,
-          headers: {
-            "Content-type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({}),
-        }
-      );
+      console.log(response);
 
       if (response.status === 200) {
         const json = await response.json();
-        localStorage.setItem("authToken", json.authToken);
-        navigate("/dashboard/*");
+        console.log(json);
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
       }
