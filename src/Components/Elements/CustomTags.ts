@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const H1 = styled.h1`
   font-size: 2rem;
@@ -17,4 +18,8 @@ export const UL = styled.ul`
 export const ListItem = styled.li`
   margin-right: 3.5rem;
   font-size: 1.4rem;
+`
+
+export const CustomLink = styled(Link)`
+  text-decoration: none;
 `
