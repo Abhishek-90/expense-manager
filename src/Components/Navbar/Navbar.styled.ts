@@ -63,7 +63,7 @@ export const Title = styled.a`
 export const CustomMenu = styled.div<{isMenuOpen}>`
   position: fixed;
   background: ${colors.blue};
-  width: 18%;
+  width: 14rem;
   top: 0;
   bottom: 0;
   left: 0;
