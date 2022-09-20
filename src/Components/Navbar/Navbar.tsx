@@ -11,6 +11,7 @@ import {
   TitleWrap,
   CustomClose,
 } from "./Navbar.styled";
+import { CustomLink } from "../Elements/CustomTags";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -30,10 +31,10 @@ const Navbar = () => {
       <CustomMenu isMenuOpen={showMenu}>
           <CustomClose onClick={() => setShowMenu(false)} />
         <ul>
-          <li>DashBoard</li>
-          <li>Visuals</li>
-          <li>Loans</li>
-          <li>Investments</li>
+          <CustomLink to="/dashboard"><li>DashBoard</li></CustomLink>
+          <CustomLink to="/dashboard/visuals"><li>Visuals</li></CustomLink>
+          <CustomLink to="/dashboard/loans"><li>Loans</li></CustomLink>
+          <CustomLink to="/dashboard/investments"><li>Investments</li></CustomLink>
         </ul>
       </CustomMenu>
       <LogoutBtnWrap>
