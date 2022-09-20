@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import * as colors from "../../constants/themeConstants";
-import { Button } from "../Elements/Button";
+import * as colors from "../../../constants/themeConstants";
+import { Button } from "../../Elements/Button";
 
 export const Container = styled.div`
   width: 100%;

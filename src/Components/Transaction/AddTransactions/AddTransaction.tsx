@@ -13,8 +13,8 @@ import {
   AmountWrapper,
   AmountInput,
 } from "./AddTransactions.styled";
-import * as endpoint from "../../Variables/routes";
-import * as status from "../../constants/Status";
+import * as endpoint from "../../../Variables/routes";
+import * as status from "../../../constants/Status";
 // import { useNavigate } from "react-router";
 
 interface ITransactionDetails {
