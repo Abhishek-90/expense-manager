@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   AddTransactionContainer,
-  Container,
   SubmitBtn,
   SubmitBtnWrapper,
   Input,
@@ -108,7 +107,6 @@ function AddTransaction() {
   }
 
   return (
-    <Container>
       <AddTransactionContainer>
         <DateWrapper>
           <CustomDate
@@ -192,7 +190,6 @@ function AddTransaction() {
           <SubmitBtn onClick={onSubmitClick}>Add Transaction</SubmitBtn>
         </SubmitBtnWrapper>
       </AddTransactionContainer>
-    </Container>
   );
 }
 
