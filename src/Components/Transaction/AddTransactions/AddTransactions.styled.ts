@@ -2,13 +2,6 @@ import styled from "styled-components";
 import * as colors from "../../../constants/themeConstants";
 import { Button } from "../../Elements/Button";
 
-export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
 export const AddTransactionContainer = styled.div`
   width: 60%;
   min-width: 550px;

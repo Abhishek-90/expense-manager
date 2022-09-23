@@ -44,7 +44,7 @@ export const CustomMenuBtn = styled(MenuIcon)`
 
 export const TitleWrap = styled.div`
   height: 100%;
-  width: 40%;
+  width: 80%;
   display: flex;
   align-items: center;
 `

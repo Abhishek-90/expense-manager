@@ -60,7 +60,7 @@ const Login = () => {
           const json = await response.json();
           console.log(json.authToken);
           localStorage.setItem("authToken", json.authToken);
-          navigate("/dashboard/*");
+          navigate("/dashboard");
         } else {
           //TODO: Add alert box here to display that Credentials are wrong.
         }
