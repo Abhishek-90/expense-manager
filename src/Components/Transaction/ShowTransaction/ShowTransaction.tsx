@@ -5,6 +5,7 @@ import {
   AmountColumnWrapper,
   DescriptionColumnWrapper,
 } from "./ShowTransaction.styled";
+import ShowTransactionItem from "./ShowTransactionItem/ShowTransactionItem";
 
 const ShowTransaction = () => {
   const transactions = [
@@ -34,6 +35,15 @@ const ShowTransaction = () => {
         <AmountColumnWrapper>Amount</AmountColumnWrapper>
         <DescriptionColumnWrapper>Description</DescriptionColumnWrapper>
       </TableHeader>
+      {transactions.map((item) => {
+        return (
+          <ShowTransactionItem
+            date={item.date}
+            amount={item.amount}
+            description={item.description}
+          />
+        );
+      })}
     </Container>
   );
 };

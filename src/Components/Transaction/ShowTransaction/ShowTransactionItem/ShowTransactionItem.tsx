@@ -1,9 +1,24 @@
-import { ItemContainer, DateWrapper } from "./ShowTransactionItem.styled";
+import {
+  ItemContainer,
+  DateWrapper,
+  AmountWrapper,
+  DescriptionWrapper,
+} from "./ShowTransactionItem.styled";
 
-function ShowTransactionItem() {
-  return <ItemContainer>
-    <DateWrapper></DateWrapper>
-  </ItemContainer>;
+interface IData {
+  date: string;
+  amount: string;
+  description: string;
+}
+
+function ShowTransactionItem({ date, amount, description }: IData) {
+  return (
+    <ItemContainer>
+      <DateWrapper>{date}</DateWrapper>
+      <AmountWrapper>{amount}</AmountWrapper>
+      <DescriptionWrapper>{description}</DescriptionWrapper>
+    </ItemContainer>
+  );
 }
 
 export default ShowTransactionItem;
