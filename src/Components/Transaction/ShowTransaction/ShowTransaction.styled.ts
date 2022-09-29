@@ -6,6 +6,10 @@ export const Container = styled.div`
   height: 40%;
   margin-top: 2rem;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+
+  @media only screen and (max-width: 700px) {
+    width: 95%;
+  }
 `;
 
 export const TableHeader = styled.div`
@@ -16,7 +20,7 @@ export const TableHeader = styled.div`
 
 export const DateColumnWrapper = styled.div`
   height: 100%;
-  flex: 0.5;
+  flex: 0.4;
   display: flex;
   justify-content: center;
   align-items: center;

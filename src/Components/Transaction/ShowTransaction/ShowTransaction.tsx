@@ -1,4 +1,10 @@
-import { Container, TableHeader, DateColumnWrapper, AmountColumnWrapper, DescriptionColumnWrapper } from "./ShowTransaction.styled";
+import {
+  Container,
+  TableHeader,
+  DateColumnWrapper,
+  AmountColumnWrapper,
+  DescriptionColumnWrapper,
+} from "./ShowTransaction.styled";
 
 const ShowTransaction = () => {
   const transactions = [
