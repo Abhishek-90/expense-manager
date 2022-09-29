@@ -3,7 +3,7 @@ import * as colors from "../../../constants/themeConstants";
 
 export const Container = styled.div`
   width: 70%;
-  height: 40%;
+  height: fit-content;
   margin-top: 2rem;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
 
