@@ -3,6 +3,7 @@ import {
   DateWrapper,
   AmountWrapper,
   DescriptionWrapper,
+  ActionWrapper,
 } from "./ShowTransactionItem.styled";
 
 interface IData {
@@ -17,6 +18,7 @@ function ShowTransactionItem({ date, amount, description }: IData) {
       <DateWrapper>{date}</DateWrapper>
       <AmountWrapper>{amount}</AmountWrapper>
       <DescriptionWrapper>{description}</DescriptionWrapper>
+      <ActionWrapper/>
     </ItemContainer>
   );
 }
