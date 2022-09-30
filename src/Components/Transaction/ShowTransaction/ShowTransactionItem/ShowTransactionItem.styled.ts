@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import * as colors from "../../../../constants/themeConstants";
+import DeleteOutline from "@material-ui/icons/DeleteOutline";
+import EditOutlined from "@material-ui/icons/EditOutlined";
 
 export const ItemContainer = styled.div`
   width: 100%;
@@ -36,11 +38,16 @@ export const DescriptionWrapper = styled.div`
 export const ActionWrapper = styled.div`
   position: absolute;
   z-index: 10;
-  width: 8rem;
+  width: 6rem;
   height: 2.5rem;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out; 
+  transition: opacity 0.2s ease-in-out;
   right: 0;
+  display: flex;
+  place-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
 
   &:hover {
     opacity: 0.4;
@@ -51,4 +58,13 @@ export const ActionWrapper = styled.div`
       ${colors.shadowBlue} 50%
     );
   }
-`
+`;
+
+export const Delete = styled(DeleteOutline)`
+  color: ${colors.error};
+  cursor: pointer;
+`;
+
+export const Edit = styled(EditOutlined)`
+  cursor: pointer;
+` 
