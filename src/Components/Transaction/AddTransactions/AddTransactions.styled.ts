@@ -6,6 +6,7 @@ export const AddTransactionContainer = styled.div`
   width: 60%;
   min-width: 550px;
   height: 15rem;
+  min-height: 15rem;
   border: none;
   border-radius: 20px;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;

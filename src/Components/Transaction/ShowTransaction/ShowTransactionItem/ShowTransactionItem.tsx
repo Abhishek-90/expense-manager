@@ -18,7 +18,7 @@ function ShowTransactionItem({ date, amount, description }: IData) {
       <DateWrapper>{date}</DateWrapper>
       <AmountWrapper>{amount}</AmountWrapper>
       <DescriptionWrapper>{description}</DescriptionWrapper>
-      <ActionWrapper/>
+      <ActionWrapper />
     </ItemContainer>
   );
 }

@@ -5,6 +5,7 @@ export const ItemContainer = styled.div`
   width: 100%;
   display: flex;
   height: 2.5rem;
+  position: relative;
 
   &:hover {
     box-shadow: ${colors.shadowBlue} 0px 3px 8px;
@@ -12,14 +13,14 @@ export const ItemContainer = styled.div`
 `;
 
 export const DateWrapper = styled.div`
-  flex: 0.4;
+  flex: 0.6;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const AmountWrapper = styled.div`
-  flex: 0.5;
+  flex: 0.6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,6 +40,7 @@ export const ActionWrapper = styled.div`
   height: 2.5rem;
   opacity: 0;
   transition: opacity 0.2s ease-in-out; 
+  right: 0;
 
   &:hover {
     opacity: 0.4;
@@ -46,7 +48,7 @@ export const ActionWrapper = styled.div`
     background: linear-gradient(
       90deg,
       ${colors.shadowBlue} 0%,
-      ${colors.shadowBlue} 25%
+      ${colors.shadowBlue} 50%
     );
   }
 `
