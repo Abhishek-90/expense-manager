@@ -61,10 +61,17 @@ export const ActionWrapper = styled.div`
 `;
 
 export const Delete = styled(DeleteOutline)`
-  color: ${colors.error};
   cursor: pointer;
+
+  &:hover {
+    color: ${colors.error};
+  }
 `;
 
 export const Edit = styled(EditOutlined)`
   cursor: pointer;
+
+  &:hover {
+    color: #000000
+  }
 ` 
