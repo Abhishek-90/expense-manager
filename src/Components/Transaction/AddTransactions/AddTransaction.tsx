@@ -12,9 +12,8 @@ import {
   AmountWrapper,
   AmountInput,
 } from "./AddTransactions.styled";
-import * as endpoint from "../../../Variables/routes";
+import * as E from "../../../Variables/routes";
 import * as status from "../../../constants/Status";
-// import { useNavigate } from "react-router";
 
 interface ITransactionDetails {
   date: Date | null;
@@ -41,7 +40,6 @@ function AddTransaction() {
       tag: "salary",
       amount: "",
     });
-
   const [formErrors, setFormErrors] = useState<IFormErrors>({
     date: false,
     description: false,
@@ -49,8 +47,8 @@ function AddTransaction() {
     tag: false,
     amount: false,
   });
-
-  // const navigate = useNavigate();
+  const [isAddingTransaction, setIsAddingTransaction] =
+    useState<boolean>(false);
 
   async function onSubmitClick() {
     if (transactionDetails.date === null) {
@@ -68,9 +66,9 @@ function AddTransaction() {
       return;
     }
 
-    console.log(transactionDetails);
     try {
-      const response = await fetch(endpoint.ADDTRANSACTION, {
+      setIsAddingTransaction(true);
+      const response = await fetch(E.ADDTRANSACTION, {
         method: status.POST,
         headers: {
           "Content-type": "application/json",
@@ -82,14 +80,13 @@ function AddTransaction() {
           amount: transactionDetails.amount,
           description: transactionDetails.description,
           tag: transactionDetails.tag,
+          authToken: localStorage.getItem("authToken"),
         }),
       });
 
-      console.log(response);
-
+      setTimeout(() => setIsAddingTransaction(false), 1000);
       if (response.status === 200) {
-        const json = await response.json();
-        console.log(json);
+
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
       }
@@ -107,89 +104,95 @@ function AddTransaction() {
   }
 
   return (
-      <AddTransactionContainer>
-        <DateWrapper>
-          <CustomDate
-            name="date"
-            type="date"
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              onChangeHandler(e)
-            }
-            border={formErrors.date}
-          ></CustomDate>
-        </DateWrapper>
-        <SelectWrapper>
+    <AddTransactionContainer>
+      <DateWrapper>
+        <CustomDate
+          name="date"
+          type="date"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChangeHandler(e)
+          }
+          border={formErrors.date}
+        ></CustomDate>
+      </DateWrapper>
+      <SelectWrapper>
+        <CustomSelect
+          name="type"
+          placeholder="Type"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+            onChangeHandler(e)
+          }
+          border={formErrors.type}
+        >
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </CustomSelect>
+        {transactionDetails.type === "income" && (
           <CustomSelect
-            name="type"
-            placeholder="Type"
+            name="tag"
+            placeholder="Tag"
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
               onChangeHandler(e)
             }
-            border={formErrors.type}
+            border={formErrors.tag}
           >
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
+            <option value="salary">Salary</option>
+            <option value="interest">Interest</option>
+            <option value="side-income">Side Income</option>
           </CustomSelect>
-          {transactionDetails.type === "income" && (
-            <CustomSelect
-              name="tag"
-              placeholder="Tag"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                onChangeHandler(e)
-              }
-              border={formErrors.tag}
-            >
-              <option value="salary">Salary</option>
-              <option value="interest">Interest</option>
-              <option value="side-income">Side Income</option>
-            </CustomSelect>
-          )}
-          {transactionDetails.type === "expense" && (
-            <CustomSelect
-              name="tag"
-              placeholder="Tag"
-              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                onChangeHandler(e)
-              }
-              border={formErrors.tag}
-            >
-              <option value="medical">Medical</option>
-              <option value="entertainment">Entertainment</option>
-              <option value="investment">Investment</option>
-              <option value="food">Food</option>
-              <option value="clothing">Clothing</option>
-              <option value="luxury">Luxury</option>
-              <option value="trips">Travel/Trips</option>
-            </CustomSelect>
-          )}
-        </SelectWrapper>
-        <AmountWrapper>
-          <AmountInput
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        )}
+        {transactionDetails.type === "expense" && (
+          <CustomSelect
+            name="tag"
+            placeholder="Tag"
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
               onChangeHandler(e)
             }
-            type="text"
-            value={transactionDetails.amount}
-            name="amount"
-            placeholder="Amount(in INR)"
-            border={formErrors.amount}
-          />
-        </AmountWrapper>
-        <TransactionDescriptionWrapper>
-          <Input
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              onChangeHandler(e)
-            }
-            value={transactionDetails.description}
-            name="description"
-            placeholder="Transaction Description"
-            border={formErrors.description}
-          />
-        </TransactionDescriptionWrapper>
-        <SubmitBtnWrapper>
-          <SubmitBtn onClick={onSubmitClick}>Add Transaction</SubmitBtn>
-        </SubmitBtnWrapper>
-      </AddTransactionContainer>
+            border={formErrors.tag}
+          >
+            <option value="medical">Medical</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="investment">Investment</option>
+            <option value="food">Food</option>
+            <option value="clothing">Clothing</option>
+            <option value="luxury">Luxury</option>
+            <option value="trips">Travel/Trips</option>
+          </CustomSelect>
+        )}
+      </SelectWrapper>
+      <AmountWrapper>
+        <AmountInput
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChangeHandler(e)
+          }
+          type="text"
+          value={transactionDetails.amount}
+          name="amount"
+          placeholder="Amount(in INR)"
+          border={formErrors.amount}
+        />
+      </AmountWrapper>
+      <TransactionDescriptionWrapper>
+        <Input
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            onChangeHandler(e)
+          }
+          value={transactionDetails.description}
+          name="description"
+          placeholder="Transaction Description"
+          border={formErrors.description}
+        />
+      </TransactionDescriptionWrapper>
+      <SubmitBtnWrapper>
+        <SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
+          {!isAddingTransaction ? (
+            "Add Transaction"
+          ) : (
+            <img src={require("./Spinner.gif")} alt="Loading..." />
+          )}
+        </SubmitBtn>
+      </SubmitBtnWrapper>
+    </AddTransactionContainer>
   );
 }
 
