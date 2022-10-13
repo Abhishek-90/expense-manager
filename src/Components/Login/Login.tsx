@@ -57,7 +57,6 @@ const Login = () => {
 
         if (response.status === 200) {
           const json = await response.json();
-          console.log(json.authToken);
           localStorage.setItem("authToken", json.authToken);
           navigate("/dashboard");
         } else {
