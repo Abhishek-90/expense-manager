@@ -13,7 +13,7 @@ import {
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
 import * as method from "../../constants/Status";
-import { authentication } from "../../Variables/routes";
+import * as E from "../../Variables/routes";
 
 export interface ILogin {
   email: string;
@@ -41,8 +41,7 @@ const Login = () => {
       setPasswordEmpty(false);
       try {
         const response = await fetch(
-          `${authentication}login`,
-
+          E.LOGIN,
           {
             method: method.POST,
             headers: {
