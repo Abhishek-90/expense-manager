@@ -64,7 +64,7 @@ export const Delete = styled(DeleteOutline)`
   cursor: pointer;
 
   &:hover {
-    color: ${colors.error};
+    color: #FF0000;
   }
 `;
 
