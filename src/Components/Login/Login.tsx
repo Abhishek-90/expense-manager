@@ -44,9 +44,9 @@ const Login = () => {
           E.LOGIN,
           {
             method: method.POST,
+            credentials: "include",
             headers: {
               "Content-type": "application/json",
-              "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify({
               email: login.email,
@@ -54,11 +54,7 @@ const Login = () => {
             }),
           }
         );
-
         if (response.status === 200) {
-          const json = await response.json();
-          console.log(json.authToken);
-          localStorage.setItem("authToken", json.authToken);
           navigate("/dashboard");
         } else {
           //TODO: Add alert box here to display that Credentials are wrong.
