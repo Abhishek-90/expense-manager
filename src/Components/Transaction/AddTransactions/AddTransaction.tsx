@@ -74,6 +74,7 @@ function AddTransaction() {
           "Content-type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
+        credentials:"include",
         body: JSON.stringify({
           date: transactionDetails.date,
           type: transactionDetails.type,
