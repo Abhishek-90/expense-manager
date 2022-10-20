@@ -9,7 +9,7 @@ import {
   LoginDiv,
   ButtonContainer,
   Container,
-  Input
+  Input,
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
 import * as method from "../../constants/Status";
@@ -40,20 +40,17 @@ const Login = () => {
       setEmailEmpty(false);
       setPasswordEmpty(false);
       try {
-        const response = await fetch(
-          E.LOGIN,
-          {
-            method: method.POST,
-            credentials: "include",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({
-              email: login.email,
-              password: login.password,
-            }),
-          }
-        );
+        const response = await fetch(E.LOGIN, {
+          method: method.POST,
+          credentials: "include",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            email: login.email,
+            password: login.password,
+          }),
+        });
         if (response.status === 200) {
           navigate("/dashboard");
         } else {
@@ -71,13 +68,13 @@ const Login = () => {
   return (
     <Container>
       <Description>
-          <H1>Expense Manager</H1>
-          <UL>
-            <ListItem>Expenses</ListItem>
-            <ListItem>Investments</ListItem>
-            <ListItem>Loans</ListItem>
-          </UL>
-          <H3>Manage all in One Place!</H3>
+        <H1>Expense Manager</H1>
+        <UL>
+          <ListItem>Expenses</ListItem>
+          <ListItem>Investments</ListItem>
+          <ListItem>Loans</ListItem>
+        </UL>
+        <H3>Manage all in One Place!</H3>
       </Description>
       <Wrapper>
         <TitleDiv>Expense Manager</TitleDiv>
