@@ -1,17 +1,5 @@
 import React, { useState } from "react";
-import {
-  AddTransactionContainer,
-  SubmitBtn,
-  SubmitBtnWrapper,
-  Input,
-  TransactionDescriptionWrapper,
-  DateWrapper,
-  CustomDate,
-  CustomSelect,
-  SelectWrapper,
-  AmountWrapper,
-  AmountInput,
-} from "./AddTransactions.styled";
+import * as S from "./AddTransactions.styled";
 import * as E from "../../../Variables/routes";
 import * as status from "../../../constants/Status";
 
@@ -74,7 +62,7 @@ function AddTransaction() {
           "Content-type": "application/json",
           "Access-Control-Allow-Origin": "*",
         },
-        credentials:"include",
+        credentials: "include",
         body: JSON.stringify({
           date: transactionDetails.date,
           type: transactionDetails.type,
@@ -87,7 +75,6 @@ function AddTransaction() {
 
       setTimeout(() => setIsAddingTransaction(false), 1000);
       if (response.status === 200) {
-
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
       }
@@ -105,19 +92,19 @@ function AddTransaction() {
   }
 
   return (
-    <AddTransactionContainer>
-      <DateWrapper>
-        <CustomDate
+    <S.AddTransactionContainer>
+      <S.DateWrapper>
+        <S.CustomDate
           name="date"
           type="date"
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChangeHandler(e)
           }
           border={formErrors.date}
-        ></CustomDate>
-      </DateWrapper>
-      <SelectWrapper>
-        <CustomSelect
+        ></S.CustomDate>
+      </S.DateWrapper>
+      <S.SelectWrapper>
+        <S.CustomSelect
           name="type"
           placeholder="Type"
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
@@ -127,9 +114,9 @@ function AddTransaction() {
         >
           <option value="income">Income</option>
           <option value="expense">Expense</option>
-        </CustomSelect>
+        </S.CustomSelect>
         {transactionDetails.type === "income" && (
-          <CustomSelect
+          <S.CustomSelect
             name="tag"
             placeholder="Tag"
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
@@ -140,10 +127,10 @@ function AddTransaction() {
             <option value="salary">Salary</option>
             <option value="interest">Interest</option>
             <option value="side-income">Side Income</option>
-          </CustomSelect>
+          </S.CustomSelect>
         )}
         {transactionDetails.type === "expense" && (
-          <CustomSelect
+          <S.CustomSelect
             name="tag"
             placeholder="Tag"
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
@@ -158,11 +145,11 @@ function AddTransaction() {
             <option value="clothing">Clothing</option>
             <option value="luxury">Luxury</option>
             <option value="trips">Travel/Trips</option>
-          </CustomSelect>
+          </S.CustomSelect>
         )}
-      </SelectWrapper>
-      <AmountWrapper>
-        <AmountInput
+      </S.SelectWrapper>
+      <S.AmountWrapper>
+        <S.AmountInput
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChangeHandler(e)
           }
@@ -172,9 +159,9 @@ function AddTransaction() {
           placeholder="Amount(in INR)"
           border={formErrors.amount}
         />
-      </AmountWrapper>
-      <TransactionDescriptionWrapper>
-        <Input
+      </S.AmountWrapper>
+      <S.TransactionDescriptionWrapper>
+        <S.Input
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChangeHandler(e)
           }
@@ -183,17 +170,17 @@ function AddTransaction() {
           placeholder="Transaction Description"
           border={formErrors.description}
         />
-      </TransactionDescriptionWrapper>
-      <SubmitBtnWrapper>
-        <SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
+      </S.TransactionDescriptionWrapper>
+      <S.SubmitBtnWrapper>
+        <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
           {!isAddingTransaction ? (
             "Add Transaction"
           ) : (
             <img src={require("./Spinner.gif")} alt="Loading..." />
           )}
-        </SubmitBtn>
-      </SubmitBtnWrapper>
-    </AddTransactionContainer>
+        </S.SubmitBtn>
+      </S.SubmitBtnWrapper>
+    </S.AddTransactionContainer>
   );
 }
 
