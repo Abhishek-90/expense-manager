@@ -44,7 +44,7 @@ function AddTransaction() {
     useState<boolean>(false);
 
   async function onSubmitClick() {
-    if (transactionDetails.date === null) {
+    if (!transactionDetails.date) {
       setFormErrors({ ...formErrors, date: true });
       setMessage("Date is required");
       return;
@@ -53,6 +53,12 @@ function AddTransaction() {
     if (transactionDetails.amount.trim().length === 0) {
       setFormErrors({ ...formErrors, amount: true });
       setMessage("Amount is required");
+      return;
+    }
+
+    if (!Number.isInteger(parseInt(transactionDetails.amount))) {
+      setFormErrors({ ...formErrors, amount: true });
+      setMessage("Enter Valid Amount");
       return;
     }
 
@@ -74,7 +80,7 @@ function AddTransaction() {
         body: JSON.stringify({
           date: transactionDetails.date,
           type: transactionDetails.type,
-          amount: transactionDetails.amount,
+          amount: parseInt(transactionDetails.amount),
           description: transactionDetails.description,
           tag: transactionDetails.tag,
           authToken: localStorage.getItem("authToken"),
