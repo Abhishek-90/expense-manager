@@ -47,7 +47,7 @@ export const AmountWrapper = styled.div`
 `;
 
 export const SubmitBtnWrapper = styled.div`
-  grid-column: 2 / span 2;
+  grid-column: 3 / span 1;
   grid-row: 3 / span 1;
   height: 100%;
   display: flex;
@@ -56,7 +56,7 @@ export const SubmitBtnWrapper = styled.div`
 `;
 
 export const SubmitBtn = styled(Button)`
-  width: 50%;
+  width: 90%;
   height: 60%;
 `;
 
