@@ -29,12 +29,26 @@ const Navbar = () => {
         </TitleWrap>
       </MenuTitleWrap>
       <CustomMenu isMenuOpen={showMenu}>
-          <CustomClose onClick={() => setShowMenu(false)} />
+        <CustomClose onClick={() => setShowMenu(false)} />
         <ul>
-          <CustomLink to="/dashboard"><li>DashBoard</li></CustomLink>
-          <CustomLink to="/dashboard/visuals"><li>Visuals</li></CustomLink>
-          <CustomLink to="/dashboard/loans"><li>Loans</li></CustomLink>
-          <CustomLink to="/dashboard/investments"><li>Investments</li></CustomLink>
+          <CustomLink to="/dashboard" onClick={() => setShowMenu(false)}>
+            <li>DashBoard</li>
+          </CustomLink>
+          <CustomLink
+            to="/dashboard/visuals"
+            onClick={() => setShowMenu(false)}
+          >
+            <li>Visuals</li>
+          </CustomLink>
+          <CustomLink to="/dashboard/loans" onClick={() => setShowMenu(false)}>
+            <li>Loans</li>
+          </CustomLink>
+          <CustomLink
+            to="/dashboard/investments"
+            onClick={() => setShowMenu(false)}
+          >
+            <li>Investments</li>
+          </CustomLink>
         </ul>
       </CustomMenu>
       <LogoutBtnWrap>
