@@ -187,8 +187,9 @@ function AddTransaction() {
           }
           value={transactionDetails.description}
           name="description"
-          placeholder="Transaction Description"
+          placeholder="Transaction Description (Max 25 Characters)"
           border={formErrors.description}
+          maxLength={25}
         />
       </S.TransactionDescriptionWrapper>
       <S.MessageWrapper>
