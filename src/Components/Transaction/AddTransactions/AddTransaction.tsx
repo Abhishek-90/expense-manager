@@ -37,20 +37,28 @@ function AddTransaction() {
   });
   const [isAddingTransaction, setIsAddingTransaction] =
     useState<boolean>(false);
+  const [message, setMessage] = useState<String>("");
+  const [isTransactionFailed, setIsTransactionFailed] =
+    useState<boolean>(false);
+  const [isTransactionSuccessfull, setIsTransactionSuccessfull] =
+    useState<boolean>(false);
 
   async function onSubmitClick() {
     if (transactionDetails.date === null) {
       setFormErrors({ ...formErrors, date: true });
+      setMessage("Date is required");
       return;
     }
 
     if (transactionDetails.amount.trim().length === 0) {
       setFormErrors({ ...formErrors, amount: true });
+      setMessage("Amount is required");
       return;
     }
 
     if (transactionDetails.description.trim().length === 0) {
       setFormErrors({ ...formErrors, description: true });
+      setMessage("Description is required");
       return;
     }
 
@@ -75,8 +83,14 @@ function AddTransaction() {
 
       setTimeout(() => setIsAddingTransaction(false), 1000);
       if (response.status === 200) {
+        setIsTransactionSuccessfull(true);
+        setMessage("Successfully Added!");
+        setTimeout(() => setIsTransactionSuccessfull(false), 5000);
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
+        setIsTransactionFailed(true);
+        setMessage("Adding Transaction Failed");
+        setTimeout(() => setIsTransactionFailed(false), 5000);
       }
     } catch (error) {}
   }
@@ -171,6 +185,12 @@ function AddTransaction() {
           border={formErrors.description}
         />
       </S.TransactionDescriptionWrapper>
+      <S.MessageWrapper>
+        {(formErrors.date || formErrors.amount || formErrors.description || isTransactionFailed) && (
+          <S.Message isError={true}>{message}</S.Message>
+        )}
+        {isTransactionSuccessfull && <S.Message isError={false}>{message}</S.Message>}
+      </S.MessageWrapper>
       <S.SubmitBtnWrapper>
         <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
           {!isAddingTransaction ? (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as colors from "../../../constants/themeConstants";
+import * as C from "../../../constants/themeConstants";
 import { Button } from "../../Elements/Button";
 
 export const AddTransactionContainer = styled.div`
@@ -9,7 +9,7 @@ export const AddTransactionContainer = styled.div`
   min-height: 15rem;
   border: none;
   border-radius: 20px;
-  box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+  box-shadow: ${C.shadowBlue} 0px 3px 8px;
   margin-top: 20px;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
@@ -24,20 +24,20 @@ export const TransactionDescriptionWrapper = styled.div`
   align-items: center;
 `;
 
-export const Input = styled.input<{border:boolean}>`
+export const Input = styled.input<{ border: boolean }>`
   height: 70%;
   width: 100%;
   padding: 0.8rem;
   outline: none;
   font-size: 0.9rem;
-  border: ${(props) => !props.border ? `none`:`1.3px solid ${colors.error}`};
+  border: ${(props) => (!props.border ? `none` : `1.3px solid ${C.error}`)};
   border-radius: 5px;
-  box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+  box-shadow: ${C.shadowBlue} 0px 3px 8px;
 `;
 
 export const AmountInput = styled(Input)`
   width: 85%;
-`
+`;
 
 export const AmountWrapper = styled.div`
   grid-column: 1 / span 1;
@@ -65,13 +65,13 @@ export const DateWrapper = styled.div`
   align-items: center;
 `;
 
-export const CustomDate = styled(Input)<{border:boolean}>`
+export const CustomDate = styled(Input)<{ border: boolean }>`
   height: 60%;
   width: 70%;
   border-radius: 5px;
   padding: 12px;
-  border: ${({border}) => !border ? `none`:`1.3px solid ${colors.error}`};
-`; 
+  border: ${({ border }) => (!border ? `none` : `1.3px solid ${C.error}`)};
+`;
 
 export const SelectWrapper = styled.div`
   grid-column: 2 / span 2;
@@ -82,12 +82,26 @@ export const SelectWrapper = styled.div`
   align-items: center;
 `;
 
-export const CustomSelect = styled.select<{border:boolean}>`
+export const CustomSelect = styled.select<{ border: boolean }>`
   border-radius: 5px;
   height: 60%;
   width: 45%;
   padding: 10px;
-  box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+  box-shadow: ${C.shadowBlue} 0px 3px 8px;
   outline: none;
-  border: ${(props) => !props.border ? `none`:`1.3px solid ${colors.error}`};
+  border: ${(props) => (!props.border ? `none` : `1.3px solid ${C.error}`)};
+`;
+
+export const MessageWrapper = styled.div`
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+`;
+
+export const Message = styled.p<{isError:boolean}>`
+  padding: 0;
+  margin: 0;
+  color: ${(props) => props.isError ? C.error:C.success};
 `;
