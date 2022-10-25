@@ -12,8 +12,8 @@ import {
   Input,
 } from "./LoginStyles";
 import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
-import * as method from "../../constants/Status";
-import * as E from "../../Variables/routes";
+import * as method from "../../Shared/constants/Status";
+import * as E from "../../Shared/Variables/routes";
 
 export interface ILogin {
   email: string;

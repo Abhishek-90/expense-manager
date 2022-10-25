@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as C from "../../../constants/themeConstants";
+import * as C from "../../../Shared/constants/themeConstants";
 import { Button } from "../../Elements/Button";
 
 export const AddTransactionContainer = styled.div`

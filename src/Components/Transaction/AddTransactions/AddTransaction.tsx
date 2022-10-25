@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as S from "./AddTransactions.styled";
-import * as E from "../../../Variables/routes";
-import * as status from "../../../constants/Status";
+import * as E from "../../../Shared/Variables/routes";
+import * as status from "../../../Shared/constants/Status";
 
 interface ITransactionDetails {
   date: Date | null;
@@ -83,7 +83,6 @@ function AddTransaction() {
           amount: parseInt(transactionDetails.amount),
           description: transactionDetails.description,
           tag: transactionDetails.tag,
-          authToken: localStorage.getItem("authToken"),
         }),
       });
 
@@ -203,7 +202,7 @@ function AddTransaction() {
           {!isAddingTransaction ? (
             "Add Transaction"
           ) : (
-            <img src={require("./Spinner.gif")} alt="Loading..." />
+            <img src={require("../../../Shared/Media/Spinner.gif")} alt="Loading..." />
           )}
         </S.SubmitBtn>
       </S.SubmitBtnWrapper>
