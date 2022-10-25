@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as colors from '../../Shared/constants/themeConstants'
+import * as colors from '../constants/themeConstants'
 
 export const Button = styled.button`
   width: 8rem;

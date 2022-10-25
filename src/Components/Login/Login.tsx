@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { Button } from "../Elements/Button";
+import { Button } from "../../Shared/Elements/Button";
 import {
   Description,
   Wrapper,
@@ -11,7 +11,7 @@ import {
   Container,
   Input,
 } from "./LoginStyles";
-import { H1, UL, ListItem, H3 } from "../Elements/CustomTags";
+import { H1, UL, ListItem, H3 } from "../../Shared/Elements/CustomTags";
 import * as method from "../../Shared/constants/Status";
 import * as E from "../../Shared/Variables/routes";
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as C from "../../../Shared/constants/themeConstants";
-import { Button } from "../../Elements/Button";
+import { Button } from "../../../Shared/Elements/Button";
 
 export const AddTransactionContainer = styled.div`
   width: 60%;
