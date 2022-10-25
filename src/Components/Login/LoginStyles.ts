@@ -77,6 +77,15 @@ export const TitleDiv = styled.div`
   }
 `;
 
+export const MessageWrapper = styled.div`
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+`;
+
 export const Input = styled.input<{border?:boolean}>`
   height: 2.5rem;
   width: 40%;

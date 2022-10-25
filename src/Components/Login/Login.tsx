@@ -2,16 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { Button } from "../../Shared/Elements/Button";
-import {
-  Description,
-  Wrapper,
-  TitleDiv,
-  LoginDiv,
-  ButtonContainer,
-  Container,
-  Input,
-} from "./LoginStyles";
-import { H1, UL, ListItem, H3 } from "../../Shared/Elements/CustomTags";
+import * as S from "./LoginStyles";
+import * as T from "../../Shared/Elements/CustomTags";
 import * as method from "../../Shared/constants/Status";
 import * as E from "../../Shared/Variables/routes";
 import Spinner from "../../Shared/Elements/Spinner";
@@ -27,91 +19,116 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [emailEmpty, setEmailEmpty] = useState<boolean>(false);
+  const [emailError, setEmailError] = useState<boolean>(false);
   const [passwordEmpty, setPasswordEmpty] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoginFailed, setIsLoginFailed] = useState<boolean>(false);
+  const [isLoginSuccess, setIsLoginSuccess] = useState<boolean>(false);
+  const [message, setMessage] = useState<String>("");
 
   const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
+    setEmailError(false);
+    setPasswordEmpty(false);
   };
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (login.email.trim().length > 0 && login.password.trim().length > 0) {
-      setEmailEmpty(false);
-      setPasswordEmpty(false);
-      try {
-        setIsLoading(true);
-        const response = await fetch(E.LOGIN, {
-          method: method.POST,
-          credentials: "include",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            email: login.email,
-            password: login.password,
-          }),
-        });
-        setTimeout(() => setIsLoading(false), 1000);
-        if (response.status === 200) {
-          setTimeout(() => navigate("/dashboard"), 1500);
-        } else {
-          //TODO: Add alert box here to display that Credentials are wrong.
-        }
-      } catch (error) {
-        console.log(error);
+    if (login.email.trim().length === 0) {
+      setEmailError(true);
+      setMessage("Email Id Required");
+      return;
+    }
+
+    if (login.password.trim().length === 0) {
+      setPasswordEmpty(true);
+      setMessage("Password Required");
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const response = await fetch(E.LOGIN, {
+        method: method.POST,
+        credentials: "include",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email: login.email,
+          password: login.password,
+        }),
+      });
+      setTimeout(() => setIsLoading(false), 800);
+      if (response.status === 200) {
+        setMessage("Login Successful");
+        setIsLoginSuccess(true);
+        setTimeout(() => {
+          setIsLoginSuccess(false);
+          navigate("/dashboard");
+        }, 1050);
+      } else {
+        //TODO: Add alert box here to display that Credentials are wrong.
+        setMessage("Login Failed. Try Again");
+        setIsLoginFailed(true);
+        setTimeout(() => {
+          setIsLoginFailed(false);
+        }, 2000);
       }
-    } else {
-      login.email.trim().length === 0 && setEmailEmpty(true);
-      login.password.trim().length === 0 && setPasswordEmpty(true);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   return (
-    <Container>
-      <Description>
-        <H1>Expense Manager</H1>
-        <UL>
-          <ListItem>Expenses</ListItem>
-          <ListItem>Investments</ListItem>
-          <ListItem>Loans</ListItem>
-        </UL>
-        <H3>Manage all in One Place!</H3>
-      </Description>
-      <Wrapper>
-        <TitleDiv>Expense Manager</TitleDiv>
-        <form onSubmit={onSubmit}>
-          <LoginDiv>
-            <Input
-              name="email"
-              type="text"
-              placeholder="Email Address"
-              value={login.email}
-              onChange={handleChange}
-              border={emailEmpty}
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={login.password}
-              onChange={handleChange}
-              border={passwordEmpty}
-            />
-            <ButtonContainer>
-              <Button type="submit" onClick={onSubmit}>
-                {isLoading ? <Spinner/> : "Login"}
-              </Button>
-              <Link to="/signup">
-                <Button>SignUp</Button>
-              </Link>
-            </ButtonContainer>
-          </LoginDiv>
-        </form>
-      </Wrapper>
-    </Container>
+    <S.Container>
+      <S.Description>
+        <T.H1>Expense Manager</T.H1>
+        <T.UL>
+          <T.ListItem>Expenses</T.ListItem>
+          <T.ListItem>Investments</T.ListItem>
+          <T.ListItem>Loans</T.ListItem>
+        </T.UL>
+        <T.H3>Manage all in One Place!</T.H3>
+      </S.Description>
+      <S.Wrapper>
+        <S.TitleDiv>Expense Manager</S.TitleDiv>
+        <S.LoginDiv>
+          <S.Input
+            name="email"
+            type="text"
+            placeholder="Email Address"
+            value={login.email}
+            onChange={handleChange}
+            border={emailError}
+          />
+          <S.Input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={login.password}
+            onChange={handleChange}
+            border={passwordEmpty}
+          />
+          <S.ButtonContainer>
+            <Button type="button" onClick={onSubmit}>
+              {isLoading ? <Spinner /> : "Login"}
+            </Button>
+            <Link to="/signup">
+              <Button>SignUp</Button>
+            </Link>
+          </S.ButtonContainer>
+          <S.MessageWrapper>
+            {(emailError || passwordEmpty) && (
+              <T.Message isError={true}>{message}</T.Message>
+            )}
+            {isLoginSuccess && <T.Message isError={false}>{message}</T.Message>}
+            {isLoginFailed && <T.Message isError={true}>{message}</T.Message>}
+          </S.MessageWrapper>
+        </S.LoginDiv>
+      </S.Wrapper>
+    </S.Container>
   );
 };
 
