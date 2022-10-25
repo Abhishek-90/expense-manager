@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as colors from "../../Shared/constants/themeConstants";
-import { Button } from "../Elements/Button";
+import { Button } from "../../Shared/Elements/Button";
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 

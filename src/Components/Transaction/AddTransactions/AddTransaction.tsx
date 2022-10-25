@@ -2,33 +2,20 @@ import React, { useState } from "react";
 import * as S from "./AddTransactions.styled";
 import * as E from "../../../Shared/Variables/routes";
 import * as status from "../../../Shared/constants/Status";
-
-interface ITransactionDetails {
-  date: Date | null;
-  description: string;
-  type: string;
-  tag: string;
-  amount: string;
-}
-
-interface IFormErrors {
-  date: boolean;
-  description: boolean;
-  type: boolean;
-  tag: boolean;
-  amount: boolean;
-}
+import * as I from "./Interface";
+import * as T from "../../../Shared/Elements/CustomTags";
+import Spinner from "../../../Shared/Elements/Spinner";
 
 function AddTransaction() {
   const [transactionDetails, setTransactionDetails] =
-    useState<ITransactionDetails>({
+    useState<I.ITransactionDetails>({
       date: null,
       description: "",
       type: "income",
       tag: "salary",
       amount: "",
     });
-  const [formErrors, setFormErrors] = useState<IFormErrors>({
+  const [formErrors, setFormErrors] = useState<I.IFormErrors>({
     date: false,
     description: false,
     type: false,
@@ -193,16 +180,16 @@ function AddTransaction() {
       </S.TransactionDescriptionWrapper>
       <S.MessageWrapper>
         {(formErrors.date || formErrors.amount || formErrors.description || isTransactionFailed) && (
-          <S.Message isError={true}>{message}</S.Message>
+          <T.Message isError={true}>{message}</T.Message>
         )}
-        {isTransactionSuccessfull && <S.Message isError={false}>{message}</S.Message>}
+        {isTransactionSuccessfull && <T.Message isError={false}>{message}</T.Message>}
       </S.MessageWrapper>
       <S.SubmitBtnWrapper>
         <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
           {!isAddingTransaction ? (
             "Add Transaction"
           ) : (
-            <img src={require("../../../Shared/Media/Spinner.gif")} alt="Loading..." />
+            <Spinner />
           )}
         </S.SubmitBtn>
       </S.SubmitBtnWrapper>

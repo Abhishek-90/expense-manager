@@ -11,7 +11,7 @@ import {
   TitleWrap,
   CustomClose,
 } from "./Navbar.styled";
-import { CustomLink } from "../Elements/CustomTags";
+import { CustomLink } from "../../Shared/Elements/CustomTags";
 
 const Navbar = () => {
   const navigate = useNavigate();

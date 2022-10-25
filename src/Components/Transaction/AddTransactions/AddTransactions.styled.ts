@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import * as C from "../../../Shared/constants/themeConstants";
-import { Button } from "../../Elements/Button";
+import { Button } from "../../../Shared/Elements/Button";
 
 export const AddTransactionContainer = styled.div`
   width: 60%;
@@ -98,10 +98,4 @@ export const MessageWrapper = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-`;
-
-export const Message = styled.p<{isError:boolean}>`
-  padding: 0;
-  margin: 0;
-  color: ${(props) => props.isError ? C.error:C.success};
 `;
