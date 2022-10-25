@@ -14,6 +14,7 @@ import {
 import { H1, UL, ListItem, H3 } from "../../Shared/Elements/CustomTags";
 import * as method from "../../Shared/constants/Status";
 import * as E from "../../Shared/Variables/routes";
+import Spinner from "../../Shared/Elements/Spinner";
 
 export interface ILogin {
   email: string;
@@ -28,6 +29,7 @@ const Login = () => {
   });
   const [emailEmpty, setEmailEmpty] = useState<boolean>(false);
   const [passwordEmpty, setPasswordEmpty] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -40,6 +42,7 @@ const Login = () => {
       setEmailEmpty(false);
       setPasswordEmpty(false);
       try {
+        setIsLoading(true);
         const response = await fetch(E.LOGIN, {
           method: method.POST,
           credentials: "include",
@@ -51,8 +54,9 @@ const Login = () => {
             password: login.password,
           }),
         });
+        setTimeout(() => setIsLoading(false), 1000);
         if (response.status === 200) {
-          navigate("/dashboard");
+          setTimeout(() => navigate("/dashboard"), 1500);
         } else {
           //TODO: Add alert box here to display that Credentials are wrong.
         }
@@ -98,7 +102,7 @@ const Login = () => {
             />
             <ButtonContainer>
               <Button type="submit" onClick={onSubmit}>
-                Login
+                {isLoading ? <Spinner/> : "Login"}
               </Button>
               <Link to="/signup">
                 <Button>SignUp</Button>
