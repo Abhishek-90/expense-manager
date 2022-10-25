@@ -3,6 +3,7 @@ import * as S from "./AddTransactions.styled";
 import * as E from "../../../Shared/Variables/routes";
 import * as status from "../../../Shared/constants/Status";
 import * as I from "./Interface";
+import Spinner from "../../../Shared/Elements/Spinner";
 
 function AddTransaction() {
   const [transactionDetails, setTransactionDetails] =
@@ -187,7 +188,7 @@ function AddTransaction() {
           {!isAddingTransaction ? (
             "Add Transaction"
           ) : (
-            <img src={require("../../../Shared/Media/Spinner.gif")} alt="Loading..." />
+            <Spinner />
           )}
         </S.SubmitBtn>
       </S.SubmitBtnWrapper>
