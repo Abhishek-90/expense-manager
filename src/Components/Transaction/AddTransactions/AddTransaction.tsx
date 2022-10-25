@@ -2,33 +2,18 @@ import React, { useState } from "react";
 import * as S from "./AddTransactions.styled";
 import * as E from "../../../Shared/Variables/routes";
 import * as status from "../../../Shared/constants/Status";
-
-interface ITransactionDetails {
-  date: Date | null;
-  description: string;
-  type: string;
-  tag: string;
-  amount: string;
-}
-
-interface IFormErrors {
-  date: boolean;
-  description: boolean;
-  type: boolean;
-  tag: boolean;
-  amount: boolean;
-}
+import * as I from "./Interface";
 
 function AddTransaction() {
   const [transactionDetails, setTransactionDetails] =
-    useState<ITransactionDetails>({
+    useState<I.ITransactionDetails>({
       date: null,
       description: "",
       type: "income",
       tag: "salary",
       amount: "",
     });
-  const [formErrors, setFormErrors] = useState<IFormErrors>({
+  const [formErrors, setFormErrors] = useState<I.IFormErrors>({
     date: false,
     description: false,
     type: false,
