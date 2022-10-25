@@ -99,9 +99,3 @@ export const MessageWrapper = styled.div`
   justify-content: end;
   align-items: center;
 `;
-
-export const Message = styled.p<{isError:boolean}>`
-  padding: 0;
-  margin: 0;
-  color: ${(props) => props.isError ? C.error:C.success};
-`;

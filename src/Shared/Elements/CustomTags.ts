@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import * as C from "../constants/themeConstants";
 
 export const H1 = styled.h1`
   font-size: 2rem;
@@ -23,3 +24,9 @@ export const ListItem = styled.li`
 export const CustomLink = styled(Link)`
   text-decoration: none;
 `
+
+export const Message = styled.p<{isError:boolean}>`
+  padding: 0;
+  margin: 0;
+  color: ${(props) => props.isError ? C.error:C.success};
+`;

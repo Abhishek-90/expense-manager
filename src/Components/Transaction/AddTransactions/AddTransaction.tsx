@@ -3,6 +3,7 @@ import * as S from "./AddTransactions.styled";
 import * as E from "../../../Shared/Variables/routes";
 import * as status from "../../../Shared/constants/Status";
 import * as I from "./Interface";
+import * as T from "../../../Shared/Elements/CustomTags";
 import Spinner from "../../../Shared/Elements/Spinner";
 
 function AddTransaction() {
@@ -179,9 +180,9 @@ function AddTransaction() {
       </S.TransactionDescriptionWrapper>
       <S.MessageWrapper>
         {(formErrors.date || formErrors.amount || formErrors.description || isTransactionFailed) && (
-          <S.Message isError={true}>{message}</S.Message>
+          <T.Message isError={true}>{message}</T.Message>
         )}
-        {isTransactionSuccessfull && <S.Message isError={false}>{message}</S.Message>}
+        {isTransactionSuccessfull && <T.Message isError={false}>{message}</T.Message>}
       </S.MessageWrapper>
       <S.SubmitBtnWrapper>
         <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
