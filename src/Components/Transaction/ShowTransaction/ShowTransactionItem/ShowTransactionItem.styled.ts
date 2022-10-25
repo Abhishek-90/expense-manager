@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as colors from "../../../../constants/themeConstants";
+import * as colors from "../../../../Shared/constants/themeConstants";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import EditOutlined from "@material-ui/icons/EditOutlined";
 

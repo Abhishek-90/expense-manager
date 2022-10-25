@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { authentication } from "../../Variables/routes";
-import * as method from "../../constants/Status";
+import { authentication } from "../../Shared/Variables/routes";
+import * as method from "../../Shared/constants/Status";
 import { Wrapper, SignUpDiv, ButtonContainer, Input } from "./SignupStyles";
 import { Button } from "../Elements/Button";
 
