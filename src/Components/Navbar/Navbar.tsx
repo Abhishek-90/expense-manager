@@ -1,16 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  CustomMenu,
-  CustomMenuBtn,
-  CustomNavbar,
-  LogoutBtnWrap,
-  LogoutButton,
-  MenuTitleWrap,
-  Title,
-  TitleWrap,
-  CustomClose,
-} from "./Navbar.styled";
+import * as S from "./Navbar.styled";
 import * as M from "../../Shared/constants/Status";
 import * as E from "../../Shared/Variables/routes";
 import { CustomLink } from "../../Shared/Elements/CustomTags";
@@ -29,15 +19,15 @@ const Navbar = () => {
   };
 
   return (
-    <CustomNavbar>
-      <MenuTitleWrap>
-        <CustomMenuBtn onClick={() => setShowMenu(true)} />
-        <TitleWrap>
-          <Title href="/dashboard/*">Expense Manager</Title>
-        </TitleWrap>
-      </MenuTitleWrap>
-      <CustomMenu isMenuOpen={showMenu}>
-        <CustomClose onClick={() => setShowMenu(false)} />
+    <S.CustomNavbar>
+      <S.MenuTitleWrap>
+        <S.CustomMenuBtn onClick={() => setShowMenu(true)} />
+        <S.TitleWrap>
+          <S.Title href="/dashboard/*">Expense Manager</S.Title>
+        </S.TitleWrap>
+      </S.MenuTitleWrap>
+      <S.CustomMenu isMenuOpen={showMenu}>
+        <S.CustomClose onClick={() => setShowMenu(false)} />
         <ul>
           <CustomLink to="/dashboard" onClick={() => setShowMenu(false)}>
             <li>DashBoard</li>
@@ -58,11 +48,11 @@ const Navbar = () => {
             <li>Investments</li>
           </CustomLink>
         </ul>
-      </CustomMenu>
-      <LogoutBtnWrap>
-        <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
-      </LogoutBtnWrap>
-    </CustomNavbar>
+      </S.CustomMenu>
+      <S.LogoutBtnWrap>
+        <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
+      </S.LogoutBtnWrap>
+    </S.CustomNavbar>
   );
 };
 
