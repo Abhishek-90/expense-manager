@@ -11,13 +11,21 @@ import {
   TitleWrap,
   CustomClose,
 } from "./Navbar.styled";
+import * as M from "../../Shared/constants/Status";
+import * as E from "../../Shared/Variables/routes";
 import { CustomLink } from "../../Shared/Elements/CustomTags";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState<boolean>(false);
-  const handleLogout = () => {
-    navigate("/");
+  const handleLogout = async () => {
+    const response = await fetch(E.LOGOUT, {
+      method: M.GET,
+      credentials: "include",
+    });
+    if (response.status === 200) {
+      navigate("/");
+    }
   };
 
   return (
