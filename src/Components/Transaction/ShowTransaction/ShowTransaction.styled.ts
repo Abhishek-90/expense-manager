@@ -28,7 +28,7 @@ export const DateColumnWrapper = styled.div`
 
 export const AmountColumnWrapper = styled.div`
   height: 100%;
-  flex: 0.6;
+  flex: 0.4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,7 @@ export const AmountColumnWrapper = styled.div`
 
 export const DescriptionColumnWrapper = styled.div`
   height: 100%;
-  flex: 1.5;
+  flex: 1.8;
   display: flex;
   justify-content: center;
   align-items: center;

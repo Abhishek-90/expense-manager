@@ -22,14 +22,14 @@ export const DateWrapper = styled.div`
 `;
 
 export const AmountWrapper = styled.div`
-  flex: 0.6;
+  flex: 0.4;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const DescriptionWrapper = styled.div`
-  flex: 1.5;
+  flex: 1.8;
   display: flex;
   justify-content: center;
   align-items: center;
