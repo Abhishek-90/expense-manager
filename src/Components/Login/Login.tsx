@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { Button } from "../../Shared/Elements/Button";
 import * as S from "./LoginStyles";
 import * as T from "../../Shared/Elements/CustomTags";
-import * as method from "../../Shared/constants/Status";
-import * as E from "../../Shared/Variables/routes";
+import * as M from "../../Shared/constants/Status";
+import * as R from "../../Shared/Variables/routes";
 import Spinner from "../../Shared/Elements/Spinner";
+import * as SC from "../../Shared/constants/StatusCode";
 
 export interface ILogin {
   email: string;
@@ -25,6 +26,20 @@ const Login = () => {
   const [isLoginFailed, setIsLoginFailed] = useState<boolean>(false);
   const [isLoginSuccess, setIsLoginSuccess] = useState<boolean>(false);
   const [message, setMessage] = useState<String>("");
+
+  useEffect(() => {
+    async function autoLogin() {
+      const response = await fetch(R.AUTOLOGIN, {
+        method: M.GET,
+        credentials: "include",
+      });
+
+      if (response.status === SC.OK) {
+        navigate("/dashboard");
+      }
+    }
+    autoLogin();
+  });
 
   const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
@@ -49,8 +64,8 @@ const Login = () => {
 
     try {
       setIsLoading(true);
-      const response = await fetch(E.LOGIN, {
-        method: method.POST,
+      const response = await fetch(R.LOGIN, {
+        method: M.POST,
         credentials: "include",
         headers: {
           "Content-type": "application/json",
