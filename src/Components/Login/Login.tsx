@@ -36,10 +36,12 @@ const Login = () => {
 
       if (response.status === SC.OK) {
         navigate("/dashboard");
+      } else {
+        navigate("/");
       }
     }
     autoLogin();
-  });
+  }, []);
 
   const handleChange = (e: any) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
