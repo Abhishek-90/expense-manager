@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { authentication } from "../../Shared/Variables/routes";
+import * as R from "../../Shared/Variables/routes";
 import * as method from "../../Shared/constants/Status";
 import { Wrapper, SignUpDiv, ButtonContainer, Input } from "./SignupStyles";
 import { Button } from "../../Shared/Elements/Button";
@@ -29,7 +29,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${authentication}signup`, {
+      const response = await fetch(R.SINGUP, {
         method: method.POST,
         headers: {
           "Content-type": "application/json",
