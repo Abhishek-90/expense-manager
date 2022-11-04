@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import * as R from "../../Shared/Variables/routes";
-import * as method from "../../Shared/constants/Status";
 import { Wrapper, SignUpDiv, ButtonContainer, Input } from "./SignupStyles";
 import { Button } from "../../Shared/Elements/Button";
 import Spinner from "../../Shared/Elements/Spinner";
+import * as R from "../../Shared/Variables/routes";
+import * as method from "../../Shared/constants/Status";
+import * as SC from "../../Shared/constants/StatusCode";
+
 export interface ISignUp {
   fname: string;
   email: string;
@@ -21,6 +23,7 @@ const Signup = () => {
     confirmPassword: "",
   });
   const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
+  const [message, setMessage] = useState<String>("");
 
   const onChange = (e: any) => {
     setSignup({ ...signup, [e?.target?.name]: e.target.value });
@@ -43,13 +46,11 @@ const Signup = () => {
           password: signup.password,
         }),
       });
-      console.log(response);
-      if (response.status === 201) {
-        const json = await response.json();
-        localStorage.setItem("authToken", json.authToken);
-        setIsSigningUp(false);
-        navigate("/dashboard");
-      } else {
+      setTimeout(() => setIsSigningUp(false), 900);
+      if (response.status === SC.CREATED) {
+        setMessage("User Created, Welcome!");
+        setTimeout(() => navigate("/dashboard"), 1150);
+      } else if (response.status === SC.EXISTS){
         //TODO: Add Alert in case of Sign up fails along with error.
       }
     } catch (error) {
@@ -61,13 +62,12 @@ const Signup = () => {
     <>
       <Wrapper>
         <h1>Sign Up</h1>
-        <form className="my-3" onSubmit={onSubmit}>
           <SignUpDiv>
             <Input
               type="text"
               value={signup.fname}
               name="fname"
-              placeholder="Enter you Full Name"
+              placeholder="Full Name"
               onChange={onChange}
             />
             <Input
@@ -92,12 +92,11 @@ const Signup = () => {
               onChange={onChange}
             />
             <ButtonContainer>
-              <Button type="submit">
+              <Button type="button" onClick={onSubmit}>
                 {isSigningUp ? <Spinner /> : "SignUp"}
               </Button>
             </ButtonContainer>
           </SignUpDiv>
-        </form>
       </Wrapper>
     </>
   );
