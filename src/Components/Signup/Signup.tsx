@@ -4,7 +4,7 @@ import * as R from "../../Shared/Variables/routes";
 import * as method from "../../Shared/constants/Status";
 import { Wrapper, SignUpDiv, ButtonContainer, Input } from "./SignupStyles";
 import { Button } from "../../Shared/Elements/Button";
-
+import Spinner from "../../Shared/Elements/Spinner";
 export interface ISignUp {
   fname: string;
   email: string;
@@ -20,6 +20,7 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
 
   const onChange = (e: any) => {
     setSignup({ ...signup, [e?.target?.name]: e.target.value });
@@ -29,6 +30,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
+      setIsSigningUp(true);
       const response = await fetch(R.SINGUP, {
         method: method.POST,
         headers: {
@@ -41,11 +43,11 @@ const Signup = () => {
           password: signup.password,
         }),
       });
-
-      const json = await response.json();
-
-      if (response.status === 200) {
+      console.log(response);
+      if (response.status === 201) {
+        const json = await response.json();
         localStorage.setItem("authToken", json.authToken);
+        setIsSigningUp(false);
         navigate("/dashboard");
       } else {
         //TODO: Add Alert in case of Sign up fails along with error.
@@ -76,21 +78,23 @@ const Signup = () => {
               onChange={onChange}
             />
             <Input
-              type="text"
+              type="password"
               value={signup.password}
               name="password"
               placeholder="Password"
               onChange={onChange}
             />
             <Input
-              type="text"
+              type="password"
               value={signup.confirmPassword}
               name="confirmPassword"
               placeholder="Confirm Password"
               onChange={onChange}
             />
             <ButtonContainer>
-              <Button type="submit">SignUp</Button>
+              <Button type="submit">
+                {isSigningUp ? <Spinner /> : "SignUp"}
+              </Button>
             </ButtonContainer>
           </SignUpDiv>
         </form>
