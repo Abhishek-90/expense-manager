@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Wrapper, SignUpDiv, ButtonContainer, Input } from "./SignupStyles";
-import { Button } from "../../Shared/Elements/Button";
 import Spinner from "../../Shared/Elements/Spinner";
+import * as S from "./SignupStyles";
+import * as T from "../../Shared/Elements/Button";
 import * as R from "../../Shared/Variables/routes";
 import * as method from "../../Shared/constants/Status";
 import * as SC from "../../Shared/constants/StatusCode";
@@ -60,44 +60,44 @@ const Signup = () => {
 
   return (
     <>
-      <Wrapper>
+      <S.Wrapper>
         <h1>Sign Up</h1>
-          <SignUpDiv>
-            <Input
+          <S.SignUpDiv>
+            <S.Input
               type="text"
               value={signup.fname}
               name="fname"
               placeholder="Full Name"
               onChange={onChange}
             />
-            <Input
+            <S.Input
               type="text"
               value={signup.email}
               name="email"
               placeholder="Email Address"
               onChange={onChange}
             />
-            <Input
+            <S.Input
               type="password"
               value={signup.password}
               name="password"
               placeholder="Password"
               onChange={onChange}
             />
-            <Input
+            <S.Input
               type="password"
               value={signup.confirmPassword}
               name="confirmPassword"
               placeholder="Confirm Password"
               onChange={onChange}
             />
-            <ButtonContainer>
-              <Button type="button" onClick={onSubmit}>
+            <S.ButtonContainer>
+              <T.Button type="button" onClick={onSubmit}>
                 {isSigningUp ? <Spinner /> : "SignUp"}
-              </Button>
-            </ButtonContainer>
-          </SignUpDiv>
-      </Wrapper>
+              </T.Button>
+            </S.ButtonContainer>
+          </S.SignUpDiv>
+      </S.Wrapper>
     </>
   );
 };
