@@ -19,6 +19,7 @@ interface ISignupFormError {
   name: boolean;
   email: boolean;
   password: boolean;
+  error: boolean;
 }
 
 const Signup = () => {
@@ -34,6 +35,7 @@ const Signup = () => {
     name: false,
     email: false,
     password: false,
+    error: false
   });
   const [message, setMessage] = useState<String>("");
 
@@ -89,12 +91,20 @@ const Signup = () => {
         }),
       });
       setTimeout(() => setIsSigningUp(false), 900);
-      if (response.status === SC.CREATED) {
+
+      if(response.status === SC.BADREQUEST) {
+        //Signup failed due to unknown error
+        setErrors({...errors, error:true});
+        setMessage("Request Failed. Try Again");
+      } else if (response.status === SC.EXISTS) {
+        //Signup failed due to Email ID Already Exists
+        setErrors({...errors, email:true});
+        setMessage("User Id Already Exists");
+      } else if (response.status === SC.CREATED) {
+        //New user created
         setMessage("User Created, Welcome!");
         setTimeout(() => navigate("/dashboard"), 1150);
-      } else if (response.status === SC.EXISTS) {
-        //TODO: Add Alert in case of Sign up fails along with error.
-      }
+      } 
     } catch (error) {
       console.log(error);
     }
