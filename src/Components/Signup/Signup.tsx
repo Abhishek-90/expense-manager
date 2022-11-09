@@ -50,7 +50,7 @@ const Signup = () => {
       if (response.status === SC.CREATED) {
         setMessage("User Created, Welcome!");
         setTimeout(() => navigate("/dashboard"), 1150);
-      } else if (response.status === SC.EXISTS){
+      } else if (response.status === SC.EXISTS) {
         //TODO: Add Alert in case of Sign up fails along with error.
       }
     } catch (error) {
@@ -62,41 +62,61 @@ const Signup = () => {
     <>
       <S.Wrapper>
         <h1>Sign Up</h1>
-          <S.SignUpDiv>
-            <S.Input
-              type="text"
-              value={signup.fname}
-              name="fname"
-              placeholder="Full Name"
-              onChange={onChange}
-            />
-            <S.Input
-              type="text"
-              value={signup.email}
-              name="email"
-              placeholder="Email Address"
-              onChange={onChange}
-            />
-            <S.Input
-              type="password"
-              value={signup.password}
-              name="password"
-              placeholder="Password"
-              onChange={onChange}
-            />
-            <S.Input
-              type="password"
-              value={signup.confirmPassword}
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              onChange={onChange}
-            />
-            <S.ButtonContainer>
-              <T.Button type="button" onClick={onSubmit}>
-                {isSigningUp ? <Spinner /> : "SignUp"}
-              </T.Button>
-            </S.ButtonContainer>
-          </S.SignUpDiv>
+        <S.SignUpDiv>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="text"
+                value={signup.fname}
+                name="fname"
+                placeholder="Full Name"
+                onChange={onChange}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper></S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="text"
+                value={signup.email}
+                name="email"
+                placeholder="Email Address"
+                onChange={onChange}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper></S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="password"
+                value={signup.password}
+                name="password"
+                placeholder="Password"
+                onChange={onChange}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper></S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="password"
+                value={signup.confirmPassword}
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                onChange={onChange}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper></S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.ButtonContainer>
+            <T.Button type="button" onClick={onSubmit}>
+              {isSigningUp ? <Spinner /> : "SignUp"}
+            </T.Button>
+          </S.ButtonContainer>
+        </S.SignUpDiv>
       </S.Wrapper>
     </>
   );

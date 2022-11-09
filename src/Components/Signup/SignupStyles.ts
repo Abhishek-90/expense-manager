@@ -1,41 +1,38 @@
 import styled from "styled-components";
-import * as colors from "../../Shared/constants/themeConstants"
+import * as colors from "../../Shared/constants/themeConstants";
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 4px 3px 80px rgba(97, 78, 152, 0.24);
-
-  @media screen and (max-width: 700px) {
-    width: 100%;
-    height: 100vh;
-  }
 `;
 
 export const SignUpDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  // background: orange;
+  width: 70%;
+  height: 18rem;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
   @media screen and (max-width: 700px) {
+    width: 100%;
+    height: 28rem;
+    display: flex;
+    flex-direction: column;
     justify-items: center;
     align-items: center;
-    heigth: 100vh;
-    width: 100vw;
   }
 `;
 
 export const ButtonContainer = styled.div`
-  height: fit-content;
-  width: 20rem;
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 1;
   display: flex;
-  justify-content: space-around;
-  margin-top: 2rem;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (max-width: 700px) {
     width: 75%;
@@ -44,17 +41,35 @@ export const ButtonContainer = styled.div`
   }
 `;
 
+export const InputWrapperOutter = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const InputWrapper = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+`;
+
+export const MessageWrapper = styled.div`
+  width: 100%;
+  height: 20%;
+  text-align: center;
+`;
+
 export const Input = styled.input`
   height: 2.5rem;
-  width: 100%;
+  width: 80%;
   padding: 0.6rem;
-  outline:none;
-  font-size: 0.9rem; 
+  outline: none;
+  font-size: 0.9rem;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
-  margin-top: 2.4rem;
   border: none;
-
-  @media screen and (max-width: 700px) {
-    width: 80%;
-  }
-`
+`;
