@@ -1,28 +1,40 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import Spinner from "../../Shared/Elements/Spinner";
+import { Button } from "../../Shared/Elements/Button";
 import * as S from "./SignupStyles";
-import * as T from "../../Shared/Elements/Button";
 import * as R from "../../Shared/Variables/routes";
 import * as method from "../../Shared/constants/Status";
 import * as SC from "../../Shared/constants/StatusCode";
+import * as T from "../../Shared/Elements/CustomTags";
 
-export interface ISignUp {
-  fname: string;
+interface ISignUp {
+  name: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
+interface ISignupFormError {
+  name: boolean;
+  email: boolean;
+  password: boolean;
+}
+
 const Signup = () => {
   const navigate = useNavigate();
   const [signup, setSignup] = useState<ISignUp>({
-    fname: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
   const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
+  const [errors, setErrors] = useState<ISignupFormError>({
+    name: false,
+    email: false,
+    password: false,
+  });
   const [message, setMessage] = useState<String>("");
 
   const onChange = (e: any) => {
@@ -31,6 +43,36 @@ const Signup = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
+
+    if (signup.name.trim().length === 0) {
+      setErrors({ ...errors, name: true });
+      setMessage("*Name Required");
+      return;
+    }
+
+    if (signup.email.trim().length === 0) {
+      setErrors({ ...errors, email: true });
+      setMessage("*Email Required");
+      return;
+    }
+
+    if (signup.password.trim().length === 0) {
+      setErrors({ ...errors, password: true });
+      setMessage("*Password Required");
+      return;
+    }
+
+    if (signup.password.trim().length < 8) {
+      setErrors({ ...errors, password: true });
+      setMessage("*Minimum password length is 8");
+      return;
+    }
+
+    if (signup.password !== signup.confirmPassword) {
+      setErrors({ ...errors, password: true });
+      setMessage("Passwords must Match");
+      return;
+    }
 
     try {
       setIsSigningUp(true);
@@ -41,7 +83,7 @@ const Signup = () => {
           "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
-          name: signup.fname,
+          name: signup.name,
           email: signup.email,
           password: signup.password,
         }),
@@ -67,13 +109,17 @@ const Signup = () => {
             <S.InputWrapper>
               <S.Input
                 type="text"
-                value={signup.fname}
-                name="fname"
+                value={signup.name}
+                name="name"
                 placeholder="Full Name"
                 onChange={onChange}
               />
             </S.InputWrapper>
-            <S.MessageWrapper></S.MessageWrapper>
+            <S.MessageWrapper>
+              {errors.name && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
           </S.InputWrapperOutter>
           <S.InputWrapperOutter>
             <S.InputWrapper>
@@ -85,7 +131,11 @@ const Signup = () => {
                 onChange={onChange}
               />
             </S.InputWrapper>
-            <S.MessageWrapper></S.MessageWrapper>
+            <S.MessageWrapper>
+              {errors.email && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
           </S.InputWrapperOutter>
           <S.InputWrapperOutter>
             <S.InputWrapper>
@@ -94,10 +144,17 @@ const Signup = () => {
                 value={signup.password}
                 name="password"
                 placeholder="Password"
-                onChange={onChange}
+                onChange={(e) => {
+                  onChange(e);
+                  setErrors({ ...errors, password: false });
+                }}
               />
             </S.InputWrapper>
-            <S.MessageWrapper></S.MessageWrapper>
+            <S.MessageWrapper>
+              {errors.password && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
           </S.InputWrapperOutter>
           <S.InputWrapperOutter>
             <S.InputWrapper>
@@ -106,15 +163,22 @@ const Signup = () => {
                 value={signup.confirmPassword}
                 name="confirmPassword"
                 placeholder="Confirm Password"
-                onChange={onChange}
+                onChange={(e) => {
+                  onChange(e);
+                  setErrors({ ...errors, password: false });
+                }}
               />
             </S.InputWrapper>
-            <S.MessageWrapper></S.MessageWrapper>
+            <S.MessageWrapper>
+              {errors.password && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
           </S.InputWrapperOutter>
           <S.ButtonContainer>
-            <T.Button type="button" onClick={onSubmit}>
+            <Button type="button" onClick={onSubmit}>
               {isSigningUp ? <Spinner /> : "SignUp"}
-            </T.Button>
+            </Button>
           </S.ButtonContainer>
         </S.SignUpDiv>
       </S.Wrapper>
