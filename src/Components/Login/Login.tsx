@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { Button } from "../../Shared/Elements/Button";
+import Spinner from "../../Shared/Elements/Spinner";
 import * as S from "./LoginStyles";
 import * as T from "../../Shared/Elements/CustomTags";
 import * as M from "../../Shared/constants/Status";
 import * as R from "../../Shared/Variables/routes";
-import Spinner from "../../Shared/Elements/Spinner";
 import * as SC from "../../Shared/constants/StatusCode";
 
 export interface ILogin {
