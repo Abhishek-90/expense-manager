@@ -1,25 +1,43 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import Spinner from "../../Shared/Elements/Spinner";
+import { Button } from "../../Shared/Elements/Button";
+import * as S from "./SignupStyles";
 import * as R from "../../Shared/Variables/routes";
 import * as method from "../../Shared/constants/Status";
-import { Wrapper, SignUpDiv, ButtonContainer, Input } from "./SignupStyles";
-import { Button } from "../../Shared/Elements/Button";
+import * as SC from "../../Shared/constants/StatusCode";
+import * as T from "../../Shared/Elements/CustomTags";
 
-export interface ISignUp {
-  fname: string;
+interface ISignUp {
+  name: string;
   email: string;
   password: string;
   confirmPassword: string;
 }
 
+interface ISignupFormError {
+  name: boolean;
+  email: boolean;
+  password: boolean;
+  error: boolean;
+}
+
 const Signup = () => {
   const navigate = useNavigate();
   const [signup, setSignup] = useState<ISignUp>({
-    fname: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+  const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
+  const [errors, setErrors] = useState<ISignupFormError>({
+    name: false,
+    email: false,
+    password: false,
+    error: false
+  });
+  const [message, setMessage] = useState<String>("");
 
   const onChange = (e: any) => {
     setSignup({ ...signup, [e?.target?.name]: e.target.value });
@@ -28,7 +46,38 @@ const Signup = () => {
   const onSubmit = async (e: any) => {
     e.preventDefault();
 
+    if (signup.name.trim().length === 0) {
+      setErrors({ ...errors, name: true });
+      setMessage("*Name Required");
+      return;
+    }
+
+    if (signup.email.trim().length === 0) {
+      setErrors({ ...errors, email: true });
+      setMessage("*Email Required");
+      return;
+    }
+
+    if (signup.password.trim().length === 0) {
+      setErrors({ ...errors, password: true });
+      setMessage("*Password Required");
+      return;
+    }
+
+    if (signup.password.trim().length < 8) {
+      setErrors({ ...errors, password: true });
+      setMessage("*Minimum password length is 8");
+      return;
+    }
+
+    if (signup.password !== signup.confirmPassword) {
+      setErrors({ ...errors, password: true });
+      setMessage("Passwords must Match");
+      return;
+    }
+
     try {
+      setIsSigningUp(true);
       const response = await fetch(R.SINGUP, {
         method: method.POST,
         headers: {
@@ -36,20 +85,26 @@ const Signup = () => {
           "Access-Control-Allow-Origin": "*",
         },
         body: JSON.stringify({
-          name: signup.fname,
+          name: signup.name,
           email: signup.email,
           password: signup.password,
         }),
       });
+      setTimeout(() => setIsSigningUp(false), 900);
 
-      const json = await response.json();
-
-      if (response.status === 200) {
-        localStorage.setItem("authToken", json.authToken);
-        navigate("/dashboard");
-      } else {
-        //TODO: Add Alert in case of Sign up fails along with error.
-      }
+      if(response.status === SC.BADREQUEST) {
+        //Signup failed due to unknown error
+        setErrors({...errors, error:true});
+        setMessage("Request Failed. Try Again");
+      } else if (response.status === SC.EXISTS) {
+        //Signup failed due to Email ID Already Exists
+        setErrors({...errors, email:true});
+        setMessage("User Id Already Exists");
+      } else if (response.status === SC.CREATED) {
+        //New user created
+        setMessage("User Created, Welcome!");
+        setTimeout(() => navigate("/dashboard"), 1150);
+      } 
     } catch (error) {
       console.log(error);
     }
@@ -57,44 +112,86 @@ const Signup = () => {
 
   return (
     <>
-      <Wrapper>
+      <S.Wrapper>
         <h1>Sign Up</h1>
-        <form className="my-3" onSubmit={onSubmit}>
-          <SignUpDiv>
-            <Input
-              type="text"
-              value={signup.fname}
-              name="fname"
-              placeholder="Enter you Full Name"
-              onChange={onChange}
-            />
-            <Input
-              type="text"
-              value={signup.email}
-              name="email"
-              placeholder="Email Address"
-              onChange={onChange}
-            />
-            <Input
-              type="text"
-              value={signup.password}
-              name="password"
-              placeholder="Password"
-              onChange={onChange}
-            />
-            <Input
-              type="text"
-              value={signup.confirmPassword}
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              onChange={onChange}
-            />
-            <ButtonContainer>
-              <Button type="submit">SignUp</Button>
-            </ButtonContainer>
-          </SignUpDiv>
-        </form>
-      </Wrapper>
+        <S.SignUpDiv>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="text"
+                value={signup.name}
+                name="name"
+                placeholder="Full Name"
+                onChange={onChange}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper>
+              {errors.name && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="text"
+                value={signup.email}
+                name="email"
+                placeholder="Email Address"
+                onChange={onChange}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper>
+              {errors.email && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="password"
+                value={signup.password}
+                name="password"
+                placeholder="Password"
+                onChange={(e) => {
+                  onChange(e);
+                  setErrors({ ...errors, password: false });
+                }}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper>
+              {errors.password && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.InputWrapperOutter>
+            <S.InputWrapper>
+              <S.Input
+                type="password"
+                value={signup.confirmPassword}
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                onChange={(e) => {
+                  onChange(e);
+                  setErrors({ ...errors, password: false });
+                }}
+              />
+            </S.InputWrapper>
+            <S.MessageWrapper>
+              {errors.password && (
+                <T.Message isError={true}>{message}</T.Message>
+              )}
+            </S.MessageWrapper>
+          </S.InputWrapperOutter>
+          <S.ButtonContainer>
+            <Button type="button" onClick={onSubmit}>
+              {isSigningUp ? <Spinner /> : "SignUp"}
+            </Button>
+          </S.ButtonContainer>
+        </S.SignUpDiv>
+      </S.Wrapper>
     </>
   );
 };
