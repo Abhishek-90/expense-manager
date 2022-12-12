@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { GET } from "../../../Shared/constants/Status";
+import { GETTRANSACTION } from "../../../Shared/Variables/routes";
 import * as S from "./ShowTransaction.styled";
 import ShowTransactionItem from "./ShowTransactionItem/ShowTransactionItem";
 
@@ -55,6 +58,21 @@ const ShowTransaction = () => {
     },
   ];
 
+  useEffect(() => {
+    fetch(GETTRANSACTION, {
+      method: GET,
+      headers: {
+        "Content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      credentials: "include",
+    }).then((response: any) => {
+      response.json().then((json) => {
+        console.log(json.statement);
+      });
+    });
+  }, []);
+
   return (
     <S.Container>
       <S.TableHeader>
@@ -62,9 +80,10 @@ const ShowTransaction = () => {
         <S.AmountColumnWrapper>Amount</S.AmountColumnWrapper>
         <S.DescriptionColumnWrapper>Description</S.DescriptionColumnWrapper>
       </S.TableHeader>
-      {transactions.map((item) => {
+      {transactions.map((item, key) => {
         return (
           <ShowTransactionItem
+            key={key}
             date={item.date}
             amount={item.amount}
             description={item.description}
