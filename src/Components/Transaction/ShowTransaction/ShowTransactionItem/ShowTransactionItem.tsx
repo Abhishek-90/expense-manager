@@ -1,12 +1,4 @@
-import {
-  ItemContainer,
-  DateWrapper,
-  AmountWrapper,
-  DescriptionWrapper,
-  ActionWrapper,
-  Delete,
-  Edit
-} from "./ShowTransactionItem.styled";
+import * as S from "./ShowTransactionItem.styled";
 
 interface IData {
   date: string;
@@ -16,16 +8,15 @@ interface IData {
 
 function ShowTransactionItem({ date, amount, description }: IData) {
   return (
-    <ItemContainer>
-      <DateWrapper>{date}</DateWrapper>
-      <AmountWrapper>{amount}</AmountWrapper>
-      <DescriptionWrapper>{description}</DescriptionWrapper>
-      <ActionWrapper>
-        <Delete/>
-        <Edit/>
-      </ActionWrapper>
-
-    </ItemContainer>
+    <S.ItemContainer>
+      <S.DateWrapper>{date}</S.DateWrapper>
+      <S.AmountWrapper>{amount}</S.AmountWrapper>
+      <S.DescriptionWrapper>{description}</S.DescriptionWrapper>
+      <S.ActionWrapper>
+        <S.Delete />
+        <S.Edit />
+      </S.ActionWrapper>
+    </S.ItemContainer>
   );
 }
 
