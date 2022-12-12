@@ -62,9 +62,9 @@ export const ActionWrapper = styled.div`
 
 export const Delete = styled(DeleteOutline)`
   cursor: pointer;
-
+  color: rgba(255, 0, 0, 0.4);
   &:hover {
-    color: #FF0000;
+    color: rgba(255, 0, 0, 1);
   }
 `;
 
@@ -72,6 +72,6 @@ export const Edit = styled(EditOutlined)`
   cursor: pointer;
 
   &:hover {
-    color: #000000
+    color: #000000;
   }
-` 
+`;

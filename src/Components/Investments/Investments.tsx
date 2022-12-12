@@ -1,8 +1,12 @@
 import React from "react";
-import { Container } from "./Investments.styled";
+import * as S from "./Investments.styled";
 
 function Investments() {
-  return <Container>Investments Page will be available soon.</Container>;
+  return (
+    <S.Container>
+      <h2>Investments Page will be available soon.</h2>
+    </S.Container>
+  );
 }
 
 export default Investments;

@@ -24,7 +24,7 @@ export const DateColumnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const AmountColumnWrapper = styled.div`
   height: 100%;
@@ -32,7 +32,7 @@ export const AmountColumnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const DescriptionColumnWrapper = styled.div`
   height: 100%;
@@ -40,4 +40,12 @@ export const DescriptionColumnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
+
+export const NoTransaction = styled.div`
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.6);
+`;

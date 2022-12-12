@@ -13,11 +13,11 @@ export const AddTransactionContainer = styled.div`
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   padding: 1rem;
+  row-gap: 20px;
 
   @media (max-width: 768px) {
     grid-template-rows: repeat(4, 1fr);
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 20px;
   }
 `;
 
