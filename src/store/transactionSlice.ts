@@ -7,13 +7,24 @@ const transactionSlice = createSlice({
   name: "transaction",
   initialState: INITIAL_STATE,
   reducers: {
-    addTransaction: (state: ITransactionState[], actions) => {
-      console.log(actions.payload);
+    getTransaction: (state: ITransactionState[], actions) => {
       state = state.concat(actions.payload);
+      return state;
+    },
+    removeTransaction: (state: ITransactionState[], actions) => {
+      state = state.filter((item: any) => {
+        return item.id !== actions.payload;
+      });
+      console.log(state);
+      return state;
+    },
+    addTransaction: (state: ITransactionState[], actions) => {
+      console.log(state);
       return state;
     },
   },
 });
 
-export const { addTransaction } = transactionSlice.actions;
+export const { getTransaction, removeTransaction, addTransaction } =
+  transactionSlice.actions;
 export default transactionSlice.reducer;

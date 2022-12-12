@@ -5,6 +5,8 @@ import * as status from "../../../Shared/constants/Status";
 import * as I from "./Interface";
 import * as T from "../../../Shared/Elements/CustomTags";
 import Spinner from "../../../Shared/Elements/Spinner";
+import { useDispatch } from "react-redux";
+import { addTransaction } from "../../../store/transactionSlice";
 
 function AddTransaction() {
   const [transactionDetails, setTransactionDetails] =
@@ -29,6 +31,7 @@ function AddTransaction() {
     useState<boolean>(false);
   const [isTransactionSuccessfull, setIsTransactionSuccessfull] =
     useState<boolean>(false);
+  const dispatch = useDispatch();
 
   async function onSubmitClick() {
     if (!transactionDetails.date) {
@@ -78,6 +81,8 @@ function AddTransaction() {
         setIsTransactionSuccessfull(true);
         setMessage("Successfully Added!");
         setTimeout(() => setIsTransactionSuccessfull(false), 5000);
+        const json = await response.json();
+        dispatch(addTransaction(json));
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
         setIsTransactionFailed(true);
@@ -179,18 +184,19 @@ function AddTransaction() {
         />
       </S.TransactionDescriptionWrapper>
       <S.MessageWrapper>
-        {(formErrors.date || formErrors.amount || formErrors.description || isTransactionFailed) && (
+        {(formErrors.date ||
+          formErrors.amount ||
+          formErrors.description ||
+          isTransactionFailed) && (
           <T.Message isError={true}>{message}</T.Message>
         )}
-        {isTransactionSuccessfull && <T.Message isError={false}>{message}</T.Message>}
+        {isTransactionSuccessfull && (
+          <T.Message isError={false}>{message}</T.Message>
+        )}
       </S.MessageWrapper>
       <S.SubmitBtnWrapper>
         <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
-          {!isAddingTransaction ? (
-            "Add Transaction"
-          ) : (
-            <Spinner />
-          )}
+          {!isAddingTransaction ? "Add Transaction" : <Spinner />}
         </S.SubmitBtn>
       </S.SubmitBtnWrapper>
     </S.AddTransactionContainer>
