@@ -4,9 +4,7 @@ import { Button } from "../../../Shared/Elements/Button";
 
 export const AddTransactionContainer = styled.div`
   width: 60%;
-  min-width: 550px;
-  height: 15rem;
-  min-height: 15rem;
+  min-width: 500px;
   border: none;
   border-radius: 20px;
   box-shadow: ${C.shadowBlue} 0px 3px 8px;
@@ -15,6 +13,12 @@ export const AddTransactionContainer = styled.div`
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   padding: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 20px;
+  }
 `;
 
 export const TransactionDescriptionWrapper = styled.div`
@@ -22,12 +26,17 @@ export const TransactionDescriptionWrapper = styled.div`
   grid-row: 2 / span 1;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 1 / span 2;
+    grid-row: 3 / span 1;
+  }
 `;
 
 export const Input = styled.input<{ border: boolean }>`
-  height: 70%;
+  height: 42px;
   width: 100%;
-  padding: 0.8rem;
+  padding: 0 8px;
   outline: none;
   font-size: 0.9rem;
   border: ${(props) => (!props.border ? `none` : `1.3px solid ${C.error}`)};
@@ -44,6 +53,11 @@ export const AmountWrapper = styled.div`
   grid-row: 2 / span 1;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+  }
 `;
 
 export const SubmitBtnWrapper = styled.div`
@@ -53,11 +67,17 @@ export const SubmitBtnWrapper = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 2 / span 1;
+    grid-row: 4 / span 1;
+    justify-content: center;
+  }
 `;
 
 export const SubmitBtn = styled(Button)`
   width: 90%;
-  height: 60%;
+  height: 36px;
 `;
 
 export const DateWrapper = styled.div`
@@ -66,10 +86,8 @@ export const DateWrapper = styled.div`
 `;
 
 export const CustomDate = styled(Input)<{ border: boolean }>`
-  height: 60%;
   width: 70%;
   border-radius: 5px;
-  padding: 12px;
   border: ${({ border }) => (!border ? `none` : `1.3px solid ${C.error}`)};
 `;
 
@@ -80,11 +98,16 @@ export const SelectWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+  }
 `;
 
 export const CustomSelect = styled.select<{ border: boolean }>`
   border-radius: 5px;
-  height: 60%;
+  height: 42px;
   width: 45%;
   padding: 10px;
   box-shadow: ${C.shadowBlue} 0px 3px 8px;
@@ -98,4 +121,9 @@ export const MessageWrapper = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 1 / span 1;
+    grid-row: 4 / span 1;
+  }
 `;
