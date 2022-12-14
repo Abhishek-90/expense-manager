@@ -1,4 +1,4 @@
-import { Container } from "./Dashboard.styled";
+import { Container, Footer } from "./Dashboard.styled";
 import Navbar from "../Navbar/Navbar";
 import Transaction from "../Transaction/Transaction";
 import { Routes, Route } from "react-router-dom";
@@ -11,7 +11,14 @@ const Dashboard = () => {
     <Container>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Transaction />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Transaction /> <Footer />
+            </>
+          }
+        />
         <Route path="/loans" element={<Loans />} />
         <Route path="/visuals" element={<Visuals />} />
         <Route path="/investments" element={<Investments />} />
