@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTransaction } from "../../../store/transactionSlice";
 
 const ShowTransaction = () => {
-  let transactions = useSelector((state: any) => state.transaction);
+  let localTransactions = useSelector((state: any) => state.transaction);
   const dispatch: any = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [transaction, setTransaction] = useState<[]>([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,6 +27,7 @@ const ShowTransaction = () => {
         });
         const json = await response.json();
         dispatch(getTransaction(json.statement));
+        setTransaction(json.statement);
       } catch (error: any) {
         console.log(error.message);
       }
@@ -34,14 +36,18 @@ const ShowTransaction = () => {
     setIsLoading(false);
   }, []);
 
+  useEffect(() => {
+    setTransaction(localTransactions);
+  }, [localTransactions]);
+
   return (
     <>
       {isLoading && <img src="/images/spinner.svg" alt="" />}
       <S.NoTransaction>
-        {transactions.length === 0 && <h2>You don't have any Transactions</h2>}
+        {transaction.length === 0 && <h2>You don't have any Transactions</h2>}
       </S.NoTransaction>
       <S.Container>
-        {transactions.length > 0 && (
+        {transaction.length > 0 && (
           <>
             <S.TableHeader>
               <S.DateColumnWrapper>Date</S.DateColumnWrapper>
@@ -50,7 +56,7 @@ const ShowTransaction = () => {
                 Description
               </S.DescriptionColumnWrapper>
             </S.TableHeader>
-            {transactions.map((item: ITransactionState) => {
+            {transaction.map((item: ITransactionState) => {
               return (
                 <ShowTransactionItem
                   key={item._id}

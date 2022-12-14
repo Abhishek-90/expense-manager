@@ -12,14 +12,13 @@ const transactionSlice = createSlice({
       return state;
     },
     removeTransaction: (state: ITransactionState[], actions) => {
-      state = state.filter((item: any) => {
-        return item.id !== actions.payload;
+      state = state.filter((item: ITransactionState) => {
+        return item._id !== actions.payload;
       });
-      console.log(state);
       return state;
     },
     addTransaction: (state: ITransactionState[], actions) => {
-      console.log(state);
+      state.push(actions.payload);
       return state;
     },
   },

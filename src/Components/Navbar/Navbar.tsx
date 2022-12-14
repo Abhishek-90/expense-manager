@@ -23,7 +23,7 @@ const Navbar = () => {
       <S.MenuTitleWrap>
         <S.CustomMenuBtn onClick={() => setShowMenu(true)} />
         <S.TitleWrap>
-          <S.Title href="/dashboard/*">Expense Manager</S.Title>
+          <S.Title href="/dashboard">Expense Manager</S.Title>
         </S.TitleWrap>
       </S.MenuTitleWrap>
       <S.CustomMenu isMenuOpen={showMenu}>
