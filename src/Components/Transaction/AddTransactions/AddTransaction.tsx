@@ -82,7 +82,7 @@ function AddTransaction() {
         setMessage("Successfully Added!");
         setTimeout(() => setIsTransactionSuccessfull(false), 5000);
         const json = await response.json();
-        dispatch(addTransaction(json));
+        dispatch(addTransaction(json.transaction));
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
         setIsTransactionFailed(true);
