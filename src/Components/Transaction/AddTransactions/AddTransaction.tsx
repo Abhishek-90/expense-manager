@@ -104,16 +104,14 @@ function AddTransaction() {
 
   return (
     <S.AddTransactionContainer>
-      <S.DateWrapper>
-        <S.CustomDate
-          name="date"
-          type="date"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onChangeHandler(e)
-          }
-          border={formErrors.date}
-        ></S.CustomDate>
-      </S.DateWrapper>
+      <S.CustomDate
+        name="date"
+        type="date"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChangeHandler(e)
+        }
+        border={formErrors.date}
+      />
       <S.SelectWrapper>
         <S.CustomSelect
           name="type"
@@ -194,11 +192,9 @@ function AddTransaction() {
           <T.Message isError={false}>{message}</T.Message>
         )}
       </S.MessageWrapper>
-      <S.SubmitBtnWrapper>
-        <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
-          {!isAddingTransaction ? "Add Transaction" : <Spinner />}
-        </S.SubmitBtn>
-      </S.SubmitBtnWrapper>
+      <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
+        {!isAddingTransaction ? "Add Transaction" : <Spinner />}
+      </S.SubmitBtn>
     </S.AddTransactionContainer>
   );
 }

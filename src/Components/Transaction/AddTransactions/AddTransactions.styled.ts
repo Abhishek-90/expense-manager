@@ -60,33 +60,21 @@ export const AmountWrapper = styled.div`
   }
 `;
 
-export const SubmitBtnWrapper = styled.div`
+export const SubmitBtn = styled(Button)`
   grid-column: 3 / span 1;
   grid-row: 3 / span 1;
-  height: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
+  width: auto;
+  height: 36px;
 
   @media (max-width: 768px) {
     grid-column: 2 / span 1;
     grid-row: 4 / span 1;
-    justify-content: center;
   }
-`;
-
-export const SubmitBtn = styled(Button)`
-  width: 90%;
-  height: 36px;
-`;
-
-export const DateWrapper = styled.div`
-  display: flex;
-  align-items: center;
 `;
 
 export const CustomDate = styled(Input)<{ border: boolean }>`
   width: 70%;
+  margin: auto 0px;
   border-radius: 5px;
   border: ${({ border }) => (!border ? `none` : `1.3px solid ${C.error}`)};
 `;
