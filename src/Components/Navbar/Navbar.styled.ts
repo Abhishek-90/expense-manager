@@ -1,26 +1,31 @@
 import styled from "styled-components";
 import * as colors from "../../Shared/constants/themeConstants";
 import { Button } from "../../Shared/Elements/Button";
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
 
 export const CustomNavbar = styled.div`
   width: 100%;
   height: 3.3rem;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   color: ${colors.black};
   background: ${colors.shadowBlue};
-`
+  padding-right: 20px;
+
+  @media (max-width: 768px) {
+    padding-right: 10px;
+  }
+`;
 
 export const LogoutButton = styled(Button)`
   height: 2.2rem;
   width: 6rem;
   float: right;
-  margin-right: 0.6rem;
   justify-self: end;
-`
+  margin: auto 0;
+`;
 
 export const LogoutBtnWrap = styled.div`
   height: 100%;
@@ -28,26 +33,25 @@ export const LogoutBtnWrap = styled.div`
   display: flex;
   align-items: center;
   flex-direction: row-reverse;
-`
+`;
 
 export const MenuTitleWrap = styled(LogoutBtnWrap)`
-  width: 50%;
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
 
 export const CustomMenuBtn = styled(MenuIcon)`
   cursor: pointer;
-  margin: 15px;
-`
+  margin: auto 10px;
+`;
 
 export const TitleWrap = styled.div`
   height: 100%;
   width: 80%;
   display: flex;
   align-items: center;
-`
+`;
 
 export const Title = styled.a`
   font-weight: 600;
@@ -58,9 +62,9 @@ export const Title = styled.a`
   &:hover {
     color: black;
   }
-`
+`;
 
-export const CustomMenu = styled.div<{isMenuOpen}>`
+export const CustomMenu = styled.div<{ isMenuOpen }>`
   position: fixed;
   background: ${colors.blue};
   width: 14rem;
@@ -70,9 +74,11 @@ export const CustomMenu = styled.div<{isMenuOpen}>`
   display: flex;
   flex-direction: column;
   text-align: end;
-  transform: ${props => props.isMenuOpen ? `translate(0)`:`translate(-100%)`};
+  transform: ${(props) =>
+    props.isMenuOpen ? `translate(0)` : `translate(-100%)`};
   transition: transform 0.5s;
   max-width: 300px;
+  z-index: 999;
 
   li {
     list-style: none;

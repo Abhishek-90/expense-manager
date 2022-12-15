@@ -49,9 +49,7 @@ const Navbar = () => {
           </CustomLink>
         </ul>
       </S.CustomMenu>
-      <S.LogoutBtnWrap>
-        <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
-      </S.LogoutBtnWrap>
+      <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
     </S.CustomNavbar>
   );
 };
