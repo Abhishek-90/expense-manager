@@ -39,6 +39,7 @@ export const MenuTitleWrap = styled(LogoutBtnWrap)`
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: auto;
 `;
 
 export const CustomMenuBtn = styled(MenuIcon)`
@@ -46,16 +47,9 @@ export const CustomMenuBtn = styled(MenuIcon)`
   margin: auto 10px;
 `;
 
-export const TitleWrap = styled.div`
-  height: 100%;
-  width: 80%;
-  display: flex;
-  align-items: center;
-`;
-
 export const Title = styled.a`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
   color: black;
 
@@ -64,7 +58,7 @@ export const Title = styled.a`
   }
 `;
 
-export const CustomMenu = styled.div<{ isMenuOpen }>`
+export const CustomMenu = styled.div<{ isMenuOpen: boolean }>`
   position: fixed;
   background: ${colors.blue};
   width: 14rem;
