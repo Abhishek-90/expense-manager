@@ -16,8 +16,9 @@ export const AddTransactionContainer = styled.div`
   row-gap: 20px;
 
   @media (max-width: 768px) {
-    grid-template-rows: repeat(4, 1fr);
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 `;
 
@@ -46,18 +47,8 @@ export const Input = styled.input<{ border: boolean }>`
 
 export const AmountInput = styled(Input)`
   width: 85%;
-`;
-
-export const AmountWrapper = styled.div`
   grid-column: 1 / span 1;
   grid-row: 2 / span 1;
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
-  }
 `;
 
 export const SubmitBtn = styled(Button)`
@@ -96,7 +87,7 @@ export const SelectWrapper = styled.div`
 export const CustomSelect = styled.select<{ border: boolean }>`
   border-radius: 5px;
   height: 42px;
-  width: 45%;
+  width: 70%;
   padding: 10px;
   box-shadow: ${C.shadowBlue} 0px 3px 8px;
   outline: none;
