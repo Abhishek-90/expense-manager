@@ -25,9 +25,6 @@ export const LogoutButton = styled(Button)`
   float: right;
   justify-self: end;
   margin: auto 0;
-  @media (max-width: 480px) {
-    display: none;
-  }
 `;
 
 export const MenuTitleWrap = styled.div`
