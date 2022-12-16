@@ -25,20 +25,16 @@ export const LogoutButton = styled(Button)`
   float: right;
   justify-self: end;
   margin: auto 0;
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
-export const LogoutBtnWrap = styled.div`
-  height: 100%;
-  width: 20%;
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-`;
-
-export const MenuTitleWrap = styled(LogoutBtnWrap)`
+export const MenuTitleWrap = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 100%;
   width: auto;
 `;
 

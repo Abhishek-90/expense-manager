@@ -2,22 +2,37 @@ import React, { useState } from "react";
 import * as S from "./AddTransactions.styled";
 import * as E from "../../../Shared/Variables/routes";
 import * as status from "../../../Shared/constants/Status";
-import * as I from "./Interface";
 import * as T from "../../../Shared/Elements/CustomTags";
 import Spinner from "../../../Shared/Elements/Spinner";
 import { useDispatch } from "react-redux";
 import { addTransaction } from "../../../store/transactionSlice";
 
+interface ITransactionDetails {
+  date: Date | null;
+  description: string;
+  type: string;
+  tag: string;
+  amount: string;
+}
+
+interface IFormErrors {
+  date: boolean;
+  description: boolean;
+  type: boolean;
+  tag: boolean;
+  amount: boolean;
+}
+
 function AddTransaction() {
   const [transactionDetails, setTransactionDetails] =
-    useState<I.ITransactionDetails>({
+    useState<ITransactionDetails>({
       date: null,
       description: "",
       type: "income",
       tag: "salary",
       amount: "",
     });
-  const [formErrors, setFormErrors] = useState<I.IFormErrors>({
+  const [formErrors, setFormErrors] = useState<IFormErrors>({
     date: false,
     description: false,
     type: false,
@@ -165,18 +180,19 @@ function AddTransaction() {
         placeholder="Amount(in INR)"
         border={formErrors.amount}
       />
-      <S.TransactionDescriptionWrapper>
-        <S.Input
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            onChangeHandler(e)
-          }
-          value={transactionDetails.description}
-          name="description"
-          placeholder="Transaction Description (Max 25 Characters)"
-          border={formErrors.description}
-          maxLength={25}
-        />
-      </S.TransactionDescriptionWrapper>
+      <S.TransactionDescriptionInput
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChangeHandler(e)
+        }
+        value={transactionDetails.description}
+        name="description"
+        placeholder="Transaction Description (Max 25 Characters)"
+        border={formErrors.description}
+        maxLength={25}
+      />
+      <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
+        {!isAddingTransaction ? "Add Transaction" : <Spinner />}
+      </S.SubmitBtn>
       <S.MessageWrapper>
         {(formErrors.date ||
           formErrors.amount ||
@@ -188,9 +204,6 @@ function AddTransaction() {
           <T.Message isError={false}>{message}</T.Message>
         )}
       </S.MessageWrapper>
-      <S.SubmitBtn onClick={onSubmitClick} disabled={isAddingTransaction}>
-        {!isAddingTransaction ? "Add Transaction" : <Spinner />}
-      </S.SubmitBtn>
     </S.AddTransactionContainer>
   );
 }
