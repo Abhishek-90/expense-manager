@@ -112,63 +112,59 @@ function AddTransaction() {
         }
         border={formErrors.date}
       />
-      <S.SelectWrapper>
+      <S.CustomSelect
+        name="type"
+        placeholder="Type"
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+          onChangeHandler(e)
+        }
+        border={formErrors.type}
+      >
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </S.CustomSelect>
+      {transactionDetails.type === "income" && (
         <S.CustomSelect
-          name="type"
-          placeholder="Type"
+          name="tag"
+          placeholder="Tag"
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
             onChangeHandler(e)
           }
-          border={formErrors.type}
+          border={formErrors.tag}
         >
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
+          <option value="salary">Salary</option>
+          <option value="interest">Interest</option>
+          <option value="side-income">Side Income</option>
         </S.CustomSelect>
-        {transactionDetails.type === "income" && (
-          <S.CustomSelect
-            name="tag"
-            placeholder="Tag"
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              onChangeHandler(e)
-            }
-            border={formErrors.tag}
-          >
-            <option value="salary">Salary</option>
-            <option value="interest">Interest</option>
-            <option value="side-income">Side Income</option>
-          </S.CustomSelect>
-        )}
-        {transactionDetails.type === "expense" && (
-          <S.CustomSelect
-            name="tag"
-            placeholder="Tag"
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              onChangeHandler(e)
-            }
-            border={formErrors.tag}
-          >
-            <option value="medical">Medical</option>
-            <option value="entertainment">Entertainment</option>
-            <option value="investment">Investment</option>
-            <option value="food">Food</option>
-            <option value="clothing">Clothing</option>
-            <option value="luxury">Luxury</option>
-            <option value="trips">Travel/Trips</option>
-          </S.CustomSelect>
-        )}
-      </S.SelectWrapper>
-      <S.AmountWrapper>
-        <S.AmountInput
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+      )}
+      {transactionDetails.type === "expense" && (
+        <S.CustomSelect
+          name="tag"
+          placeholder="Tag"
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
             onChangeHandler(e)
           }
-          type="text"
-          value={transactionDetails.amount}
-          name="amount"
-          placeholder="Amount(in INR)"
-          border={formErrors.amount}
-        />
-      </S.AmountWrapper>
+          border={formErrors.tag}
+        >
+          <option value="medical">Medical</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="investment">Investment</option>
+          <option value="food">Food</option>
+          <option value="clothing">Clothing</option>
+          <option value="luxury">Luxury</option>
+          <option value="trips">Travel/Trips</option>
+        </S.CustomSelect>
+      )}
+      <S.AmountInput
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChangeHandler(e)
+        }
+        type="text"
+        value={transactionDetails.amount}
+        name="amount"
+        placeholder="Amount(in INR)"
+        border={formErrors.amount}
+      />
       <S.TransactionDescriptionWrapper>
         <S.Input
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
