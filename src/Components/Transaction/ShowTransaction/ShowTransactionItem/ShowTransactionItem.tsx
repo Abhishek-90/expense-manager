@@ -10,9 +10,10 @@ interface IData {
   amount: string;
   description: string;
   id: string;
+  type: string;
 }
 
-function ShowTransactionItem({ id, date, amount, description }: IData) {
+function ShowTransactionItem({ id, date, amount, description, type }: IData) {
   const dispatch: any = useDispatch();
   const deleteTransaction = async (id: string) => {
     try {
@@ -40,6 +41,7 @@ function ShowTransactionItem({ id, date, amount, description }: IData) {
     <S.ItemContainer>
       <S.DateWrapper>{date}</S.DateWrapper>
       <S.AmountWrapper>{amount}</S.AmountWrapper>
+      <S.TypeWrapper>{type}</S.TypeWrapper>
       <S.DescriptionWrapper>{description}</S.DescriptionWrapper>
       <S.ActionWrapper>
         <S.Delete onClick={() => deleteTransaction(id)} />

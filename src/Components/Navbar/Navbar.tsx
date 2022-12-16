@@ -22,9 +22,7 @@ const Navbar = () => {
     <S.CustomNavbar>
       <S.MenuTitleWrap>
         <S.CustomMenuBtn onClick={() => setShowMenu(true)} />
-        <S.TitleWrap>
-          <S.Title href="/dashboard">Expense Manager</S.Title>
-        </S.TitleWrap>
+        <S.Title href="/dashboard">Expense Manager</S.Title>
       </S.MenuTitleWrap>
       <S.CustomMenu isMenuOpen={showMenu}>
         <S.CustomClose onClick={() => setShowMenu(false)} />
@@ -49,9 +47,7 @@ const Navbar = () => {
           </CustomLink>
         </ul>
       </S.CustomMenu>
-      <S.LogoutBtnWrap>
-        <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
-      </S.LogoutBtnWrap>
+      <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
     </S.CustomNavbar>
   );
 };

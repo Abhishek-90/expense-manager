@@ -52,6 +52,7 @@ const ShowTransaction = () => {
             <S.TableHeader>
               <S.DateColumnWrapper>Date</S.DateColumnWrapper>
               <S.AmountColumnWrapper>Amount</S.AmountColumnWrapper>
+              <S.AmountColumnWrapper>Type</S.AmountColumnWrapper>
               <S.DescriptionColumnWrapper>
                 Description
               </S.DescriptionColumnWrapper>
@@ -64,6 +65,7 @@ const ShowTransaction = () => {
                   amount={item.amount}
                   description={item.description}
                   id={item._id}
+                  type={item.type}
                 />
               );
             })}
