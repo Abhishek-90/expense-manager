@@ -4,6 +4,7 @@ import { Button } from "../../../Shared/Elements/Button";
 
 export const AddTransactionContainer = styled.div`
   width: 60%;
+  max-width: 800px;
   border: none;
   border-radius: 20px;
   box-shadow: ${C.shadowBlue} 0px 3px 8px;
@@ -25,13 +26,11 @@ export const AddTransactionContainer = styled.div`
     width: 90%;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
   }
 `;
 
 export const Input = styled.input<{ border: boolean }>`
   height: 42px;
-  width: 100%;
   padding: 0 8px;
   outline: none;
   font-size: 0.9rem;
