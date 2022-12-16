@@ -7,8 +7,13 @@ export const Container = styled.div`
   margin-top: 2rem;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
 
-  @media only screen and (max-width: 700px) {
-    width: 95%;
+  @media (max-width: 760px) {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: none;
   }
 `;
 
@@ -16,11 +21,14 @@ export const TableHeader = styled.div`
   width: 100%;
   height: 3rem;
   display: flex;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const DateColumnWrapper = styled.div`
   height: 100%;
-  flex: 0.6;
+  flex: 0.8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +36,7 @@ export const DateColumnWrapper = styled.div`
 
 export const AmountColumnWrapper = styled.div`
   height: 100%;
-  flex: 0.4;
+  flex: 0.8;
   display: flex;
   justify-content: center;
   align-items: center;

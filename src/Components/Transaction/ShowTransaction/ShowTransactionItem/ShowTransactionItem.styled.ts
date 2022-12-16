@@ -12,20 +12,60 @@ export const ItemContainer = styled.div`
   &:hover {
     box-shadow: ${colors.shadowBlue} 0px 3px 8px;
   }
+
+  @media (max-width: 768px) {
+    display: grid;
+    width: 90%;
+    height: auto;
+    max-width: 800px;
+    grid-template-columns: repeat(6, 25%);
+    grid-template-rows: repeat(2, 1fr);
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+    row-gap: 20px;
+  }
 `;
 
 export const DateWrapper = styled.div`
-  flex: 0.6;
+  flex: 0.8;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: auto;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    line-height: 1.5;
+  }
 `;
 
 export const AmountWrapper = styled.div`
-  flex: 0.4;
+  flex: 0.8;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    line-height: 1.5;
+  }
+`;
+
+export const TypeWrapper = styled.div`
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 1;
+    line-height: 1.5;
+  }
 `;
 
 export const DescriptionWrapper = styled.div`
@@ -33,6 +73,13 @@ export const DescriptionWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-column: 1 / span 3;
+    grid-row: 2 / span 1;
+    justify-content: start;
+    line-height: 1.5;
+  }
 `;
 
 export const ActionWrapper = styled.div`
@@ -48,30 +95,41 @@ export const ActionWrapper = styled.div`
   align-items: center;
   padding-left: 1rem;
   padding-right: 1.5rem;
+  @media (min-width: 769px) {
+    &:hover {
+      opacity: 0.4;
+      background: ${colors.shadowBlue};
+      background: linear-gradient(
+        90deg,
+        ${colors.shadowBlue} 0%,
+        ${colors.shadowBlue} 50%
+      );
+    }
+  }
 
-  &:hover {
-    opacity: 0.4;
-    background: ${colors.shadowBlue};
-    background: linear-gradient(
-      90deg,
-      ${colors.shadowBlue} 0%,
-      ${colors.shadowBlue} 50%
-    );
+  @media (max-width: 768px) {
+    opacity: 1;
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 2;
+    top: 15px;
   }
 `;
 
 export const Delete = styled(DeleteOutline)`
   cursor: pointer;
   color: rgba(255, 0, 0, 0.4);
-  &:hover {
-    color: rgba(255, 0, 0, 1);
+  @media (min-width: 769px) {
+    &:hover {
+      color: rgba(255, 0, 0, 1);
+    }
   }
 `;
 
 export const Edit = styled(EditOutlined)`
   cursor: pointer;
-
-  &:hover {
-    color: #000000;
+  @media (min-width: 769px) {
+    &:hover {
+      color: #000000;
+    }
   }
 `;
