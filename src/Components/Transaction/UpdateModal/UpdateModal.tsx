@@ -6,7 +6,7 @@ import * as status from "../../../Shared/constants/Status";
 import { useDispatch } from "react-redux";
 import * as E from "../../../Shared/Variables/routes";
 import * as T from "../../../Shared/Elements/CustomTags";
-
+import { updateTransaction } from "../../../store/transactionSlice";
 interface ITransactionDetails {
   date: string | undefined;
   description: string;
@@ -111,8 +111,13 @@ function UpdateModal({
         setMessage("Successfully Added!");
         setTimeout(() => setIsTransactionSuccessfull(false), 5000);
         const json = await response.json();
+        dispatch(
+          updateTransaction({
+            transaction: json.transaction,
+            _id: json.transaction._id,
+          })
+        );
         setIsEditing(false);
-        // dispatch(addTransaction(json.transaction));
       } else {
         //TODO: Add alert box here to display that Credentials are wrong.
         setIsTransactionFailed(true);
