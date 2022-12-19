@@ -19,9 +19,30 @@ const Dashboard = () => {
             </>
           }
         />
-        <Route path="/loans" element={<Loans />} />
-        <Route path="/visuals" element={<Visuals />} />
-        <Route path="/investments" element={<Investments />} />
+        <Route
+          path="/loans"
+          element={
+            <>
+              <Loans /> <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/visuals"
+          element={
+            <>
+              <Visuals /> <Footer />
+            </>
+          }
+        />
+        <Route
+          path="/investments"
+          element={
+            <>
+              <Investments /> <Footer />
+            </>
+          }
+        />
       </Routes>
     </Container>
   );

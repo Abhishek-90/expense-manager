@@ -7,7 +7,13 @@ import ShowTransactionItem from "./ShowTransactionItem/ShowTransactionItem";
 import { useDispatch, useSelector } from "react-redux";
 import { getTransaction } from "../../../store/transactionSlice";
 
-const ShowTransaction = () => {
+const ShowTransaction = ({
+  setUpdatingTransaction,
+  setIsEditing,
+}: {
+  setUpdatingTransaction: any;
+  setIsEditing: any;
+}) => {
   let localTransactions = useSelector((state: any) => state.transaction);
   const dispatch: any = useDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -61,11 +67,9 @@ const ShowTransaction = () => {
               return (
                 <ShowTransactionItem
                   key={item._id}
-                  date={item.date}
-                  amount={item.amount}
-                  description={item.description}
-                  id={item._id}
-                  type={item.type}
+                  transaction={item}
+                  setUpdatingTransaction={setUpdatingTransaction}
+                  setIsEditing={setIsEditing}
                 />
               );
             })}
