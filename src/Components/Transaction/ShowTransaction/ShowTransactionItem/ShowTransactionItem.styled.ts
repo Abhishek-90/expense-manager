@@ -97,7 +97,7 @@ export const ActionWrapper = styled.div`
   padding-right: 1.5rem;
   @media (min-width: 769px) {
     &:hover {
-      opacity: 0.4;
+      opacity: 0.8;
       background: ${colors.shadowBlue};
       background: linear-gradient(
         90deg,
@@ -118,18 +118,15 @@ export const ActionWrapper = styled.div`
 export const Delete = styled(DeleteOutline)`
   cursor: pointer;
   color: rgba(255, 0, 0, 0.4);
-  @media (min-width: 769px) {
-    &:hover {
-      color: rgba(255, 0, 0, 1);
-    }
+  &:hover {
+    color: rgba(255, 0, 0, 1);
   }
 `;
 
 export const Edit = styled(EditOutlined)`
   cursor: pointer;
-  @media (min-width: 769px) {
-    &:hover {
-      color: #000000;
-    }
+  color: rgba(0, 0, 0, 0.4);
+  &:hover {
+    color: #000000;
   }
 `;
