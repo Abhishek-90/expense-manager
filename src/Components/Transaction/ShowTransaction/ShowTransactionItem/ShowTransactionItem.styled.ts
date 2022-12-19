@@ -25,6 +25,7 @@ export const ItemContainer = styled.div`
     border-radius: 20px;
     box-shadow: ${colors.shadowBlue} 0px 3px 8px;
     row-gap: 20px;
+    margin-bottom: 25px;
   }
 `;
 
@@ -79,6 +80,7 @@ export const DescriptionWrapper = styled.div`
     grid-row: 2 / span 1;
     justify-content: start;
     line-height: 1.5;
+    padding-left: 10px;
   }
 `;
 
@@ -112,6 +114,8 @@ export const ActionWrapper = styled.div`
     grid-column: 4 / span 1;
     grid-row: 1 / span 2;
     top: 15px;
+    padding-left: 2.5rem;
+    padding-right: 0;
   }
 `;
 
