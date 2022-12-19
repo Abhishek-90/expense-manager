@@ -29,7 +29,6 @@ const transactionSlice = createSlice({
           return item;
         }
       });
-      console.log(newState);
       return newState;
     },
   },
