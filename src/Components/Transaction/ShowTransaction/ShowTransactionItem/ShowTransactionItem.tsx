@@ -9,11 +9,19 @@ interface IData {
   date: string;
   amount: string;
   description: string;
-  id: string;
+  _id: string;
   type: string;
 }
 
-function ShowTransactionItem({ id, date, amount, description, type }: IData) {
+function ShowTransactionItem({
+  transaction,
+  setUpdatingTransaction,
+  setIsEditing,
+}: {
+  transaction: IData;
+  setUpdatingTransaction: any;
+  setIsEditing: any;
+}) {
   const dispatch: any = useDispatch();
   const deleteTransaction = async (id: string) => {
     try {
@@ -39,13 +47,18 @@ function ShowTransactionItem({ id, date, amount, description, type }: IData) {
   };
   return (
     <S.ItemContainer>
-      <S.DateWrapper>{date}</S.DateWrapper>
-      <S.AmountWrapper>{amount}</S.AmountWrapper>
-      <S.TypeWrapper>{type}</S.TypeWrapper>
-      <S.DescriptionWrapper>{description}</S.DescriptionWrapper>
+      <S.DateWrapper>{transaction.date}</S.DateWrapper>
+      <S.AmountWrapper>{transaction.amount}</S.AmountWrapper>
+      <S.TypeWrapper>{transaction.type}</S.TypeWrapper>
+      <S.DescriptionWrapper>{transaction.description}</S.DescriptionWrapper>
       <S.ActionWrapper>
-        <S.Delete onClick={() => deleteTransaction(id)} />
-        <S.Edit />
+        <S.Delete onClick={() => deleteTransaction(transaction._id)} />
+        <S.Edit
+          onClick={() => {
+            setIsEditing(true);
+            setUpdatingTransaction(transaction);
+          }}
+        />
       </S.ActionWrapper>
     </S.ItemContainer>
   );

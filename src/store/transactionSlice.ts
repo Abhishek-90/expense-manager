@@ -21,9 +21,24 @@ const transactionSlice = createSlice({
       state.push(actions.payload);
       return state;
     },
+    updateTransaction: (state: ITransactionState[], actions) => {
+      const newState = state.map((item) => {
+        if (item._id === actions.payload.transaction._id) {
+          return actions.payload.transaction;
+        } else {
+          return item;
+        }
+      });
+      console.log(newState);
+      return newState;
+    },
   },
 });
 
-export const { getTransaction, removeTransaction, addTransaction } =
-  transactionSlice.actions;
+export const {
+  getTransaction,
+  removeTransaction,
+  addTransaction,
+  updateTransaction,
+} = transactionSlice.actions;
 export default transactionSlice.reducer;
