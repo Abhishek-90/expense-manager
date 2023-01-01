@@ -49,9 +49,11 @@ const ShowTransaction = ({
   return (
     <>
       {isLoading && <img src="/images/spinner.svg" alt="" />}
-      <S.NoTransaction>
-        {transaction.length === 0 && <h2>You don't have any Transactions</h2>}
-      </S.NoTransaction>
+      {(transaction.length === 0 || transaction === undefined) && (
+        <S.NoTransaction>
+          <h2>You don't have any Transactions</h2>
+        </S.NoTransaction>
+      )}
       <S.Container>
         {transaction.length > 0 && (
           <>
@@ -63,7 +65,7 @@ const ShowTransaction = ({
                 Description
               </S.DescriptionColumnWrapper>
             </S.TableHeader>
-            {transaction.map((item: ITransactionState) => {
+            {localTransactions.map((item: ITransactionState) => {
               return (
                 <ShowTransactionItem
                   key={item._id}
