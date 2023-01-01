@@ -3,6 +3,41 @@ import * as colors from "../../../../Shared/constants/themeConstants";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import EditOutlined from "@material-ui/icons/EditOutlined";
 
+export const ActionWrapper = styled.div`
+  position: absolute;
+  z-index: 10;
+  width: 6rem;
+  height: 2.5rem;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  right: 0;
+  display: flex;
+  place-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1.5rem;
+  @media (min-width: 769px) {
+    &:hover {
+      opacity: 0.8;
+      background: ${colors.shadowBlue};
+      background: linear-gradient(
+        90deg,
+        ${colors.shadowBlue} 0%,
+        ${colors.shadowBlue} 50%
+      );
+    }
+  }
+
+  @media (max-width: 768px) {
+    opacity: 1;
+    grid-column: 4 / span 1;
+    grid-row: 1 / span 2;
+    top: 15px;
+    padding-left: 2.5rem;
+    padding-right: 0;
+  }
+`;
+
 export const ItemContainer = styled.div`
   width: 100%;
   display: flex;
@@ -11,6 +46,9 @@ export const ItemContainer = styled.div`
 
   &:hover {
     box-shadow: ${colors.shadowBlue} 0px 3px 8px;
+    ${ActionWrapper} {
+      opacity: 0.8;
+    }
   }
 
   @media (max-width: 768px) {
@@ -81,41 +119,6 @@ export const DescriptionWrapper = styled.div`
     justify-content: start;
     line-height: 1.5;
     padding-left: 10px;
-  }
-`;
-
-export const ActionWrapper = styled.div`
-  position: absolute;
-  z-index: 10;
-  width: 6rem;
-  height: 2.5rem;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-  right: 0;
-  display: flex;
-  place-content: space-between;
-  align-items: center;
-  padding-left: 1rem;
-  padding-right: 1.5rem;
-  @media (min-width: 769px) {
-    &:hover {
-      opacity: 0.8;
-      background: ${colors.shadowBlue};
-      background: linear-gradient(
-        90deg,
-        ${colors.shadowBlue} 0%,
-        ${colors.shadowBlue} 50%
-      );
-    }
-  }
-
-  @media (max-width: 768px) {
-    opacity: 1;
-    grid-column: 4 / span 1;
-    grid-row: 1 / span 2;
-    top: 15px;
-    padding-left: 2.5rem;
-    padding-right: 0;
   }
 `;
 

@@ -6,3 +6,4 @@ export const AUTOLOGIN: string = `${process.env.REACT_APP_BACKEND_URL}auth/autoL
 export const GETTRANSACTION: string = `${process.env.REACT_APP_BACKEND_URL}transaction/statement`;
 export const DELETETRANSACTION: string = `${process.env.REACT_APP_BACKEND_URL}transaction/remove`;
 export const UPDATETRANSACTION: string = `${process.env.REACT_APP_BACKEND_URL}transaction/update`;
+export const GETVISUALDATA: string = `${process.env.REACT_APP_BACKEND_URL}transaction/getVisualData`;

@@ -167,7 +167,7 @@ function AddTransaction() {
           <option value="food">Food</option>
           <option value="clothing">Clothing</option>
           <option value="luxury">Luxury</option>
-          <option value="trips">Travel/Trips</option>
+          <option value="travel">Travel/Trips</option>
         </S.CustomSelect>
       )}
       <S.AmountInput
