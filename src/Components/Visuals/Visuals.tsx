@@ -67,7 +67,9 @@ function Visuals() {
   return (
     <S.Container>
       {/* <h2>Visuals Page will be available soon.</h2> */}
-      <Pie data={data} updateMode="none" width="300px" height="300px" />
+      <S.Content>
+        <Pie data={data} style={{ width: "300px", height: "300px" }} />
+      </S.Content>
     </S.Container>
   );
 }

@@ -8,3 +8,11 @@ export const Container = styled.div`
   color: rgba(0, 0, 0, 0.6);
   padding: 20px;
 `;
+
+export const Content = styled.div`
+  width: 30%;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
+`;
