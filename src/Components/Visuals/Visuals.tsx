@@ -49,19 +49,22 @@ function Visuals() {
   };
 
   useEffect(() => {
-    fetch(R.GETVISUALDATA, {
-      method: GET,
-      headers: {
-        "Content-type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      credentials: "include",
-    }).then((response) => {
-      response.json().then((json) => {
-        console.log(json.data);
-        dispatch(getChartData(json.data));
+    try {
+      fetch(R.GETVISUALDATA, {
+        method: GET,
+        headers: {
+          "Content-type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        credentials: "include",
+      }).then((response) => {
+        response.json().then((json) => {
+          dispatch(getChartData(json.data));
+        });
       });
-    });
+    } catch (e: any) {
+      console.log(e.message);
+    }
   }, []);
 
   return (
