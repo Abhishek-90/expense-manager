@@ -20,7 +20,7 @@ function Visuals() {
       "Entertainment",
       "Travel",
       "Medical",
-      "Investments",
+      "Investment",
     ],
     datasets: [
       {

@@ -32,9 +32,12 @@ export const ActionWrapper = styled.div`
     opacity: 1;
     grid-column: 4 / span 1;
     grid-row: 1 / span 2;
-    top: 15px;
     padding-left: 2.5rem;
     padding-right: 0;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 `;
 
@@ -128,12 +131,20 @@ export const Delete = styled(DeleteOutline)`
   &:hover {
     color: rgba(255, 0, 0, 1);
   }
+
+  @media (max-width: 768px) {
+    color: rgba(255, 0, 0, 0.6);
+  }
 `;
 
 export const Edit = styled(EditOutlined)`
   cursor: pointer;
   color: rgba(0, 0, 0, 0.4);
   &:hover {
-    color: #000000;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  @media (max-width: 768px) {
+    color: rgba(0, 0, 0, 0.6);
   }
 `;
