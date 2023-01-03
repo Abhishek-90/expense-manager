@@ -32,9 +32,12 @@ export const ActionWrapper = styled.div`
     opacity: 1;
     grid-column: 4 / span 1;
     grid-row: 1 / span 2;
-    top: 15px;
     padding-left: 2.5rem;
     padding-right: 0;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 `;
 
