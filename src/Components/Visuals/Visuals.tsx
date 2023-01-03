@@ -1,6 +1,6 @@
 import * as S from "./Visuals.styled";
 import { GET } from "../../Shared/constants/Status";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as R from "../../Shared/Variables/routes";
 import { useDispatch, useSelector } from "react-redux";
 import { getChartData } from "../../store/chartDataSlice";
@@ -11,6 +11,7 @@ Chart.register(ArcElement, Tooltip, Legend);
 function Visuals() {
   const dispatch = useDispatch();
   const chartData = useSelector((state: any) => state.chartData);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const data = {
     labels: [
       "Food",
@@ -60,6 +61,7 @@ function Visuals() {
       }).then((response) => {
         response.json().then((json) => {
           dispatch(getChartData(json.data));
+          setTimeout(() => setIsLoading(false), 1500);
         });
       });
     } catch (e: any) {
@@ -69,10 +71,20 @@ function Visuals() {
 
   return (
     <S.Container>
-      {/* <h2>Visuals Page will be available soon.</h2> */}
-      <S.Content>
-        <Pie data={data} style={{ width: "300px", height: "300px" }} />
-      </S.Content>
+      {isLoading && (
+        <div>
+          <img src="/spinner.svg" alt="spinner" />
+          <h2>Loading your data...</h2>
+        </div>
+      )}
+      {!isLoading && chartData.length === 0 && (
+        <h2>No Data Available for Selected Date</h2>
+      )}
+      {!isLoading && chartData.length !== 0 && (
+        <S.Content>
+          <Pie data={data} style={{ width: "300px", height: "300px" }} />
+        </S.Content>
+      )}
     </S.Container>
   );
 }
