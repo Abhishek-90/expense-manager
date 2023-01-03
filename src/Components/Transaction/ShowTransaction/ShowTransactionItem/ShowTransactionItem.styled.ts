@@ -131,12 +131,20 @@ export const Delete = styled(DeleteOutline)`
   &:hover {
     color: rgba(255, 0, 0, 1);
   }
+
+  @media (max-width: 768px) {
+    color: rgba(255, 0, 0, 0.6);
+  }
 `;
 
 export const Edit = styled(EditOutlined)`
   cursor: pointer;
   color: rgba(0, 0, 0, 0.4);
   &:hover {
-    color: #000000;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  @media (max-width: 768px) {
+    color: rgba(0, 0, 0, 0.6);
   }
 `;
