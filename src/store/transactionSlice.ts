@@ -8,6 +8,7 @@ const transactionSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     getTransaction: (state: ITransactionState[], actions) => {
+      state = [];
       state = state.concat(actions.payload);
       return state;
     },
