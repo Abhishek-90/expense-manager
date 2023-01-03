@@ -7,6 +7,7 @@ const chartDataSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     getChartData: (state: any, actions) => {
+      state = [];
       state = actions.payload;
       return state;
     },
