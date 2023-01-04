@@ -58,12 +58,12 @@ function Visuals() {
           "Access-Control-Allow-Origin": "*",
         },
         credentials: "include",
-      }).then((response) => {
-        response.json().then((json) => {
+      })
+        .then((response) => response.json())
+        .then((json) => {
           dispatch(getChartData(json.data));
           setTimeout(() => setIsLoading(false), 1500);
         });
-      });
     } catch (e: any) {
       console.log(e.message);
     }
