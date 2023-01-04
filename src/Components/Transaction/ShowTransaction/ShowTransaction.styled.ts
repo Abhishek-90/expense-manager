@@ -2,9 +2,25 @@ import styled from "styled-components";
 import * as colors from "../../../Shared/constants/themeConstants";
 
 export const Container = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & > h2 {
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+`;
+
+export const Content = styled.div`
   width: 60%;
   height: fit-content;
-  margin-top: 2rem;
   box-shadow: ${colors.shadowBlue} 0px 3px 8px;
 
   @media (max-width: 760px) {
