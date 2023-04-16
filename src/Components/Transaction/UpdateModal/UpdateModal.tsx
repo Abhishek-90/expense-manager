@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import * as E from "../../../Shared/Variables/routes";
 import * as T from "../../../Shared/Elements/CustomTags";
 import { updateTransaction } from "../../../store/transactionSlice";
+
 interface ITransactionDetails {
   date: string | undefined;
   description: string;
@@ -67,8 +68,7 @@ function UpdateModal({
       setMessage("Date is required");
       return;
     }
-
-    if (transactionDetails.amount.trim().length === 0) {
+    if (transactionDetails?.amount.toString().trim().length === 0) {
       setFormErrors({ ...formErrors, amount: true });
       setMessage("Amount is required");
       return;
@@ -87,6 +87,7 @@ function UpdateModal({
     }
 
     try {
+      console.log(transactionDetails);
       setIsAddingTransaction(true);
       const response = await fetch(E.UPDATETRANSACTION, {
         method: status.PUT,
