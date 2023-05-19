@@ -1,4 +1,4 @@
-<!-- 
+
 <h2> Steps to use it Locally</h2>
 
 <h3>Pre Requisites:</h3> Make sure you have MongoDb+Compass, Nodejs installed.
@@ -27,4 +27,4 @@ Now Open .env file and paste the connection string Db_Uri = % Paste String here 
     
 
 
-<h2> Happy Money Management! </h3> -->
+<h2> Happy Money Management! </h3>
